@@ -1,0 +1,289 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+* .idea\
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\libraries\
+* .idea\libraries\dexedLibs.xml
+* .idea\libraries\libs.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\vcs.xml
+* .idea\workspace.xml
+* IDManager.iml
+* README.md
+* ic_launcher-web.png
+* out\
+* out\production\
+* out\production\IDManager\
+* out\production\IDManager\IDManager.apk
+* out\production\IDManager\IDManager.unaligned.apk
+* out\production\IDManager\com\
+* out\production\IDManager\com\etsy\
+* out\production\IDManager\com\etsy\android\
+* out\production\IDManager\com\etsy\android\grid\
+* out\production\IDManager\com\etsy\android\grid\ClassLoaderSavedState$1.class
+* out\production\IDManager\com\etsy\android\grid\ClassLoaderSavedState$2.class
+* out\production\IDManager\com\etsy\android\grid\ClassLoaderSavedState.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$1.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$AdapterDataSetObserver.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$FixedViewInfo.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$FlingRunnable.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$LayoutParams.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$ListSavedState$1.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$ListSavedState.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$PerformClick.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$RecycleBin.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView$WindowRunnnable.class
+* out\production\IDManager\com\etsy\android\grid\ExtendableListView.class
+* out\production\IDManager\com\etsy\android\grid\HeaderViewListAdapter.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$1.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$GridItemRecord$1.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$GridItemRecord.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$GridLayoutParams.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$GridListSavedState$1.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView$GridListSavedState.class
+* out\production\IDManager\com\etsy\android\grid\StaggeredGridView.class
+* out\production\IDManager\com\etsy\android\grid\util\
+* out\production\IDManager\com\etsy\android\grid\util\DynamicHeightImageView.class
+* out\production\IDManager\com\etsy\android\grid\util\DynamicHeightTextView.class
+* out\production\IDManager\com\hai\
+* out\production\IDManager\com\hai\idmanager\
+* out\production\IDManager\com\hai\idmanager\BaseActivity.class
+* out\production\IDManager\com\hai\idmanager\BaseApplication.class
+* out\production\IDManager\com\hai\idmanager\BasePopupWindow.class
+* out\production\IDManager\com\hai\idmanager\BuildConfig.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$1.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$10.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$11.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$12.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$2.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$3.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$4.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$5.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$6.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$7.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$8.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$9$1.class
+* out\production\IDManager\com\hai\idmanager\MainActivity$9.class
+* out\production\IDManager\com\hai\idmanager\MainActivity.class
+* out\production\IDManager\com\hai\idmanager\PageRequest$1.class
+* out\production\IDManager\com\hai\idmanager\PageRequest$DoRequest.class
+* out\production\IDManager\com\hai\idmanager\PageRequest.class
+* out\production\IDManager\com\hai\idmanager\R$anim.class
+* out\production\IDManager\com\hai\idmanager\R$attr.class
+* out\production\IDManager\com\hai\idmanager\R$color.class
+* out\production\IDManager\com\hai\idmanager\R$dimen.class
+* out\production\IDManager\com\hai\idmanager\R$drawable.class
+* out\production\IDManager\com\hai\idmanager\R$id.class
+* out\production\IDManager\com\hai\idmanager\R$layout.class
+* out\production\IDManager\com\hai\idmanager\R$menu.class
+* out\production\IDManager\com\hai\idmanager\R$string.class
+* out\production\IDManager\com\hai\idmanager\R$style.class
+* out\production\IDManager\com\hai\idmanager\R$styleable.class
+* out\production\IDManager\com\hai\idmanager\R.class
+* out\production\IDManager\com\hai\idmanager\adapter\
+* out\production\IDManager\com\hai\idmanager\adapter\IdListAdapter$ViewHolder.class
+* out\production\IDManager\com\hai\idmanager\adapter\IdListAdapter.class
+* out\production\IDManager\com\hai\idmanager\comm\
+* out\production\IDManager\com\hai\idmanager\comm\FormResponse.class
+* out\production\IDManager\com\hai\idmanager\comm\HomePageApi.class
+* out\production\IDManager\com\hai\idmanager\comm\respentity\
+* out\production\IDManager\com\hai\idmanager\comm\respentity\IdModel.class
+* out\production\IDManager\com\hai\idmanager\comm\respentity\PageModel.class
+* out\production\IDManager\com\hai\idmanager\custom\
+* out\production\IDManager\com\hai\idmanager\custom\AutoHeightGridView.class
+* out\production\IDManager\com\hai\idmanager\custom\AutoLoadStaggeredGridView$1.class
+* out\production\IDManager\com\hai\idmanager\custom\AutoLoadStaggeredGridView.class
+* out\production\IDManager\com\hai\idmanager\custom\AutoSizeGridView.class
+* out\production\IDManager\com\hai\idmanager\custom\AutoSizeListView.class
+* out\production\IDManager\com\hai\idmanager\custom\LoadMoreView.class
+* out\production\IDManager\com\hai\idmanager\file\
+* out\production\IDManager\com\hai\idmanager\file\FileBackup$1.class
+* out\production\IDManager\com\hai\idmanager\file\FileBackup$OnImportIdInfoListener.class
+* out\production\IDManager\com\hai\idmanager\file\FileBackup.class
+* out\production\IDManager\com\hai\idmanager\ui\
+* out\production\IDManager\com\hai\idmanager\ui\AddIdView$OnAddIdListener.class
+* out\production\IDManager\com\hai\idmanager\ui\AddIdView.class
+* out\production\IDManager\com\hai\idmanager\ui\DelIdView$OnDelIdListener.class
+* out\production\IDManager\com\hai\idmanager\ui\DelIdView.class
+* out\production\IDManager\com\hai\idmanager\ui\EditIdActivity.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView$1.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView$2.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView$3.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView$4.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView$OnItemListener.class
+* out\production\IDManager\com\hai\idmanager\ui\SearchIdInfoView.class
+* out\production\IDManager\com\hai\idmanager\util\
+* out\production\IDManager\com\hai\idmanager\util\DateUtil.class
+* out\production\IDManager\com\hai\idmanager\util\DimensionUtil.class
+* out\production\IDManager\com\hai\sqlite\
+* out\production\IDManager\com\hai\sqlite\DbHelper.class
+* out\production\IDManager\com\handmark\
+* out\production\IDManager\com\handmark\pulltorefresh\
+* out\production\IDManager\com\handmark\pulltorefresh\library\
+* out\production\IDManager\com\handmark\pulltorefresh\library\ILoadingLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\IPullToRefresh.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\LoadingLayoutProxy.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\OverscrollHelper$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\OverscrollHelper.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshAdapterViewBase$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshAdapterViewBase.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$2.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$3.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$4.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$5.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$AnimationStyle.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$Mode.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$OnLastItemVisibleListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$OnPullEventListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$OnRefreshListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$OnRefreshListener2.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$OnSmoothScrollFinishedListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$Orientation.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$SmoothScrollRunnable.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase$State.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshBase.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshExpandableListView$InternalExpandableListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshExpandableListView$InternalExpandableListViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshExpandableListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshGridView$InternalGridView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshGridView$InternalGridViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshGridView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshHorizontalScrollView$InternalHorizontalScrollViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshHorizontalScrollView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshListView$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshListView$InternalListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshListView$InternalListViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshScrollView$InternalScrollViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshScrollView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshStaggeredGridView$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshStaggeredGridView$InternalStaggeredGrid.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshStaggeredGridView$InternalStaggeredGridSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshStaggeredGridView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshSwipeMenuListView$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshSwipeMenuListView$InternalListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshSwipeMenuListView$InternalListViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshSwipeMenuListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshWebView$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshWebView$2.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshWebView$InternalWebViewSDK9.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\PullToRefreshWebView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\extras\
+* out\production\IDManager\com\handmark\pulltorefresh\library\extras\PullToRefreshWebView2$JsValueCallback.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\extras\PullToRefreshWebView2.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\extras\SoundPullEventListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\EmptyViewMethodAccessor.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\FlipLoadingLayout$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\FlipLoadingLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\IndicatorLayout$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\IndicatorLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\LoadingLayout$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\LoadingLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\RotateLoadingLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\Utils.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\ViewCompat$SDK11.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\ViewCompat$SDK16.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\internal\ViewCompat.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenu.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuAdapter.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuCreator.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuItem.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuLayout$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuLayout.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuListView$1.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuListView$OnMenuItemClickListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuListView$OnSwipeListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuListView.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuView$OnSwipeItemClickListener.class
+* out\production\IDManager\com\handmark\pulltorefresh\library\swipemenu\SwipeMenuView.class
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:23.+
+gson-2.2.4.jar => com.google.code.gson:gson:2.2.4
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.2.4.jar => version 2.2.4 in com.google.code.gson:gson:2.2.4
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+appcompat-v7 => [com.android.support:appcompat-v7:23.+]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+* AndroidManifest.xml => iDManager\src\main\AndroidManifest.xml
+* res\ => iDManager\src\main\res\
+* src\ => iDManager\src\main\java\
+
+Missing Android Support Repository:
+-----------------------------------
+Some useful libraries, such as the Android Support Library, are
+installed from a special Maven repository, which should be installed
+via the SDK manager.
+
+It looks like this library is missing from your SDK installation at:
+null
+
+To install it, open the SDK manager, and in the Extras category,
+select "Android Support Repository". You may also want to install the
+"Google Repository" if you want to use libraries like Google Play
+Services.
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

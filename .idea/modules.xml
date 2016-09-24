@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/IDManager.iml" filepath="$PROJECT_DIR$/IDManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/iDManager/iDManager.iml" filepath="$PROJECT_DIR$/iDManager/iDManager.iml" />
+    </modules>
+  </component>
+</project>
