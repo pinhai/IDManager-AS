@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -57,54 +61,54 @@ import com.handmark.pulltorefresh.library.PullToRefreshSwipeMenuListView;
 
 public class MainActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "MainActivity";
-	
+
 	private Button btn_addId, btn_menu;
 	private PullToRefreshSwipeMenuListView ptrlv_idInfo;
 	private SwipeMenuListView smlv_idInfo;
 	private LoadMoreView loadMoreView ;
 	private List<IdModel> mIdModels;
 	private IdListAdapter mIdListAdapter;
-	
+
 	private PageRequest<IdModel> mIdItemPage;
-	
+
 	private AddIdView addIdView;
 	private DelIdView delIdView;
 	private SearchIdInfoView searchIdInfoView;
 	private DbHelper dbHelper;
-	
+
 	private static long firstBackTimeMills = 0;
-	
+
 	private ProgressDialog dialog;
-	
+
 	private static int itemEdited = -1;	//记录被编辑的账号item行数
-	
+
 	private LinearLayout linear_top;
 	private static int searchBarHeight = -1;
-	
+
 	private LinearLayout linear_search;
-	
+
 	private static final int IMPORT_ID_CODE = 112;
 	private static final int UPLOAD_FILE = 113;	//上传文件
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		initData();
 		initView();
 	}
 
 	private void initData() {
 		dbHelper = new DbHelper(MainActivity.this);
-		
+
 		mIdItemPage = new PageRequest<IdModel>(idItemReq, idItemResp);
-		
+
 		loadMoreView = new LoadMoreView(this);
-		
+
 		mIdModels = new ArrayList<>();
 		mIdListAdapter = new IdListAdapter(this, mIdModels);
-		
+
 	}
 
 	private void initView() {
@@ -122,12 +126,12 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		smlv_idInfo.setOnMenuItemClickListener(onMenuItemClickListener);
 		ptrlv_idInfo.setOnLastItemVisibleListener(mLastItem);
 		ptrlv_idInfo.setOnRefreshListener(onRefreshListener);
-		
+
 		dialog = new ProgressDialog(this);
-		
+
 		showWaitingDialog();
 		mIdItemPage.init();
-		
+
 		linear_top = findView(R.id.linear_top);
 		linear_top.post(new Runnable() {
 			@Override
@@ -136,13 +140,13 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				searchBarHeight = linear_top.getMeasuredHeight();
 			}
 		});
-		
+
 		linear_search = findView(R.id.linear_search);
 		linear_search.setOnClickListener(this);
-		
+
 		addIdView = new AddIdView(this, LayoutInflater.from(this).inflate(R.layout.view_addid, null), onAddIdListener);
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -164,8 +168,10 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}else if(id == R.id.item_upload){
 			//上传文件
 			openFileBrowser(UPLOAD_FILE);
+		}else if(id == R.id.item_about){
+			showAboutDialog();
 		}
-		
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -210,7 +216,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			break;
 		}
 	}
-	
+
 	private SwipeMenuCreator creator = new SwipeMenuCreator() {
 		@Override
 		public void create(SwipeMenu menu) {
@@ -226,7 +232,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			menu.addMenuItem(deleteItem);
 		}
 	};
-	
+
 	private OnMenuItemClickListener onMenuItemClickListener = new OnMenuItemClickListener() {
 		@Override
 		public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
@@ -241,7 +247,26 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			return false;
 		}
 	};
-	
+
+	private void showAboutDialog(){
+		PackageManager pm = getPackageManager();
+		String vnStr = "";
+		try{
+			vnStr = "version：" + pm.getPackageInfo(getPackageName(), 0).versionName;
+		}catch (PackageManager.NameNotFoundException e){
+		}
+		new AlertDialog.Builder(this, 0)
+				.setTitle("关于")
+				.setMessage(vnStr=="" ? "未获取到版本号" : vnStr)
+				.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				})
+				.create().show();
+	}
+
 	private void deleteItem(int position){
 		if(dbHelper.delIdInfo(mIdModels.get(position).getId())){
 			mIdModels.remove(position);
@@ -251,7 +276,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			Toast.makeText(MainActivity.this, "删除账号失败", Toast.LENGTH_SHORT).show();
 		}
 	}
-	
+
 	private void openFileBrowser(int requestCode){
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("file/");
@@ -262,7 +287,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			Toast.makeText(this, "未安装文件管理器", Toast.LENGTH_SHORT).show();
 		}
 	}
-	
+
 	private void showSearchIdWindow() {
 		searchIdInfoView = new SearchIdInfoView(this, dbHelper, new com.hai.idmanager.ui.SearchIdInfoView.OnItemListener() {
 			@Override
@@ -281,18 +306,18 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		addIdView.clearEditText();
 		addIdView.showAtLocation(getView(), Gravity.BOTTOM, 0, 0);
 	}
-	
+
 	private View getView() {
 		return LayoutInflater.from(this).inflate(R.layout.activity_main, null);
 	}
-	
+
 	private void showWaitingDialog(){
 		dialog.setTitle("提示");
 		dialog.setMessage("请稍等...");
 		dialog.setCancelable(false);
 		dialog.show();
 	}
-	
+
 	private void startEditIdActivityForResult(IdModel itemModel) {
 		Intent intent = new Intent(MainActivity.this, EditIdActivity.class);
 		Bundle bundle = new Bundle();
@@ -300,9 +325,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		intent.putExtra("data", bundle);
 		startActivityForResult(intent, 110);
 	}
-	
+
 	OnAddIdListener onAddIdListener = new OnAddIdListener() {
-		
+
 		@Override
 		public void onAddId(String idName, String idInfo) {
 			dialog.dismiss();
@@ -320,11 +345,11 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			showWaitingDialog();
 		}
 	};
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		
+
 		if(requestCode == 110 && resultCode == 110 && itemEdited >= 0 && data != null){
 			IdModel idModelEdited = (IdModel) data.getBundleExtra("data").getSerializable("itemModel");
 			mIdModels.set(itemEdited-1, idModelEdited);
@@ -340,7 +365,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			shareFile(uri);
 		}
 	}
-	
+
 	//分享文件
     private void shareFile(Uri uri) {
         Intent shareIntent = new Intent();
@@ -349,7 +374,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
         shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(uri.getPath())));
         startActivity(Intent.createChooser(shareIntent, "分享到"));
     }
-	
+
 	private DoRequest<IdModel> idItemReq = new DoRequest<IdModel>() {
 		@Override
 		public void doRequest(int page,
@@ -358,7 +383,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			homePageApi.getIdList(page, response);
 		}
 	};
-	
+
 	private FormResponse<PageModel<IdModel>> idItemResp = new FormResponse<PageModel<IdModel>>(){
 
 		@Override
@@ -383,7 +408,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			ptrlv_idInfo.onRefreshComplete();
 			Toast.makeText(MainActivity.this, "数据获取失败", Toast.LENGTH_SHORT).show();
 		}
-		
+
 	};
 
 	private OnItemClickListener mIdInfoItemClick = new OnItemClickListener() {
@@ -400,7 +425,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}
 
 	};
-	
+
 	private OnItemLongClickListener mIdItemLongClick = new OnItemLongClickListener() {
 
 		@SuppressLint("NewApi")
@@ -410,10 +435,10 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			if((position-1) == mIdModels.size()){	//长按了页尾
 				return false;
 			}
-			
+
 			Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 			vibrator.vibrate(50);
-			
+
 			final int p = position - 1;
 			float offsetY = 0;
 			if(searchBarHeight > 0){
@@ -421,7 +446,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			}else{
 				offsetY = view.getY() + 30;
 			}
-			
+
 			delIdView = new DelIdView(MainActivity.this, position, new OnDelIdListener() {
 				@Override
 				public void onDelId(int position) {
@@ -430,12 +455,12 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				}
 			});
 			delIdView.showAtLocation(getView(), Gravity.CENTER_HORIZONTAL|Gravity.TOP, 0, (int) offsetY);
-			
+
 			return false;
 		}
-		
+
 	};
-	
+
 	private OnLastItemVisibleListener mLastItem = new OnLastItemVisibleListener() {
 
 		@Override
@@ -446,7 +471,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			}
 		}
 	};
-	
+
 	private OnRefreshListener<SwipeMenuListView> onRefreshListener = new OnRefreshListener<SwipeMenuListView>() {
 
 		@Override
@@ -455,7 +480,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 //			ptrlv_idInfo.onRefreshComplete();
 		}
 	};
-	
+
 //	private OnRefreshListener2<ListView> onRefreshListener = new OnRefreshListener2<ListView>() {
 //
 //		@Override
@@ -467,9 +492,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 //		public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
 //		}
 //	};
-	
+
 	private OnImportIdInfoListener onImportIdInfoListener = new OnImportIdInfoListener() {
-		
+
 		@Override
 		public boolean onImport(List<IdModel> idModels) {
 			for(IdModel idModel : idModels){

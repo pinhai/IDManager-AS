@@ -1889,6 +1889,7 @@ containing a value of this type.
         public static final int ifRoom=0x7f0b0021;
         public static final int image=0x7f0b0032;
         public static final int info=0x7f0b0076;
+        public static final int item_about=0x7f0b0089;
         public static final int item_export=0x7f0b0087;
         public static final int item_import=0x7f0b0086;
         public static final int item_upload=0x7f0b0088;
