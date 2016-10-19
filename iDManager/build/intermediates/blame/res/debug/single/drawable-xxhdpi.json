@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi\\ic_launcher.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-xxhdpi\\ic_launcher.png"
     }

@@ -1,11 +1,35 @@
 [
     {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_rotate.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\default_ptr_rotate.png"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_delete.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\ic_delete.png"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_rotate.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\default_ptr_rotate.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\indicator_arrow.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\indicator_arrow.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\back.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\back.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\icon_search.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\icon_search.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\indicator_arrow.png",
@@ -14,6 +38,10 @@
     {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\icon_search.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\icon_search.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_flip.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable-hdpi\\default_ptr_flip.png"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_flip.png",

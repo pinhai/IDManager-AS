@@ -326,7 +326,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		startActivityForResult(intent, 110);
 	}
 
-	OnAddIdListener onAddIdListener = new OnAddIdListener() {
+	private OnAddIdListener onAddIdListener = new OnAddIdListener() {
 
 		@Override
 		public void onAddId(String idName, String idInfo) {
@@ -334,9 +334,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			if(dbHelper.addIdInfo(new IdModel(idName, idInfo))){
 				addIdView.dismiss();
 				Toast.makeText(MainActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-				mIdModels.add(new IdModel(idName, idInfo));
-				mIdListAdapter.notifyDataSetChanged();
-//				mIdItemPage.init();
+//				mIdModels.add(new IdModel(idName, idInfo));
+//				mIdListAdapter.notifyDataSetChanged();
+				mIdItemPage.init();
 			}
 		}
 
