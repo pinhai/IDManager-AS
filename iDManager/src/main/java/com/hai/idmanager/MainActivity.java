@@ -47,6 +47,7 @@ import com.hai.idmanager.ui.DelIdView;
 import com.hai.idmanager.ui.DelIdView.OnDelIdListener;
 import com.hai.idmanager.ui.EditIdActivity;
 import com.hai.idmanager.ui.SearchIdInfoView;
+import com.hai.idmanager.ui.SettingActivity;
 import com.hai.idmanager.util.DimensionUtil;
 import com.hai.sqlite.DbHelper;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -170,6 +171,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			openFileBrowser(UPLOAD_FILE);
 		}else if(id == R.id.item_about){
 			showAboutDialog();
+		}else if(id == R.id.item_setup){
+			Intent i = new Intent(MainActivity.this, SettingActivity.class);
+			startActivity(i);
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -248,6 +252,11 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}
 	};
 
+	/**
+	 * 显示关于对话框
+	 *
+	 * @deprecated
+	 */
 	private void showAboutDialog(){
 		PackageManager pm = getPackageManager();
 		String vnStr = "";

@@ -22,9 +22,15 @@
          />
 
     <item
-        android:id="@+id/item_about"
+        android:id="@+id/item_setup"
         android:orderInCategory="100"
-        android:title="关于"
+        android:title="@string/setup"
         />
+
+    <!--<item-->
+        <!--android:id="@+id/item_about"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="关于"-->
+        <!--/>-->
 
 </menu>

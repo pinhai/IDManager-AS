@@ -6,5 +6,8 @@
     <string name="menu_import">导入</string>
     <string name="menu_export">导出</string>
     <string name="menu_upload">分享</string>
+    <string name="setup">设置</string>
+    <string name="version">版本</string>
+    <string name="finger_scanner">指纹解锁</string>
 
 </resources>
