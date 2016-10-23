@@ -11,6 +11,8 @@ import android.widget.ToggleButton;
 
 import com.hai.idmanager.BaseActivity;
 import com.hai.idmanager.R;
+import com.hai.idmanager.constant.PrefConstants;
+import com.hai.idmanager.util.SharedPrefUtil;
 
 public class SettingActivity extends BaseActivity implements View.OnClickListener{
 
@@ -47,7 +49,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         tb_fingerScanner.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                SharedPrefUtil.getInstance().putBoolean(PrefConstants.KEY_FINGER_SCANNER, isChecked);
             }
         });
 
