@@ -55,7 +55,7 @@ public class DimensionUtil {
 	
 	/**
 	 * 测量View的width以及height，执行该方法后通过view.getMeasureHeight()可获取view的高度，宽度亦然
-	 * @param child
+	 * @param view
 	 */
 	public static void measureView(View view) {
 		ViewGroup.LayoutParams p = view.getLayoutParams();
