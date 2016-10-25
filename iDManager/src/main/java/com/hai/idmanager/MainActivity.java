@@ -169,9 +169,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}else if(id == R.id.item_upload){
 			//上传文件
 			openFileBrowser(UPLOAD_FILE);
-		}else if(id == R.id.item_about){
+		}/*else if(id == R.id.item_about){
 			showAboutDialog();
-		}else if(id == R.id.item_setup){
+		}*/else if(id == R.id.item_setup){
 			Intent i = new Intent(MainActivity.this, SettingActivity.class);
 			startActivity(i);
 		}

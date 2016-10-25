@@ -34,13 +34,8 @@
             android:name="com.hai.idmanager.ui.EditIdActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name="com.hai.idmanager.ui.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName="com.hai.idmanager.BaseActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hai.idmanager.BaseActivity" />
-        </activity>
+            android:name="com.hai.idmanager.ui.SettingActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

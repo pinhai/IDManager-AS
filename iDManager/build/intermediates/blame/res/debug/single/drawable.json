@@ -8,12 +8,12 @@
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable\\ic_info_black_24dp.xml"
     },
     {
-        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
-        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_textfield_search_material.xml"
-    },
-    {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_dark.xml",
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_dialog_material_background_dark.xml"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_textfield_search_material.xml"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background_light.xml",
@@ -34,6 +34,10 @@
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_full_material.xml",
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_ratingbar_full_material.xml"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_toggle_btn.xml",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\drawable\\selector_toggle_btn.xml"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",

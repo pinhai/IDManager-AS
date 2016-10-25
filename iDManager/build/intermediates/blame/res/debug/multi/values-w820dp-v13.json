@@ -20,6 +20,25 @@
                         "endOffset": 364
                     }
                 }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 112,
+                    "endColumn": 57,
+                    "endOffset": 165
+                },
+                "from": {
+                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 648,
+                        "endColumn": 57,
+                        "endOffset": 701
+                    }
+                }
             }
         ]
     }
