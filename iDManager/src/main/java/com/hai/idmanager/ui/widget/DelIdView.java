@@ -1,4 +1,4 @@
-package com.hai.idmanager.ui;
+package com.hai.idmanager.ui.widget;
 
 import com.hai.idmanager.R;
 

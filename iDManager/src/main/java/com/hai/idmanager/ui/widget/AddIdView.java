@@ -1,4 +1,4 @@
-package com.hai.idmanager.ui;
+package com.hai.idmanager.ui.widget;
 
 import android.content.Context;
 import android.view.View;

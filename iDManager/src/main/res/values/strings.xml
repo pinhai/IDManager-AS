@@ -9,5 +9,7 @@
     <string name="setup">设置</string>
     <string name="version">版本</string>
     <string name="finger_scanner">指纹解锁</string>
+    <string name="please_validate_finger_scanner">请验证指纹</string>
+    <string name="prompt">提示</string>
 
 </resources>

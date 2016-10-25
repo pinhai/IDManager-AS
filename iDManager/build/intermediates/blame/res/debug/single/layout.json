@@ -16,12 +16,12 @@
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
-        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media.xml"
-    },
-    {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\notification_template_big_media.xml"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
@@ -46,6 +46,10 @@
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
         "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\view_finger_scanner.xml",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\layout\\view_finger_scanner.xml"
     },
     {
         "merged": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",

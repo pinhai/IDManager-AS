@@ -33,8 +33,9 @@
         <activity
             android:name=".ui.EditIdActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".ui.SettingActivity"
-            android:launchMode="singleTop"></activity>
+        <activity
+            android:name=".ui.SettingActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

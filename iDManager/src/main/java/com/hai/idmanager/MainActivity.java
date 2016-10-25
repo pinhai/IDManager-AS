@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,12 +40,12 @@ import com.hai.idmanager.comm.respentity.PageModel;
 import com.hai.idmanager.custom.LoadMoreView;
 import com.hai.idmanager.file.FileBackup;
 import com.hai.idmanager.file.FileBackup.OnImportIdInfoListener;
-import com.hai.idmanager.ui.AddIdView;
-import com.hai.idmanager.ui.AddIdView.OnAddIdListener;
-import com.hai.idmanager.ui.DelIdView;
-import com.hai.idmanager.ui.DelIdView.OnDelIdListener;
+import com.hai.idmanager.ui.widget.AddIdView;
+import com.hai.idmanager.ui.widget.AddIdView.OnAddIdListener;
+import com.hai.idmanager.ui.widget.DelIdView;
+import com.hai.idmanager.ui.widget.DelIdView.OnDelIdListener;
 import com.hai.idmanager.ui.EditIdActivity;
-import com.hai.idmanager.ui.SearchIdInfoView;
+import com.hai.idmanager.ui.widget.SearchIdInfoView;
 import com.hai.idmanager.ui.SettingActivity;
 import com.hai.idmanager.util.DimensionUtil;
 import com.hai.sqlite.DbHelper;
@@ -96,6 +95,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		showFingerScannerDialog();
 		initData();
 		initView();
 	}
@@ -298,7 +298,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	}
 
 	private void showSearchIdWindow() {
-		searchIdInfoView = new SearchIdInfoView(this, dbHelper, new com.hai.idmanager.ui.SearchIdInfoView.OnItemListener() {
+		searchIdInfoView = new SearchIdInfoView(this, dbHelper, new SearchIdInfoView.OnItemListener() {
 			@Override
 			public void onClick(int id) {
 				searchIdInfoView.dismiss();

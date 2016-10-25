@@ -1,4 +1,4 @@
-package com.hai.idmanager.ui;
+package com.hai.idmanager.ui.widget;
 
 import java.util.ArrayList;
 import java.util.List;

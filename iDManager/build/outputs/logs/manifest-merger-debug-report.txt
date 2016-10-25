@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:2:1-40:12
+ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:3:5-32
 		INJECTED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml
@@ -50,7 +50,7 @@ ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:16:
 	android:name
 		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:16:30-85
 application
-ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:18:5-38:19
+ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:18:5-39:19
 MERGED from [com.android.support:appcompat-v7:23.4.0] D:\codeAll\AS\IDManager-AS\iDManager\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:23.4.0] D:\codeAll\AS\IDManager-AS\iDManager\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
 MERGED from [com.android.support:support-vector-drawable:23.4.0] D:\codeAll\AS\IDManager-AS\iDManager\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\AndroidManifest.xml:7:5-20
@@ -88,8 +88,8 @@ ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:33:
 	android:name
 		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:34:13-46
 activity#com.hai.idmanager.ui.SettingActivity
-ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:36:9-37:55
+ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:36:9-38:46
 	android:launchMode
-		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:37:13-43
+		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:38:13-43
 	android:name
-		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:36:19-53
+		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:37:13-47
