@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "outputFile": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,32 +11,13 @@
                     "endOffset": 107
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\values-w820dp\\dimens.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\values-w820dp\\dimens.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 312,
+                        "startOffset": 310,
                         "endColumn": 56,
-                        "endOffset": 364
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 112,
-                    "endColumn": 57,
-                    "endOffset": 165
-                },
-                "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\values-w820dp\\dimens.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 648,
-                        "endColumn": 57,
-                        "endOffset": 701
+                        "endOffset": 362
                     }
                 }
             }
