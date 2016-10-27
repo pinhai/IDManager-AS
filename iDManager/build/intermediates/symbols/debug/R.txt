@@ -750,7 +750,10 @@ int string pull_to_refresh_release_label 0x7f050020
 int string setup 0x7f050021
 int string status_bar_notification_info_overflow 0x7f050013
 int string txt_search 0x7f050022
-int string version 0x7f050023
+int string validate_failure 0x7f050023
+int string validate_success 0x7f050024
+int string validating_finger_scanner 0x7f050025
+int string version 0x7f050026
 int style AlertDialog_AppCompat 0x7f080087
 int style AlertDialog_AppCompat_Light 0x7f080088
 int style Animation_AppCompat_Dialog 0x7f080089

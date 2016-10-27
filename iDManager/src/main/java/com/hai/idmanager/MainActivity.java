@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		showFingerScannerDialog();
+		showFingerScannerWindow(getView());
 		initData();
 		initView();
 	}

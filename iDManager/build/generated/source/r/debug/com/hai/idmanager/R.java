@@ -2078,7 +2078,10 @@ containing a value of this type.
         public static final int setup=0x7f050021;
         public static final int status_bar_notification_info_overflow=0x7f050013;
         public static final int txt_search=0x7f050022;
-        public static final int version=0x7f050023;
+        public static final int validate_failure=0x7f050023;
+        public static final int validate_success=0x7f050024;
+        public static final int validating_finger_scanner=0x7f050025;
+        public static final int version=0x7f050026;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080087;

@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-public class BaseActivity extends Activity { 
+import com.hai.idmanager.ui.widget.FingerScannerView;
+
+public class BaseActivity extends Activity {
 	@SuppressWarnings("unchecked")
 	protected <T> T findView(int id){
         return (T) findViewById(id);
@@ -16,6 +19,7 @@ public class BaseActivity extends Activity {
 
     private AlertDialog fingerScannerDialog;
     private TextView tv_prompt;
+    private FingerScannerView fingerScannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,15 @@ public class BaseActivity extends Activity {
 
         }
         fingerScannerDialog.show();
+    }
+
+    protected void showFingerScannerWindow(View parent){
+        if(fingerScannerView == null){
+            fingerScannerView = new FingerScannerView(this);
+
+        }
+        fingerScannerView.setFingerScannerState(FingerScannerView.FingerScannerState.DEFAULT);
+        fingerScannerView.showAtLocation(parent, Gravity.CENTER, 0, 0);
     }
 
     protected boolean isShowingFingerScannerDialog(){
