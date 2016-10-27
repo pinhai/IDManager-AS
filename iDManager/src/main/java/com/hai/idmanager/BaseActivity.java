@@ -88,6 +88,7 @@ public class BaseActivity extends Activity {
     private FingerprintManagerCompat.AuthenticationCallback authenticationCallback = new FingerprintManagerCompat.AuthenticationCallback() {
         @Override
         // 当出现错误的时候回调此函数，比如多次尝试都失败了的时候，errString是错误信息
+//        处于安全性的考虑，不允许开发者短时间内连续授权，经过粗略的测试，android允许我们在30s之后重新打开Sensor授权监听
         public void onAuthenticationError(int errMsgId, CharSequence errString) {
             super.onAuthenticationError(errMsgId, errString);
             tv_prompt.setText(R.string.validate_failure_more);
