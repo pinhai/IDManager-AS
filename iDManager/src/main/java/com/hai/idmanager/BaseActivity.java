@@ -32,6 +32,9 @@ public class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * 显示指纹验证对话框
+     */
     protected void showFingerScannerDialog(){
         View view = LayoutInflater.from(this).inflate(R.layout.view_finger_scanner, null);
         tv_prompt = (TextView)view.findViewById(R.id.tv_prompt);
@@ -40,7 +43,7 @@ public class BaseActivity extends Activity {
             fingerScannerDialog = new AlertDialog.Builder(this, R.style.FullscreenWhite)
                     .setTitle(R.string.prompt)
                     .setView(view)
-                    .setCancelable(true)
+                    .setCancelable(false)
                     .create();
 
         }
@@ -89,21 +92,21 @@ public class BaseActivity extends Activity {
         @Override
         // 当出现错误的时候回调此函数，比如多次尝试都失败了的时候，errString是错误信息
 //        处于安全性的考虑，不允许开发者短时间内连续授权，经过粗略的测试，android允许我们在30s之后重新打开Sensor授权监听
-        public void onAuthenticationError(int errMsgId, CharSequence errString) {
+        public void onAuthenticationError(int errMsgId, CharSequence errString){
             super.onAuthenticationError(errMsgId, errString);
             tv_prompt.setText(R.string.validate_failure_more);
-            handler.sendEmptyMessageDelayed(0, 1000*30);
+            handler.sendEmptyMessageDelayed(0, 1000 * 30);
         }
 
         @Override
-        public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) {
+        public void onAuthenticationHelp(int helpMsgId, CharSequence helpString){
             super.onAuthenticationHelp(helpMsgId, helpString);
             Log.v(TAG, "onAuthenticationHelp:" + helpString);
         }
 
         // 当验证的指纹成功时会回调此函数，然后不再监听指纹sensor
         @Override
-        public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+        public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result){
             super.onAuthenticationSucceeded(result);
             tv_prompt.setText(R.string.validate_success);
             fingerScannerDialog.dismiss();
@@ -111,7 +114,7 @@ public class BaseActivity extends Activity {
 
         @Override
         // 当指纹验证失败的时候会回调此函数，失败之后允许多次尝试，失败次数过多会停止响应一段时间然后再停止sensor的工作
-        public void onAuthenticationFailed() {
+        public void onAuthenticationFailed(){
             super.onAuthenticationFailed();
             tv_prompt.setText(R.string.validate_failure);
         }

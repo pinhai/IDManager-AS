@@ -14,6 +14,7 @@ import com.hai.idmanager.R;
 /**
  * 指纹解锁弹窗
  * Created by Administrator on 2016/10/27 0027.
+ * @deprecated 
  */
 
 public class FingerScannerView extends PopupWindow{

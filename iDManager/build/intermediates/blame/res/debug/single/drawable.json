@@ -60,6 +60,10 @@
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_item_background_holo_dark.xml"
     },
     {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_toggle_btn.xml",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable\\selector_toggle_btn.xml"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_internal_bg.xml",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\drawable\\abc_cab_background_internal_bg.xml"
     },
