@@ -1575,20 +1575,20 @@ containing a value of this type.
         public static final int abc_config_showMenuShortcutsWhenKeyboardPresent=0x7f060007;
     }
     public static final class color {
-        public static final int abc_background_cache_hint_selector_material_dark=0x7f0a003c;
-        public static final int abc_background_cache_hint_selector_material_light=0x7f0a003d;
-        public static final int abc_color_highlight_material=0x7f0a003e;
+        public static final int abc_background_cache_hint_selector_material_dark=0x7f0a003d;
+        public static final int abc_background_cache_hint_selector_material_light=0x7f0a003e;
+        public static final int abc_color_highlight_material=0x7f0a003f;
         public static final int abc_input_method_navigation_guard=0x7f0a0000;
-        public static final int abc_primary_text_disable_only_material_dark=0x7f0a003f;
-        public static final int abc_primary_text_disable_only_material_light=0x7f0a0040;
-        public static final int abc_primary_text_material_dark=0x7f0a0041;
-        public static final int abc_primary_text_material_light=0x7f0a0042;
-        public static final int abc_search_url_text=0x7f0a0043;
+        public static final int abc_primary_text_disable_only_material_dark=0x7f0a0040;
+        public static final int abc_primary_text_disable_only_material_light=0x7f0a0041;
+        public static final int abc_primary_text_material_dark=0x7f0a0042;
+        public static final int abc_primary_text_material_light=0x7f0a0043;
+        public static final int abc_search_url_text=0x7f0a0044;
         public static final int abc_search_url_text_normal=0x7f0a0001;
         public static final int abc_search_url_text_pressed=0x7f0a0002;
         public static final int abc_search_url_text_selected=0x7f0a0003;
-        public static final int abc_secondary_text_material_dark=0x7f0a0044;
-        public static final int abc_secondary_text_material_light=0x7f0a0045;
+        public static final int abc_secondary_text_material_dark=0x7f0a0045;
+        public static final int abc_secondary_text_material_light=0x7f0a0046;
         public static final int accent_material_dark=0x7f0a0004;
         public static final int accent_material_light=0x7f0a0005;
         public static final int background_floating_material_dark=0x7f0a0006;
@@ -1643,10 +1643,11 @@ containing a value of this type.
         public static final int secondary_text_disabled_material_light=0x7f0a0037;
         public static final int switch_thumb_disabled_material_dark=0x7f0a0038;
         public static final int switch_thumb_disabled_material_light=0x7f0a0039;
-        public static final int switch_thumb_material_dark=0x7f0a0046;
-        public static final int switch_thumb_material_light=0x7f0a0047;
+        public static final int switch_thumb_material_dark=0x7f0a0047;
+        public static final int switch_thumb_material_light=0x7f0a0048;
         public static final int switch_thumb_normal_material_dark=0x7f0a003a;
         public static final int switch_thumb_normal_material_light=0x7f0a003b;
+        public static final int transparent_background=0x7f0a003c;
     }
     public static final class dimen {
         public static final int abc_action_bar_content_inset_material=0x7f07000d;
@@ -2078,7 +2079,11 @@ containing a value of this type.
         public static final int setup=0x7f050021;
         public static final int status_bar_notification_info_overflow=0x7f050013;
         public static final int txt_search=0x7f050022;
-        public static final int version=0x7f050023;
+        public static final int validate_failure=0x7f050023;
+        public static final int validate_failure_more=0x7f050024;
+        public static final int validate_success=0x7f050025;
+        public static final int validating_finger_scanner=0x7f050026;
+        public static final int version=0x7f050027;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f080087;
@@ -2087,15 +2092,8 @@ containing a value of this type.
         public static final int Animation_AppCompat_DropDownUp=0x7f08008a;
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
          */
         public static final int AppBaseTheme=0x7f08000b;
-        /**  All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static final int AppTheme=0x7f08008b;
         public static final int Base_AlertDialog_AppCompat=0x7f08008c;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f08008d;
@@ -2239,7 +2237,7 @@ containing a value of this type.
         public static final int Base_Widget_AppCompat_TextView_SpinnerItem=0x7f080079;
         public static final int Base_Widget_AppCompat_Toolbar=0x7f0800b7;
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f08007a;
-        public static final int Dialog_Fullscreen=0x7f0800b8;
+        public static final int FullscreenWhite=0x7f0800b8;
         public static final int Platform_AppCompat=0x7f080018;
         public static final int Platform_AppCompat_Light=0x7f080019;
         public static final int Platform_ThemeOverlay_AppCompat=0x7f08007b;
