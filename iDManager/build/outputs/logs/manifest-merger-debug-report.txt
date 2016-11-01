@@ -66,7 +66,7 @@ MERGED from [com.android.support:support-v4:23.4.0] D:\codeAll\AS\IDManager-AS\i
 	android:icon
 		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:21:9-45
 	android:theme
-		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:23:9-62
+		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:23:9-44
 	android:name
 		ADDED from D:\codeAll\AS\IDManager-AS\iDManager\src\main\AndroidManifest.xml:19:9-40
 activity#com.hai.idmanager.MainActivity
