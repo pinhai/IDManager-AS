@@ -25,7 +25,7 @@ public class BaseActivity extends Activity {
     private AlertDialog fingerScannerDialog;
     private TextView tv_prompt;
     private FingerScannerView fingerScannerView;
-    private FingerprintManagerCompat fingerprintManagerCompat;
+    private static FingerprintManagerCompat fingerprintManagerCompat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,14 @@ public class BaseActivity extends Activity {
      * 显示指纹验证对话框
      */
     protected void showFingerScannerDialog(){
+        if(fingerprintManagerCompat == null){
+            fingerprintManagerCompat = FingerprintManagerCompat.from(getApplicationContext());
+        }
+        if(!fingerprintManagerCompat.isHardwareDetected()){
+            //未探测到指纹采集器
+            return;
+        }
+
         View view = LayoutInflater.from(this).inflate(R.layout.view_finger_scanner, null);
         tv_prompt = (TextView)view.findViewById(R.id.tv_prompt);
         tv_prompt.setText(R.string.please_validate_finger_scanner);
@@ -43,15 +51,12 @@ public class BaseActivity extends Activity {
             fingerScannerDialog = new AlertDialog.Builder(this, R.style.FullscreenWhite)
                     .setTitle(R.string.prompt)
                     .setView(view)
-                    .setCancelable(false)
+                    .setCancelable(true)
                     .create();
 
         }
         fingerScannerDialog.show();
 
-        if(fingerprintManagerCompat == null){
-            fingerprintManagerCompat = FingerprintManagerCompat.from(this);
-        }
         fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
     }
 
