@@ -18,6 +18,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 
+/**
+ * 带侧滑菜单的下拉刷新列表
+ * @author hai
+ */
 public class PullToRefreshSwipeMenuListView extends PullToRefreshAdapterViewBase<SwipeMenuListView> {
 	
 	private LoadingLayout mHeaderLoadingView;
