@@ -102,9 +102,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private void initData() {
 		dbHelper = new DbHelper(MainActivity.this);
-
 		mIdItemPage = new PageRequest<IdModel>(idItemReq, idItemResp);
-
 		loadMoreView = new LoadMoreView(this);
 
 		mIdModels = new ArrayList<>();

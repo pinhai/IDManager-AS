@@ -43,6 +43,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     }
 
     private void initView() {
+        initTitleBar(true, "设置");
         tv_version = findView(R.id.tv_version);
         tb_fingerScanner = findView(R.id.tb_fingerScanner);
 

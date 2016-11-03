@@ -1825,15 +1825,18 @@ containing a value of this type.
         public static final int default_ptr_flip=0x7f020050;
         public static final int default_ptr_rotate=0x7f020051;
         public static final int ic_delete=0x7f020052;
-        public static final int ic_launcher=0x7f020053;
-        public static final int icon_search=0x7f020054;
-        public static final int indicator_arrow=0x7f020055;
-        public static final int indicator_bg_bottom=0x7f020056;
-        public static final int indicator_bg_top=0x7f020057;
-        public static final int notification_template_icon_bg=0x7f02005b;
-        public static final int selector_toggle_btn=0x7f020058;
-        public static final int switch_off=0x7f020059;
-        public static final int switch_on=0x7f02005a;
+        public static final int ic_info_black_24dp=0x7f020053;
+        public static final int ic_launcher=0x7f020054;
+        public static final int ic_notifications_black_24dp=0x7f020055;
+        public static final int ic_sync_black_24dp=0x7f020056;
+        public static final int icon_search=0x7f020057;
+        public static final int indicator_arrow=0x7f020058;
+        public static final int indicator_bg_bottom=0x7f020059;
+        public static final int indicator_bg_top=0x7f02005a;
+        public static final int notification_template_icon_bg=0x7f02005e;
+        public static final int selector_toggle_btn=0x7f02005b;
+        public static final int switch_off=0x7f02005c;
+        public static final int switch_on=0x7f02005d;
     }
     public static final class id {
         public static final int action0=0x7f0b006e;
@@ -1857,6 +1860,7 @@ containing a value of this type.
         public static final int always=0x7f0b001f;
         public static final int beginning=0x7f0b001c;
         public static final int both=0x7f0b0024;
+        public static final int btn_action=0x7f0b008b;
         public static final int btn_addId=0x7f0b0065;
         public static final int btn_back=0x7f0b006c;
         public static final int btn_cancel=0x7f0b0086;
@@ -1892,14 +1896,15 @@ containing a value of this type.
         public static final int gridview=0x7f0b0004;
         public static final int home=0x7f0b0005;
         public static final int homeAsUp=0x7f0b0010;
+        public static final int ib_back=0x7f0b008a;
         public static final int icon=0x7f0b0035;
         public static final int ifRoom=0x7f0b0021;
         public static final int image=0x7f0b0032;
         public static final int info=0x7f0b0079;
-        public static final int item_export=0x7f0b008b;
-        public static final int item_import=0x7f0b008a;
-        public static final int item_setup=0x7f0b008d;
-        public static final int item_upload=0x7f0b008c;
+        public static final int item_export=0x7f0b008d;
+        public static final int item_import=0x7f0b008c;
+        public static final int item_setup=0x7f0b008f;
+        public static final int item_upload=0x7f0b008e;
         public static final int iv_envelop=0x7f0b0089;
         public static final int line1=0x7f0b0073;
         public static final int line3=0x7f0b0077;
@@ -2036,6 +2041,7 @@ containing a value of this type.
         public static final int view_delid=0x7f03002e;
         public static final int view_finger_scanner=0x7f03002f;
         public static final int view_searchid=0x7f030030;
+        public static final int view_title_bar=0x7f030031;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
