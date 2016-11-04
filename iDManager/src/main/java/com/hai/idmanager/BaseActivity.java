@@ -150,7 +150,9 @@ public class BaseActivity extends Activity {
             super.onAuthenticationSucceeded(result);
             tv_prompt.setText(R.string.validate_success);
             fingerScannerDialog.dismiss();
-            mAuthenticationStateListner.onAuthenticationState(true);
+            if(mAuthenticationStateListner != null){
+                mAuthenticationStateListner.onAuthenticationState(true);
+            }
         }
 
         @Override
@@ -158,7 +160,9 @@ public class BaseActivity extends Activity {
         public void onAuthenticationFailed(){
             super.onAuthenticationFailed();
             tv_prompt.setText(R.string.validate_failure);
-            mAuthenticationStateListner.onAuthenticationState(false);
+            if(mAuthenticationStateListner != null){
+                mAuthenticationStateListner.onAuthenticationState(false);
+            }
         }
     };
 

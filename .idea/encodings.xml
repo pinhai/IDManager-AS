@@ -2,8 +2,8 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/fund_Gesture_Lock/src/main/java/com/wujay/fund/GestureEditActivity.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/fund_Gesture_Lock/src/main/java/com/wujay/fund/GestureEditActivity.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/fund_Gesture_Lock/src/main/java/com/wujay/fund/GestureVerifyActivity.java" charset="GBK" />
-    <file url="PROJECT" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/fund_Gesture_Lock/src/main/java/com/wujay/fund/widget/GestureContentView.java" charset="GBK" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

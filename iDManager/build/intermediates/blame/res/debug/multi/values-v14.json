@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+        "outputFile": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 200
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\src\\main\\res\\values-v14\\styles.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\values-v14\\styles.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 476
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -53,7 +53,7 @@
                     "endOffset": 547
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -72,7 +72,7 @@
                     "endOffset": 630
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -92,7 +92,7 @@
                     "endOffset": 1040
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -113,7 +113,7 @@
                     "endOffset": 1462
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -133,7 +133,7 @@
                     "endOffset": 1582
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -152,7 +152,7 @@
                     "endOffset": 1645
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 22,
                         "startColumn": 4,
@@ -172,7 +172,7 @@
                     "endOffset": 1799
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 23,
                         "startColumn": 4,
@@ -192,7 +192,7 @@
                     "endOffset": 1862
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 26,
                         "startColumn": 4,
@@ -211,7 +211,7 @@
                     "endOffset": 1994
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-v14\\values-v14.xml",
                     "position": {
                         "startLine": 27,
                         "startColumn": 4,

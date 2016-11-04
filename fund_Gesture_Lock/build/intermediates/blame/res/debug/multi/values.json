@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 108
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\dimens.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 164
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\dimens.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -49,13 +49,13 @@
                     "endOffset": 217
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 114,
+                        "startOffset": 115,
                         "endColumn": 52,
-                        "endOffset": 162
+                        "endOffset": 163
                     }
                 }
             },
@@ -68,13 +68,13 @@
                     "endOffset": 272
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 58,
+                        "startOffset": 59,
                         "endColumn": 54,
-                        "endOffset": 108
+                        "endOffset": 109
                     }
                 }
             },
@@ -87,13 +87,13 @@
                     "endOffset": 328
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 437,
+                        "startOffset": 444,
                         "endColumn": 55,
-                        "endOffset": 488
+                        "endOffset": 495
                     }
                 }
             },
@@ -106,13 +106,13 @@
                     "endOffset": 381
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 168,
+                        "startOffset": 169,
                         "endColumn": 52,
-                        "endOffset": 216
+                        "endOffset": 217
                     }
                 }
             },
@@ -125,13 +125,13 @@
                     "endOffset": 437
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 681,
+                        "startOffset": 692,
                         "endColumn": 55,
-                        "endOffset": 732
+                        "endOffset": 743
                     }
                 }
             },
@@ -144,13 +144,13 @@
                     "endOffset": 492
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 553,
+                        "startOffset": 562,
                         "endColumn": 54,
-                        "endOffset": 603
+                        "endOffset": 612
                     }
                 }
             },
@@ -163,13 +163,13 @@
                     "endOffset": 565
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 608,
+                        "startOffset": 618,
                         "endColumn": 72,
-                        "endOffset": 676
+                        "endOffset": 686
                     }
                 }
             },
@@ -182,13 +182,13 @@
                     "endOffset": 619
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 261,
+                        "startOffset": 265,
                         "endColumn": 53,
-                        "endOffset": 310
+                        "endOffset": 314
                     }
                 }
             },
@@ -201,13 +201,13 @@
                     "endOffset": 676
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 315,
+                        "startOffset": 320,
                         "endColumn": 56,
-                        "endOffset": 367
+                        "endOffset": 372
                     }
                 }
             },
@@ -220,13 +220,13 @@
                     "endOffset": 741
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 372,
+                        "startOffset": 378,
                         "endColumn": 64,
-                        "endOffset": 432
+                        "endOffset": 438
                     }
                 }
             },
@@ -239,13 +239,13 @@
                     "endOffset": 801
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 493,
+                        "startOffset": 501,
                         "endColumn": 59,
-                        "endOffset": 548
+                        "endOffset": 556
                     }
                 }
             },
@@ -259,14 +259,14 @@
                     "endOffset": 1092
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\styles.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 191,
+                        "startOffset": 192,
                         "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 481
+                        "endOffset": 484
                     }
                 }
             },
@@ -280,14 +280,14 @@
                     "endOffset": 1252
                 },
                 "from": {
-                    "file": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\values\\styles.xml",
+                    "file": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 522,
+                        "startOffset": 525,
                         "endLine": 17,
                         "endColumn": 12,
-                        "endOffset": 679
+                        "endOffset": 682
                     }
                 }
             }
