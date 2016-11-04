@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/IDManager.iml" filepath="$PROJECT_DIR$/IDManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/IDManager-AS.iml" filepath="$PROJECT_DIR$/IDManager-AS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fund_Gesture_Lock/fund_Gesture_Lock.iml" filepath="$PROJECT_DIR$/fund_Gesture_Lock/fund_Gesture_Lock.iml" />
       <module fileurl="file://$PROJECT_DIR$/iDManager/iDManager.iml" filepath="$PROJECT_DIR$/iDManager/iDManager.iml" />
     </modules>
   </component>

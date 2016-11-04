@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\lock_pattern_node_normal.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\lock_pattern_node_normal.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\lock_pattern_node_pressed.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\lock_pattern_node_pressed.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\btn_back_normal.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\btn_back_normal.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\btn_back_pressed.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\btn_back_pressed.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_normal.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\gesture_node_normal.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_pressed.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\gesture_node_pressed.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\user_logo.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\user_logo.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_wrong.png",
+        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\gesture_node_wrong.png"
+    }
+]
