@@ -28,6 +28,7 @@ public class BaseActivity extends Activity {
     private TextView tv_prompt;
     private FingerScannerView fingerScannerView;
     private static FingerprintManagerCompat fingerprintManagerCompat;
+    private OnAuthenticationStateListner mAuthenticationStateListner;
 
     //标题栏
     protected ImageButton ib_back;
@@ -51,13 +52,20 @@ public class BaseActivity extends Activity {
             btn_action = findView(R.id.btn_action);
         }
         ib_back.setVisibility(showBackButton ? View.VISIBLE : View.GONE);
+        ib_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         tv_title.setText(title);
     }
 
     /**
      * 显示指纹验证对话框
+     * @param cancelable
      */
-    protected void showFingerScannerDialog(){
+    protected void showFingerScannerDialog(boolean cancelable){
         if(fingerprintManagerCompat == null){
             fingerprintManagerCompat = FingerprintManagerCompat.from(getApplicationContext());
         }
@@ -80,6 +88,11 @@ public class BaseActivity extends Activity {
         fingerScannerDialog.show();
 
         fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
+    }
+
+    protected void showFingerScannerDialog(boolean cancelable, OnAuthenticationStateListner authenticationStateListner){
+        showFingerScannerDialog(cancelable);
+        mAuthenticationStateListner = authenticationStateListner;
     }
 
     /**
@@ -137,6 +150,7 @@ public class BaseActivity extends Activity {
             super.onAuthenticationSucceeded(result);
             tv_prompt.setText(R.string.validate_success);
             fingerScannerDialog.dismiss();
+            mAuthenticationStateListner.onAuthenticationState(true);
         }
 
         @Override
@@ -144,6 +158,11 @@ public class BaseActivity extends Activity {
         public void onAuthenticationFailed(){
             super.onAuthenticationFailed();
             tv_prompt.setText(R.string.validate_failure);
+            mAuthenticationStateListner.onAuthenticationState(false);
         }
     };
+
+    protected interface OnAuthenticationStateListner{
+        void onAuthenticationState(boolean succeeded);
+    }
 }

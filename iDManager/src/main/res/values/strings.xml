@@ -6,9 +6,11 @@
     <string name="menu_import">导入</string>
     <string name="menu_export">导出</string>
     <string name="menu_upload">分享</string>
-    <string name="setup">设置</string>
+    <string name="settings">设置</string>
     <string name="version">版本</string>
+    <string name="gesture_password">手势密码</string>
     <string name="finger_scanner">指纹解锁</string>
+    <string name="please_setup_gesture_password_first">请先设置手势密码</string>
     <string name="please_validate_finger_scanner">请验证指纹</string>
     <string name="validating_finger_scanner">正在验证指纹</string>
     <string name="validate_success">验证成功</string>
