@@ -76,9 +76,9 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 if(!SharedPrefUtil.getInstance().getBoolean(PrefConstants.KEY_GESTURE_SET, false)){
                     //未设置手势密码
                     buttonView.setChecked(false);
-                    new AlertDialog.Builder(SettingActivity.this, R.style.BaseDialogTheme)
+                    new AlertDialog.Builder(SettingActivity.this)
                             .setTitle(R.string.prompt)
-                            .setMessage("")
+                            .setMessage("11")
                             .setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){

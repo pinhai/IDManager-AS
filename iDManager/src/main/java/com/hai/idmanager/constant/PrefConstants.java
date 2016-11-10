@@ -7,10 +7,10 @@ public interface PrefConstants {
 
     String NAME = "user_info";
 
-    //ÊÇ·ñ¿ªÆôÖ¸ÎÆ½âËø
+    //æ˜¯å¦å¼€å¯æŒ‡çº¹è§£é”
     String KEY_FINGER_SCANNER = "key_finger_scanner";
-    //ÊÇ·ñ¿ªÆôÊÖÊÆ½âËø
+    //æ˜¯å¦å¼€å¯æ‰‹åŠ¿è§£é”
     String KEY_GESTURE = "key_gesture";
-    //ÊÇ·ñÉèÖÃÁËÊÖÊÆÃÜÂë
+    //æ˜¯å¦è®¾ç½®äº†æ‰‹åŠ¿å¯†ç 
     String KEY_GESTURE_SET = "key_gesture_set";
 }
