@@ -36,6 +36,9 @@
         <activity
             android:name="com.hai.idmanager.ui.SettingActivity"
             android:launchMode="singleTop" />
+        <activity
+            android:name="com.hai.idmanager.ui.AddGestureActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

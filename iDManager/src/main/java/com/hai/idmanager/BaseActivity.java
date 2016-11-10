@@ -77,7 +77,7 @@ public class BaseActivity extends Activity {
         View view = LayoutInflater.from(this).inflate(R.layout.view_finger_scanner, null);
         tv_prompt = (TextView)view.findViewById(R.id.tv_prompt);
         tv_prompt.setText(R.string.please_validate_finger_scanner);
-            if(fingerScannerDialog == null){
+        if(fingerScannerDialog == null){
             fingerScannerDialog = new AlertDialog.Builder(this, R.style.FullscreenWhite)
                     .setTitle(R.string.prompt)
                     .setView(view)

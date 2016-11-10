@@ -15,7 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/bg_gray"/>
+
     <RelativeLayout
+        android:id="@+id/rl_gesture"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:background="@android:color/white"
@@ -27,6 +29,15 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:text="@string/gesture_password"
+            android:textSize="@dimen/txt_middleLager"/>
+        <TextView
+            android:id="@+id/tv_gestureSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/tb_gesturePsd"
+            android:text="@string/unset"
             android:textSize="@dimen/txt_middleLager"/>
         <ToggleButton
             android:id="@+id/tb_gesturePsd"
@@ -40,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
