@@ -58,7 +58,7 @@ public class PullToRefreshGridView extends PullToRefreshAdapterViewBase<GridView
 			gv = new InternalGridView(context, attrs);
 		}
 
-		// Use Generated ID (from res/values/ids.xml)
+		// Use Generated ID (from res/values/pull_refresh_ids.xml)
 		gv.setId(R.id.gridview);
 		return gv;
 	}

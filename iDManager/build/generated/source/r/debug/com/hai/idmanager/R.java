@@ -1825,15 +1825,18 @@ containing a value of this type.
         public static final int default_ptr_flip=0x7f020050;
         public static final int default_ptr_rotate=0x7f020051;
         public static final int ic_delete=0x7f020052;
-        public static final int ic_launcher=0x7f020053;
-        public static final int icon_search=0x7f020054;
-        public static final int indicator_arrow=0x7f020055;
-        public static final int indicator_bg_bottom=0x7f020056;
-        public static final int indicator_bg_top=0x7f020057;
-        public static final int notification_template_icon_bg=0x7f02005b;
-        public static final int selector_toggle_btn=0x7f020058;
-        public static final int switch_off=0x7f020059;
-        public static final int switch_on=0x7f02005a;
+        public static final int ic_info_black_24dp=0x7f020053;
+        public static final int ic_launcher=0x7f020054;
+        public static final int ic_notifications_black_24dp=0x7f020055;
+        public static final int ic_sync_black_24dp=0x7f020056;
+        public static final int icon_search=0x7f020057;
+        public static final int indicator_arrow=0x7f020058;
+        public static final int indicator_bg_bottom=0x7f020059;
+        public static final int indicator_bg_top=0x7f02005a;
+        public static final int notification_template_icon_bg=0x7f02005e;
+        public static final int selector_toggle_btn=0x7f02005b;
+        public static final int switch_off=0x7f02005c;
+        public static final int switch_on=0x7f02005d;
     }
     public static final class id {
         public static final int action0=0x7f0b0072;
