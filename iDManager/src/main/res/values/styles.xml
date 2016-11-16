@@ -4,7 +4,7 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="@android:style/Theme.Light.NoTitleBar">
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
@@ -34,8 +34,7 @@
         <item name="android:layout_gravity">center_vertical</item>
     </style>
 
-    <style name="BaseDialogTheme" parent="AlertDialog.AppCompat.Light">
-
+    <style name="BaseDialogTheme" parent="Theme.AppCompat.Light.Dialog">
     </style>
 
 </resources>

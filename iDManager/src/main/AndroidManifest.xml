@@ -37,7 +37,7 @@
             android:name=".ui.SettingActivity"
             android:launchMode="singleTop"/>
         <activity
-            android:name=".ui.AddGestureActivity"
+            android:name=".ui.SetupGestureActivity"
             android:launchMode="singleTop"/>
     </application>
 

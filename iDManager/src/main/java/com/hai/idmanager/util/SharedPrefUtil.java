@@ -14,13 +14,12 @@ import com.hai.idmanager.constant.PrefConstants;
 public class SharedPrefUtil {
 	private static SharedPrefUtil instance;
 	private Context context;
-	private SharedPreferences mPreferences;
+	private static SharedPreferences mPreferences;
 
-	public static SharedPrefUtil getInstance() {
+	private static void newInstance() {
 		if (instance == null) {
 			instance = new SharedPrefUtil();
 		}
-		return instance;
 	}
 
 	private SharedPrefUtil() {
@@ -31,30 +30,33 @@ public class SharedPrefUtil {
 		}
 	}
 
-	public void putString(String key, String value) {
+	public static void putString(String key, String value) {
+		newInstance();
 		Editor editor = mPreferences.edit();
 		editor.putString(key, value);
 		editor.commit();
 	}
 
-	public String getString(String key, String defaultVal) {
+	public static String getString(String key, String defaultVal) {
+		newInstance();
 		return mPreferences.getString(key, defaultVal);
 	}
 
-	public void putBoolean(String key, boolean value){
+	public static void putBoolean(String key, boolean value){
+		newInstance();
 		Editor editor = mPreferences.edit();
 		editor.putBoolean(key, value);
 		editor.commit();
 	}
 
-	public boolean getBoolean(String key, boolean defValue){
+	public static boolean getBoolean(String key, boolean defValue){
+		newInstance();
 		return mPreferences.getBoolean(key, defValue);
 	}
 
-	public void remove(String info) {
-		SharedPreferences preferences = context.getSharedPreferences(
-				PrefConstants.NAME, Context.MODE_PRIVATE);
-		Editor ed = preferences.edit();
+	public static void remove(String info) {
+		newInstance();
+		Editor ed = mPreferences.edit();
 		ed.remove(info);
 		ed.commit();
 	}

@@ -81,7 +81,7 @@ public class BaseActivity extends Activity {
             fingerScannerDialog = new AlertDialog.Builder(this, R.style.FullscreenWhite)
                     .setTitle(R.string.prompt)
                     .setView(view)
-                    .setCancelable(true)
+                    .setCancelable(cancelable)
                     .create();
 
         }

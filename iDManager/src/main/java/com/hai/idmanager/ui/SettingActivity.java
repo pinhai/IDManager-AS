@@ -56,10 +56,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         tv_gestureSet = findView(R.id.tv_gestureSet);
         rl_gesture = findView(R.id.rl_gesture);
 
-        tv_gestureSet.setText(SharedPrefUtil.getInstance().getBoolean(PrefConstants.KEY_GESTURE_SET, false) ?
+        tv_gestureSet.setText(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_SET, false) ?
                 R.string.set : R.string.unset);
-        tb_gesturePsd.setChecked(SharedPrefUtil.getInstance().getBoolean(PrefConstants.KEY_GESTURE, false));
-        tb_fingerScanner.setChecked(SharedPrefUtil.getInstance().getBoolean(PrefConstants.KEY_FINGER_SCANNER, false));
+        tb_gesturePsd.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_OPEN, false));
+        tb_fingerScanner.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_FINGER_SCANNER, false));
         setVersionInfo();
     }
 
@@ -73,17 +73,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if(isChecked){
-                if(!SharedPrefUtil.getInstance().getBoolean(PrefConstants.KEY_GESTURE_SET, false)){
+                if(!SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_SET, false)){
                     //未设置手势密码
                     buttonView.setChecked(false);
-                    new AlertDialog.Builder(SettingActivity.this)
+                    new AlertDialog.Builder(SettingActivity.this, R.style.BaseDialogTheme)
                             .setTitle(R.string.prompt)
-                            .setMessage("11")
+                            .setMessage(R.string.please_setup_gesture_password_first)
                             .setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){
                                     dialog.dismiss();
-                                    Intent i = new Intent(SettingActivity.this, AddGestureActivity.class);
+                                    Intent i = new Intent(SettingActivity.this, SetupGestureActivity.class);
                                     startActivity(i);
                                 }
                             })
@@ -105,13 +105,14 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void onCheckedChanged(final CompoundButton buttonView, boolean isChecked) {
             if(isChecked){
-//                if(!tb_gesturePsd.isChecked()){
-//                    //打开指纹验证要先开启手势密码
-//                    Toast.makeText(SettingActivity.this, R.string.please_setup_gesture_password_first, Toast.LENGTH_SHORT).show();
-//                    buttonView.setChecked(false);
-//                }else{
-                    SharedPrefUtil.getInstance().putBoolean(PrefConstants.KEY_FINGER_SCANNER, isChecked);
-//                }
+                if(!tb_gesturePsd.isChecked()){
+                    //打开指纹验证要先开启手势密码
+                    Toast.makeText(SettingActivity.this, R.string.please_setup_and_open_gesture_password_first,
+                            Toast.LENGTH_SHORT).show();
+                    buttonView.setChecked(false);
+                }else{
+                    SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGER_SCANNER, isChecked);
+                }
             }else{
                 buttonView.setChecked(true);
                 //关闭指纹解锁
@@ -120,7 +121,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     public void onAuthenticationState(boolean succeeded) {
                         if(succeeded){
                             //指纹验证成功，关闭指纹解锁功能
-                            SharedPrefUtil.getInstance().putBoolean(PrefConstants.KEY_FINGER_SCANNER, false);
+                            SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGER_SCANNER, false);
                             buttonView.setChecked(false);
                         }
                     }
