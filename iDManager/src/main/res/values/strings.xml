@@ -11,6 +11,9 @@
     <string name="set">已设置</string>
     <string name="unset">未设置</string>
     <string name="cancel">取消</string>
+    <string name="set_gesture_pattern">绘制解锁图案</string>
+    <string name="set_gesture_pattern_reason">设置手势密码，防止他人未经授权查看</string>
+    <string name="reset_gesture_code">重新设置手势密码</string>
     <string name="gesture_password">手势密码</string>
     <string name="finger_scanner">指纹解锁</string>
     <string name="please_setup_and_open_gesture_password_first">请先设置并开启手势密码</string>

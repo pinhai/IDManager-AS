@@ -260,7 +260,10 @@
     <string name="pull_to_refresh_pull_label">下拉刷新…</string>
     <string name="pull_to_refresh_refreshing_label">正在载入…</string>
     <string name="pull_to_refresh_release_label">放开以刷新…</string>
+    <string name="reset_gesture_code">重新设置手势密码</string>
     <string name="set">已设置</string>
+    <string name="set_gesture_pattern">绘制解锁图案</string>
+    <string name="set_gesture_pattern_reason">设置手势密码，防止他人未经授权查看</string>
     <string name="settings">设置</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="txt_search">搜索</string>
@@ -275,14 +278,10 @@
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
     <style name="Animation.AppCompat.DropDownUp" parent="Base.Animation.AppCompat.DropDownUp"/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
     </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>
@@ -1238,7 +1237,6 @@
         <item name="android:scaleType">center</item>
     </style>
     <style name="BaseDialogTheme" parent="Theme.AppCompat.Light.Dialog">
-
     </style>
     <style name="FullscreenWhite" parent="Theme.AppCompat.Light.DialogWhenLarge">
         <item name="android:windowBackground">@android:color/white</item>

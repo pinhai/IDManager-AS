@@ -35,28 +35,28 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/gesture_tip_layout"
+    android:id="@+id/gesture_tip_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/top_layout"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <com.wujay.fund.widget.LockIndicator
+        android:id="@+id/lock_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip" />
+
+    <TextView
+        android:id="@+id/text_tip"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/top_layout"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <com.wujay.fund.widget.LockIndicator
-            android:id="@+id/lock_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip" />
-
-        <TextView
-            android:id="@+id/text_tip"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/set_gesture_pattern"
-            android:textColor="#F98F12"
-            android:layout_marginTop="10dip" />
-    </LinearLayout>
+        android:gravity="center_horizontal"
+        android:text="@string/set_gesture_pattern"
+        android:textColor="#F98F12"
+        android:layout_marginTop="10dip" />
+</LinearLayout>
 
     <FrameLayout
         android:id="@+id/gesture_container"
@@ -72,9 +72,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_below="@id/gesture_container"
-        android:layout_marginTop="20dip"
+        android:layout_marginTop="17dp"
         android:text="@string/set_gesture_pattern_reason"
-        android:textColor="#816E6A" />
+        android:textColor="#816E6A"
+        android:layout_below="@+id/gesture_container"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>

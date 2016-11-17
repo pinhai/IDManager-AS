@@ -97,7 +97,7 @@ ADDED from D:\codeAll\AS\IDManager\iDManager\src\main\AndroidManifest.xml:36:9-3
 		ADDED from D:\codeAll\AS\IDManager\iDManager\src\main\AndroidManifest.xml:38:13-43
 	android:name
 		ADDED from D:\codeAll\AS\IDManager\iDManager\src\main\AndroidManifest.xml:37:13-47
-activity#com.hai.idmanager.ui.SetupGestureActivity
+activity#com.hai.idmanager.ui.GestureSetupActivity
 ADDED from D:\codeAll\AS\IDManager\iDManager\src\main\AndroidManifest.xml:39:9-41:45
 	android:launchMode
 		ADDED from D:\codeAll\AS\IDManager\iDManager\src\main\AndroidManifest.xml:41:13-43

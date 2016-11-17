@@ -83,7 +83,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){
                                     dialog.dismiss();
-                                    Intent i = new Intent(SettingActivity.this, SetupGestureActivity.class);
+                                    Intent i = new Intent(SettingActivity.this, GestureSetupActivity.class);
                                     startActivity(i);
                                 }
                             })

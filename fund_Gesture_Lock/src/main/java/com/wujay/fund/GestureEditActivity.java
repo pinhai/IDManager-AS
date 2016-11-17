@@ -15,7 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.wujay.fund.common.Constants;
 import com.wujay.fund.widget.GestureContentView;
 import com.wujay.fund.widget.GestureDrawline.GestureCallBack;
 import com.wujay.fund.widget.LockIndicator;

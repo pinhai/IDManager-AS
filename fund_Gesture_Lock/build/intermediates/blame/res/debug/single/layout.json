@@ -10,17 +10,5 @@
     {
         "merged": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
         "source": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\layout\\activity_gesture_verify.xml",
-        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\layout\\activity_gesture_verify.xml"
-    },
-    {
-        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\layout\\activity_gesture_edit.xml",
-        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\layout\\activity_gesture_edit.xml"
-    },
-    {
-        "merged": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
-        "source": "D:\\codeAll\\AS\\IDManager-AS\\fund_Gesture_Lock\\src\\main\\res\\layout\\activity_main.xml"
     }
 ]

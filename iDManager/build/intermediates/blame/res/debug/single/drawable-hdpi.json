@@ -4,6 +4,14 @@
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\lock_pattern_node_normal.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\lock_pattern_node_normal.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_normal.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\gesture_node_normal.png"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_rotate.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\default_ptr_rotate.png"
     },
@@ -16,6 +24,14 @@
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\icon_search.png"
     },
     {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_pressed.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\gesture_node_pressed.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\lock_pattern_node_pressed.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\lock_pattern_node_pressed.png"
+    },
+    {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\default_ptr_flip.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\default_ptr_flip.png"
     },
@@ -26,5 +42,9 @@
     {
         "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_delete.png",
         "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\ic_delete.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager\\iDManager\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\gesture_node_wrong.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\iDManager\\src\\main\\res\\drawable-hdpi\\gesture_node_wrong.png"
     }
 ]
