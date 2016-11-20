@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.hai.idmanager.ui.widget.gesture.GesturePoint.POINT_STATE;
 import com.hai.idmanager.util.AppUtil;
+import com.hai.idmanager.util.DimensionUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,46 +22,46 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ÊÖÊÆÃÜÂëÂ·¾¶»æÖÆ
+ * æ‰‹åŠ¿å¯†ç è·¯å¾„ç»˜åˆ¶
  *
  */
 public class GestureDrawline extends View {
-	private int mov_x;// ÉùÃ÷Æğµã×ø±ê
+	private int mov_x;// å£°æ˜èµ·ç‚¹åæ ‡
 	private int mov_y;
-	private Paint paint;// ÉùÃ÷»­±Ê
-	private Canvas canvas;// »­²¼
-	private Bitmap bitmap;// Î»Í¼
-	private List<GesturePoint> list;// ×°ÓĞ¸÷¸öview×ø±êµÄ¼¯ºÏ
-	private List<Pair<GesturePoint, GesturePoint>> lineList;// ¼ÇÂ¼»­¹ıµÄÏß
-	private Map<String, GesturePoint> autoCheckPointMap;// ×Ô¶¯Ñ¡ÖĞµÄÇé¿öµã
-	private boolean isDrawEnable = true; // ÊÇ·ñÔÊĞí»æÖÆ
+	private Paint paint;// å£°æ˜ç”»ç¬”
+	private Canvas canvas;// ç”»å¸ƒ
+	private Bitmap bitmap;// ä½å›¾
+	private List<GesturePoint> list;// è£…æœ‰å„ä¸ªviewåæ ‡çš„é›†åˆ
+	private List<Pair<GesturePoint, GesturePoint>> lineList;// è®°å½•ç”»è¿‡çš„çº¿
+	private Map<String, GesturePoint> autoCheckPointMap;// è‡ªåŠ¨é€‰ä¸­çš„æƒ…å†µç‚¹
+	private boolean isDrawEnable = true; // æ˜¯å¦å…è®¸ç»˜åˆ¶
 	
 	/**
-	 * ÆÁÄ»µÄ¿í¶ÈºÍ¸ß¶È
+	 * å±å¹•çš„å®½åº¦å’Œé«˜åº¦
 	 */
 	private int[] screenDispaly;
 
 	/**
-	 * ÊÖÖ¸µ±Ç°ÔÚÄÄ¸öPointÄÚ
+	 * æ‰‹æŒ‡å½“å‰åœ¨å“ªä¸ªPointå†…
 	 */
 	private GesturePoint currentPoint;
 	/**
-	 * ÓÃ»§»æÍ¼µÄ»Øµ÷
+	 * ç”¨æˆ·ç»˜å›¾çš„å›è°ƒ
 	 */
 	private GestureCallBack callBack;
 
 	/**
-	 * ÓÃ»§µ±Ç°»æÖÆµÄÍ¼ĞÎÃÜÂë
+	 * ç”¨æˆ·å½“å‰ç»˜åˆ¶çš„å›¾å½¢å¯†ç 
 	 */
 	private StringBuilder passWordSb;
 	
 	/**
-	 * ÊÇ·ñÎªĞ£Ñé
+	 * æ˜¯å¦ä¸ºæ ¡éªŒ
 	 */
 	private boolean isVerify;
 	
 	/**
-	 * ÓÃ»§´«ÈëµÄpassWord
+	 * ç”¨æˆ·ä¼ å…¥çš„passWord
 	 */
 	private String passWord;
 
@@ -68,14 +69,14 @@ public class GestureDrawline extends View {
 			String passWord, GestureCallBack callBack) {
 		super(context);
 		screenDispaly = AppUtil.getScreenDispaly(context);
-		paint = new Paint(Paint.DITHER_FLAG);// ´´½¨Ò»¸ö»­±Ê
-		bitmap = Bitmap.createBitmap(screenDispaly[0], screenDispaly[0], Bitmap.Config.ARGB_8888); // ÉèÖÃÎ»Í¼µÄ¿í¸ß
+		paint = new Paint(Paint.DITHER_FLAG);// åˆ›å»ºä¸€ä¸ªç”»ç¬”
+		bitmap = Bitmap.createBitmap(screenDispaly[0], screenDispaly[0], Bitmap.Config.ARGB_8888); // è®¾ç½®ä½å›¾çš„å®½é«˜
 		canvas = new Canvas();
 		canvas.setBitmap(bitmap);
-		paint.setStyle(Style.STROKE);// ÉèÖÃ·ÇÌî³ä
-		paint.setStrokeWidth(10);// ±Ê¿í5ÏñËØ
-		paint.setColor(Color.rgb(245, 142, 33));// ÉèÖÃÄ¬ÈÏÁ¬ÏßÑÕÉ«
-		paint.setAntiAlias(true);// ²»ÏÔÊ¾¾â³İ
+		paint.setStyle(Style.STROKE);// è®¾ç½®éå¡«å……
+		paint.setStrokeWidth(DimensionUtil.dp2px(5));// ç¬”å®½5dp
+		paint.setColor(Color.rgb(245, 142, 33));// è®¾ç½®é»˜è®¤è¿çº¿é¢œè‰²
+		paint.setAntiAlias(true);// ä¸æ˜¾ç¤ºé”¯é½¿
 
 		this.list = list;
 		this.lineList = new ArrayList<Pair<GesturePoint, GesturePoint>>();
@@ -83,7 +84,7 @@ public class GestureDrawline extends View {
 		initAutoCheckPointMap();
 		this.callBack = callBack;
 
-		// ³õÊ¼»¯ÃÜÂë»º´æ
+		// åˆå§‹åŒ–å¯†ç ç¼“å­˜
 		this.isVerify = isVerify;
 		this.passWordSb = new StringBuilder();
 		this.passWord = passWord;
@@ -110,94 +111,94 @@ public class GestureDrawline extends View {
 		return null;
 	}
 
-	// »­Î»Í¼
+	// ç”»ä½å›¾
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// super.onDraw(canvas);
 		canvas.drawBitmap(bitmap, 0, 0, null);
 	}
 
-	// ´¥ÃşÊÂ¼ş
+	// è§¦æ‘¸äº‹ä»¶
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		if (isDrawEnable == false) {
-			// µ±ÆÚ²»ÔÊĞí»æÖÆ
+			// å½“æœŸä¸å…è®¸ç»˜åˆ¶
 			return true;
 		}
-		paint.setColor(Color.rgb(245, 142, 33));// ÉèÖÃÄ¬ÈÏÁ¬ÏßÑÕÉ«
+		paint.setColor(Color.rgb(245, 142, 33));// è®¾ç½®é»˜è®¤è¿çº¿é¢œè‰²
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			mov_x = (int) event.getX();
 			mov_y = (int) event.getY();
-			// ÅĞ¶Ïµ±Ç°µã»÷µÄÎ»ÖÃÊÇ´¦ÓÚÄÄ¸öµãÖ®ÄÚ
+			// åˆ¤æ–­å½“å‰ç‚¹å‡»çš„ä½ç½®æ˜¯å¤„äºå“ªä¸ªç‚¹ä¹‹å†…
 			currentPoint = getPointAt(mov_x, mov_y);
 			if (currentPoint != null) {
 				currentPoint.setPointState(POINT_STATE.SELECTED);
 				passWordSb.append(currentPoint.getNum());
 			}
-			// canvas.drawPoint(mov_x, mov_y, paint);// »­µã
+			// canvas.drawPoint(mov_x, mov_y, paint);// ç”»ç‚¹
 			invalidate();
 			break;
 		case MotionEvent.ACTION_MOVE:
 			clearScreenAndDrawList();
 
-			// µÃµ½µ±Ç°ÒÆ¶¯Î»ÖÃÊÇ´¦ÓÚÄÄ¸öµãÄÚ
+			// å¾—åˆ°å½“å‰ç§»åŠ¨ä½ç½®æ˜¯å¤„äºå“ªä¸ªç‚¹å†…
 			GesturePoint pointAt = getPointAt((int) event.getX(), (int) event.getY());
-			// ´ú±íµ±Ç°ÓÃ»§ÊÖÖ¸´¦ÓÚµãÓëµãÖ®Ç°
+			// ä»£è¡¨å½“å‰ç”¨æˆ·æ‰‹æŒ‡å¤„äºç‚¹ä¸ç‚¹ä¹‹å‰
 			if (currentPoint == null && pointAt == null) {
 				return true;
-			} else {// ´ú±íÓÃ»§µÄÊÖÖ¸ÒÆ¶¯µ½ÁËµãÉÏ
-				if (currentPoint == null) {// ÏÈÅĞ¶Ïµ±Ç°µÄpointÊÇ²»ÊÇÎªnull
-					// Èç¹ûÎª¿Õ£¬ÄÇÃ´°ÑÊÖÖ¸ÒÆ¶¯µ½µÄµã¸³Öµ¸øcurrentPoint
+			} else {// ä»£è¡¨ç”¨æˆ·çš„æ‰‹æŒ‡ç§»åŠ¨åˆ°äº†ç‚¹ä¸Š
+				if (currentPoint == null) {// å…ˆåˆ¤æ–­å½“å‰çš„pointæ˜¯ä¸æ˜¯ä¸ºnull
+					// å¦‚æœä¸ºç©ºï¼Œé‚£ä¹ˆæŠŠæ‰‹æŒ‡ç§»åŠ¨åˆ°çš„ç‚¹èµ‹å€¼ç»™currentPoint
 					currentPoint = pointAt;
-					// °ÑcurrentPointÕâ¸öµãÉèÖÃÑ¡ÖĞÎªtrue;
+					// æŠŠcurrentPointè¿™ä¸ªç‚¹è®¾ç½®é€‰ä¸­ä¸ºtrue;
 					currentPoint.setPointState(POINT_STATE.SELECTED);
 					passWordSb.append(currentPoint.getNum());
 				}
 			}
 			if (pointAt == null || currentPoint.equals(pointAt) || POINT_STATE.SELECTED == pointAt.getPointState()) {
-				// µã»÷ÒÆ¶¯ÇøÓò²»ÔÚÔ²µÄÇøÓò£¬»òÕßµ±Ç°µã»÷µÄµãÓëµ±Ç°ÒÆ¶¯µ½µÄµãµÄÎ»ÖÃÏàÍ¬£¬»òÕßµ±Ç°µã»÷µÄµã´¦ÓÚÑ¡ÖĞ×´Ì¬
-				// ÄÇÃ´ÒÔµ±Ç°µÄµãÖĞĞÄÎªÆğµã£¬ÒÔÊÖÖ¸ÒÆ¶¯Î»ÖÃÎªÖÕµã»­Ïß
-				canvas.drawLine(currentPoint.getCenterX(), currentPoint.getCenterY(), event.getX(), event.getY(), paint);// »­Ïß
+				// ç‚¹å‡»ç§»åŠ¨åŒºåŸŸä¸åœ¨åœ†çš„åŒºåŸŸï¼Œæˆ–è€…å½“å‰ç‚¹å‡»çš„ç‚¹ä¸å½“å‰ç§»åŠ¨åˆ°çš„ç‚¹çš„ä½ç½®ç›¸åŒï¼Œæˆ–è€…å½“å‰ç‚¹å‡»çš„ç‚¹å¤„äºé€‰ä¸­çŠ¶æ€
+				// é‚£ä¹ˆä»¥å½“å‰çš„ç‚¹ä¸­å¿ƒä¸ºèµ·ç‚¹ï¼Œä»¥æ‰‹æŒ‡ç§»åŠ¨ä½ç½®ä¸ºç»ˆç‚¹ç”»çº¿
+				canvas.drawLine(currentPoint.getCenterX(), currentPoint.getCenterY(), event.getX(), event.getY(), paint);// ç”»çº¿
 			} else {
-				// Èç¹ûµ±Ç°µã»÷µÄµãÓëµ±Ç°ÒÆ¶¯µ½µÄµãµÄÎ»ÖÃ²»Í¬
-				// ÄÇÃ´ÒÔÇ°Ç°µãµÄÖĞĞÄÎªÆğµã£¬ÒÔÊÖÒÆ¶¯µ½µÄµãµÄÎ»ÖÃ»­Ïß
-				canvas.drawLine(currentPoint.getCenterX(), currentPoint.getCenterY(), pointAt.getCenterX(), pointAt.getCenterY(), paint);// »­Ïß
+				// å¦‚æœå½“å‰ç‚¹å‡»çš„ç‚¹ä¸å½“å‰ç§»åŠ¨åˆ°çš„ç‚¹çš„ä½ç½®ä¸åŒ
+				// é‚£ä¹ˆä»¥å‰å‰ç‚¹çš„ä¸­å¿ƒä¸ºèµ·ç‚¹ï¼Œä»¥æ‰‹ç§»åŠ¨åˆ°çš„ç‚¹çš„ä½ç½®ç”»çº¿
+				canvas.drawLine(currentPoint.getCenterX(), currentPoint.getCenterY(), pointAt.getCenterX(), pointAt.getCenterY(), paint);// ç”»çº¿
 				pointAt.setPointState(POINT_STATE.SELECTED);
 				
-				// ÅĞ¶ÏÊÇ·ñÖĞ¼äµãĞèÒªÑ¡ÖĞ
+				// åˆ¤æ–­æ˜¯å¦ä¸­é—´ç‚¹éœ€è¦é€‰ä¸­
 				GesturePoint betweenPoint = getBetweenCheckPoint(currentPoint, pointAt);
 				if (betweenPoint != null && POINT_STATE.SELECTED != betweenPoint.getPointState()) {
-					// ´æÔÚÖĞ¼äµã²¢ÇÒÃ»ÓĞ±»Ñ¡ÖĞ
+					// å­˜åœ¨ä¸­é—´ç‚¹å¹¶ä¸”æ²¡æœ‰è¢«é€‰ä¸­
 					Pair<GesturePoint, GesturePoint> pair1 = new Pair<GesturePoint, GesturePoint>(currentPoint, betweenPoint);
 					lineList.add(pair1);
 					passWordSb.append(betweenPoint.getNum());
 					Pair<GesturePoint, GesturePoint> pair2 = new Pair<GesturePoint, GesturePoint>(betweenPoint, pointAt);
 					lineList.add(pair2);
 					passWordSb.append(pointAt.getNum());
-					// ÉèÖÃÖĞ¼äµãÑ¡ÖĞ
+					// è®¾ç½®ä¸­é—´ç‚¹é€‰ä¸­
 					betweenPoint.setPointState(POINT_STATE.SELECTED);
-					// ¸³Öµµ±Ç°µÄpoint;
+					// èµ‹å€¼å½“å‰çš„point;
 					currentPoint = pointAt;
 				} else {
 					Pair<GesturePoint, GesturePoint> pair = new Pair<GesturePoint, GesturePoint>(currentPoint, pointAt);
 					lineList.add(pair);
 					passWordSb.append(pointAt.getNum());
-					// ¸³Öµµ±Ç°µÄpoint;
+					// èµ‹å€¼å½“å‰çš„point;
 					currentPoint = pointAt;
 				}
 			}
 			invalidate();
 			break;
-		case MotionEvent.ACTION_UP:// µ±ÊÖÖ¸Ì§ÆğµÄÊ±ºò
+		case MotionEvent.ACTION_UP:// å½“æ‰‹æŒ‡æŠ¬èµ·çš„æ—¶å€™
 			if (isVerify) {
-				// ÊÖÊÆÃÜÂëĞ£Ñé
-				// ÇåµôÆÁÄ»ÉÏËùÓĞµÄÏß£¬Ö»»­ÉÏ¼¯ºÏÀïÃæ±£´æµÄÏß
+				// æ‰‹åŠ¿å¯†ç æ ¡éªŒ
+				// æ¸…æ‰å±å¹•ä¸Šæ‰€æœ‰çš„çº¿ï¼Œåªç”»ä¸Šé›†åˆé‡Œé¢ä¿å­˜çš„çº¿
 				if (passWord.equals(passWordSb.toString())) {
-					// ´ú±íÓÃ»§»æÖÆµÄÃÜÂëÊÖÊÆÓë´«ÈëµÄÃÜÂëÏàÍ¬
+					// ä»£è¡¨ç”¨æˆ·ç»˜åˆ¶çš„å¯†ç æ‰‹åŠ¿ä¸ä¼ å…¥çš„å¯†ç ç›¸åŒ
 					callBack.checkedSuccess();
 				} else {
-					// ÓÃ»§»æÖÆµÄÃÜÂëÓë´«ÈëµÄÃÜÂë²»Í¬¡£
+					// ç”¨æˆ·ç»˜åˆ¶çš„å¯†ç ä¸ä¼ å…¥çš„å¯†ç ä¸åŒã€‚
 					callBack.checkedFail();
 				}
 			} else {
@@ -211,12 +212,12 @@ public class GestureDrawline extends View {
 	}
 	
 	/**
-	 * Ö¸¶¨Ê±¼äÈ¥Çå³ı»æÖÆµÄ×´Ì¬
-	 * @param delayTime ÑÓ³ÙÖ´ĞĞÊ±¼ä
+	 * æŒ‡å®šæ—¶é—´å»æ¸…é™¤ç»˜åˆ¶çš„çŠ¶æ€
+	 * @param delayTime å»¶è¿Ÿæ‰§è¡Œæ—¶é—´
 	 */
 	public void clearDrawlineState(long delayTime) {
 		if (delayTime > 0) {
-			// »æÖÆºìÉ«ÌáÊ¾Â·Ïß
+			// ç»˜åˆ¶çº¢è‰²æç¤ºè·¯çº¿
 			isDrawEnable = false;
 			drawErrorPathTip();
 		}
@@ -224,15 +225,15 @@ public class GestureDrawline extends View {
 	}
 	
 	/**
-	 * Çå³ı»æÖÆ×´Ì¬µÄÏß³Ì
+	 * æ¸…é™¤ç»˜åˆ¶çŠ¶æ€çš„çº¿ç¨‹
 	 */
 	final class clearStateRunnable implements Runnable {
 		public void run() {
-			// ÖØÖÃpassWordSb
+			// é‡ç½®passWordSb
 			passWordSb = new StringBuilder();
-			// Çå¿Õ±£´æµãµÄ¼¯ºÏ
+			// æ¸…ç©ºä¿å­˜ç‚¹çš„é›†åˆ
 			lineList.clear();
-			// ÖØĞÂ»æÖÆ½çÃæ
+			// é‡æ–°ç»˜åˆ¶ç•Œé¢
 			clearScreenAndDrawList();
 			for (GesturePoint p : list) {
 				p.setPointState(POINT_STATE.NORMAL);
@@ -243,31 +244,31 @@ public class GestureDrawline extends View {
 	}
 
 	/**
-	 * Í¨¹ıµãµÄÎ»ÖÃÈ¥¼¯ºÏÀïÃæ²éÕÒÕâ¸öµãÊÇ°üº¬ÔÚÄÄ¸öPointÀïÃæµÄ
+	 * é€šè¿‡ç‚¹çš„ä½ç½®å»é›†åˆé‡Œé¢æŸ¥æ‰¾è¿™ä¸ªç‚¹æ˜¯åŒ…å«åœ¨å“ªä¸ªPointé‡Œé¢çš„
 	 * 
 	 * @param x
 	 * @param y
-	 * @return Èç¹ûÃ»ÓĞÕÒµ½£¬Ôò·µ»Ønull£¬´ú±íÓÃ»§µ±Ç°ÒÆ¶¯µÄµØ·½ÊôÓÚµãÓëµãÖ®¼ä
+	 * @return å¦‚æœæ²¡æœ‰æ‰¾åˆ°ï¼Œåˆ™è¿”å›nullï¼Œä»£è¡¨ç”¨æˆ·å½“å‰ç§»åŠ¨çš„åœ°æ–¹å±äºç‚¹ä¸ç‚¹ä¹‹é—´
 	 */
 	private GesturePoint getPointAt(int x, int y) {
 
 		for (GesturePoint point : list) {
-			// ÏÈÅĞ¶Ïx
+			// å…ˆåˆ¤æ–­x
 			int leftX = point.getLeftX();
 			int rightX = point.getRightX();
 			if (!(x >= leftX && x < rightX)) {
-				// Èç¹ûÎª¼Ù£¬ÔòÌøµ½ÏÂÒ»¸ö¶Ô±È
+				// å¦‚æœä¸ºå‡ï¼Œåˆ™è·³åˆ°ä¸‹ä¸€ä¸ªå¯¹æ¯”
 				continue;
 			}
 
 			int topY = point.getTopY();
 			int bottomY = point.getBottomY();
 			if (!(y >= topY && y < bottomY)) {
-				// Èç¹ûÎª¼Ù£¬ÔòÌøµ½ÏÂÒ»¸ö¶Ô±È
+				// å¦‚æœä¸ºå‡ï¼Œåˆ™è·³åˆ°ä¸‹ä¸€ä¸ªå¯¹æ¯”
 				continue;
 			}
 
-			// Èç¹ûÖ´ĞĞµ½Õâ£¬ÄÇÃ´ËµÃ÷µ±Ç°µã»÷µÄµãµÄÎ»ÖÃÔÚ±éÀúµ½µãµÄÎ»ÖÃÕâ¸öµØ·½
+			// å¦‚æœæ‰§è¡Œåˆ°è¿™ï¼Œé‚£ä¹ˆè¯´æ˜å½“å‰ç‚¹å‡»çš„ç‚¹çš„ä½ç½®åœ¨éå†åˆ°ç‚¹çš„ä½ç½®è¿™ä¸ªåœ°æ–¹
 			return point;
 		}
 
@@ -287,27 +288,27 @@ public class GestureDrawline extends View {
 	}
 
 	/**
-	 * ÇåµôÆÁÄ»ÉÏËùÓĞµÄÏß£¬È»ºó»­³ö¼¯ºÏÀïÃæµÄÏß
+	 * æ¸…æ‰å±å¹•ä¸Šæ‰€æœ‰çš„çº¿ï¼Œç„¶åç”»å‡ºé›†åˆé‡Œé¢çš„çº¿
 	 */
 	private void clearScreenAndDrawList() {
 		canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 		for (Pair<GesturePoint, GesturePoint> pair : lineList) {
 			canvas.drawLine(pair.first.getCenterX(), pair.first.getCenterY(),
-					pair.second.getCenterX(), pair.second.getCenterY(), paint);// »­Ïß
+					pair.second.getCenterX(), pair.second.getCenterY(), paint);// ç”»çº¿
 		}
 	}
 	
 	/**
-	 * Ğ£Ñé´íÎó/Á½´Î»æÖÆ²»Ò»ÖÂÌáÊ¾
+	 * æ ¡éªŒé”™è¯¯/ä¸¤æ¬¡ç»˜åˆ¶ä¸ä¸€è‡´æç¤º
 	 */
 	private void drawErrorPathTip() {
 		canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-		paint.setColor(Color.rgb(154, 7, 21));// ÉèÖÃÄ¬ÈÏÏßÂ·ÑÕÉ«
+		paint.setColor(Color.rgb(154, 7, 21));// è®¾ç½®é»˜è®¤çº¿è·¯é¢œè‰²
 		for (Pair<GesturePoint, GesturePoint> pair : lineList) {
 			pair.first.setPointState(POINT_STATE.WRONG);
 			pair.second.setPointState(POINT_STATE.WRONG);
 			canvas.drawLine(pair.first.getCenterX(), pair.first.getCenterY(),
-					pair.second.getCenterX(), pair.second.getCenterY(), paint);// »­Ïß
+					pair.second.getCenterX(), pair.second.getCenterY(), paint);// ç”»çº¿
 		}
 		invalidate();
 	}
@@ -316,17 +317,17 @@ public class GestureDrawline extends View {
 	public interface GestureCallBack {
 		
 		/**
-		 * ÓÃ»§ÉèÖÃ/ÊäÈëÁËÊÖÊÆÃÜÂë
+		 * ç”¨æˆ·è®¾ç½®/è¾“å…¥äº†æ‰‹åŠ¿å¯†ç 
 		 */
 		public abstract void onGestureCodeInput(String inputCode);
 
 		/**
-		 * ´ú±íÓÃ»§»æÖÆµÄÃÜÂëÓë´«ÈëµÄÃÜÂëÏàÍ¬
+		 * ä»£è¡¨ç”¨æˆ·ç»˜åˆ¶çš„å¯†ç ä¸ä¼ å…¥çš„å¯†ç ç›¸åŒ
 		 */
 		public abstract void checkedSuccess();
 
 		/**
-		 * ´ú±íÓÃ»§»æÖÆµÄÃÜÂëÓë´«ÈëµÄÃÜÂë²»ÏàÍ¬
+		 * ä»£è¡¨ç”¨æˆ·ç»˜åˆ¶çš„å¯†ç ä¸ä¼ å…¥çš„å¯†ç ä¸ç›¸åŒ
 		 */
 		public abstract void checkedFail();
 	}

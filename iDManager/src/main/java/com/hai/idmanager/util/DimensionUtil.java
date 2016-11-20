@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.View.MeasureSpec;
 
+import com.hai.idmanager.BaseApplication;
+
 /**
  * 尺寸度量相关工具类
  * @author Administrator
@@ -79,5 +81,10 @@ public class DimensionUtil {
 	public static int dp2px(Context context, int dp) {
 		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
 				context.getResources().getDisplayMetrics());
+	}
+
+	public static int dp2px(int dp) {
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+				BaseApplication.getInstance().getResources().getDisplayMetrics());
 	}
 }

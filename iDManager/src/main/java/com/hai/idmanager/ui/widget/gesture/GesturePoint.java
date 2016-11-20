@@ -8,43 +8,43 @@ import com.hai.idmanager.R;
 
 public class GesturePoint {
 	/**
-	 * ×ó±ßxµÄÖµ
+	 * å·¦è¾¹xçš„å€¼
 	 */
 	private int leftX;
 	/**
-	 * ÓÒ±ßxµÄÖµ
+	 * å³è¾¹xçš„å€¼
 	 */
 	private int rightX;
 	/**
-	 * ÉÏ±ßyµÄÖµ
+	 * ä¸Šè¾¹yçš„å€¼
 	 */
 	private int topY;
 	/**
-	 * ÏÂ±ßyµÄÖµ
+	 * ä¸‹è¾¹yçš„å€¼
 	 */
 	private int bottomY;
 	/**
-	 * Õâ¸öµã¶ÔÓ¦µÄImageView¿Ø¼ş
+	 * è¿™ä¸ªç‚¹å¯¹åº”çš„ImageViewæ§ä»¶
 	 */
 	private ImageView image;
 
 	/**
-	 * ÖĞĞÄxÖµ
+	 * ä¸­å¿ƒxå€¼
 	 */
 	private int centerX;
 
 	/**
-	 * ÖĞĞÄyÖµ
+	 * ä¸­å¿ƒyå€¼
 	 */
 	private int centerY;
 
 	/**
-	 * ×´Ì¬Öµ
+	 * çŠ¶æ€å€¼
 	 */
 	private POINT_STATE pointState;
 
 	/**
-	 * ´ú±íÕâ¸öPoint¶ÔÏó´ú±íµÄÊı×Ö£¬´Ó1¿ªÊ¼(Ö±½Ó¸Ğ¾õ´Ó1¿ªÊ¼)
+	 * ä»£è¡¨è¿™ä¸ªPointå¯¹è±¡ä»£è¡¨çš„æ•°å­—ï¼Œä»1å¼€å§‹(ç›´æ¥æ„Ÿè§‰ä»1å¼€å§‹)
 	 */
 	private int num;
 

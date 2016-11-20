@@ -44,7 +44,7 @@ public class GestureContentView extends ViewGroup {
 		super(context);
 		screenDispaly = AppUtil.getScreenDispaly(context);
 		blockWidth = screenDispaly[0]/3;
-		this.list = new ArrayList<GesturePoint>();
+		this.list = new ArrayList<>();
 		this.context = context;
 		this.isVerify = isVerify;
 		// 添加9个图标

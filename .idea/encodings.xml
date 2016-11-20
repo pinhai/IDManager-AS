@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/iDManager/src/main/java/com/hai/idmanager/constant/PrefConstants.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/iDManager/src/main/java/com/hai/idmanager/ui/GestureSetupActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/iDManager/src/main/java/com/hai/idmanager/ui/widget/gesture/GestureContentView.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/iDManager/src/main/java/com/hai/idmanager/ui/widget/gesture/GestureDrawline.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/iDManager/src/main/java/com/hai/idmanager/ui/widget/gesture/GesturePoint.java" charset="UTF-8" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

@@ -29,10 +29,10 @@ public class GestureSetupActivity extends BaseActivity implements View.OnClickLi
 //    private TextView mTextTitle;
 //    private TextView mTextCancel;
     private LockIndicator mLockIndicator;
-    private TextView mTextTip;
-    private FrameLayout mGestureContainer;
+    private TextView tv_tip;
+    private FrameLayout fl_gestureContainer;
     private GestureContentView mGestureContentView;
-    private TextView mTextReset;
+    private TextView tv_reset;
 //    private String mParamSetUpcode = null;
 //    private String mParamPhoneNumber;
     private boolean mIsFirstInput = true;
@@ -49,17 +49,17 @@ public class GestureSetupActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void setUpViews() {
-        mTextReset = (TextView) findViewById(R.id.text_reset);
-        mTextReset.setClickable(false);
+        tv_reset = (TextView) findViewById(R.id.tv_reset);
+        tv_reset.setClickable(false);
         mLockIndicator = (LockIndicator) findViewById(R.id.lock_indicator);
-        mTextTip = (TextView) findViewById(R.id.text_tip);
-        mGestureContainer = (FrameLayout) findViewById(R.id.gesture_container);
+        tv_tip = (TextView) findViewById(R.id.tv_tip);
+        fl_gestureContainer = (FrameLayout) findViewById(R.id.fl_gestureContainer);
         // 初始化一个显示各个点的viewGroup
         mGestureContentView = new GestureContentView(this, false, "", new GestureDrawline.GestureCallBack() {
             @Override
             public void onGestureCodeInput(String inputCode) {
                 if (!isInputPassValidate(inputCode)) {
-                    mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>最少链接4个点, 请重新输入</font>"));
+                    tv_tip.setText(Html.fromHtml("<font color='#c70c1e'>最少链接4个点, 请重新输入</font>"));
                     mGestureContentView.clearDrawlineState(0L);
                     return;
                 }
@@ -67,18 +67,18 @@ public class GestureSetupActivity extends BaseActivity implements View.OnClickLi
                     mFirstPassword = inputCode;
                     updateCodeList(inputCode);
                     mGestureContentView.clearDrawlineState(0L);
-                    mTextReset.setClickable(true);
-                    mTextReset.setText(getString(R.string.reset_gesture_code));
+                    tv_reset.setClickable(true);
+                    tv_reset.setText(getString(R.string.reset_gesture_code));
                 } else {
                     if (inputCode.equals(mFirstPassword)) {
                         Toast.makeText(GestureSetupActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
                         mGestureContentView.clearDrawlineState(0L);
                         GestureSetupActivity.this.finish();
                     } else {
-                        mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>与上一次绘制不一致，请重新绘制</font>"));
+                        tv_tip.setText(Html.fromHtml("<font color='#c70c1e'>与上一次绘制不一致，请重新绘制</font>"));
                         // 左右移动动画
                         Animation shakeAnimation = AnimationUtils.loadAnimation(GestureSetupActivity.this, R.anim.shake);
-                        mTextTip.startAnimation(shakeAnimation);
+                        tv_tip.startAnimation(shakeAnimation);
                         // 保持绘制的线，1.5秒后清除
                         mGestureContentView.clearDrawlineState(1300L);
                     }
@@ -97,13 +97,12 @@ public class GestureSetupActivity extends BaseActivity implements View.OnClickLi
             }
         });
         // 设置手势解锁显示到哪个布局里面
-        mGestureContentView.setParentView(mGestureContainer);
+        mGestureContentView.setParentView(fl_gestureContainer);
         updateCodeList("");
     }
 
     private void setUpListeners() {
-//        mTextCancel.setOnClickListener(this);
-        mTextReset.setOnClickListener(this);
+        tv_reset.setOnClickListener(this);
     }
 
     private void updateCodeList(String inputCode) {
@@ -114,10 +113,10 @@ public class GestureSetupActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.text_reset:
+            case R.id.tv_reset:
                 mIsFirstInput = true;
                 updateCodeList("");
-                mTextTip.setText(getString(R.string.set_gesture_pattern));
+                tv_tip.setText(getString(R.string.set_gesture_pattern));
                 break;
             default:
                 break;
