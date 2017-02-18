@@ -17,14 +17,14 @@ import com.hai.idmanager.R;
 import com.hai.idmanager.constant.PrefConstants;
 import com.hai.idmanager.util.SharedPrefUtil;
 
-public class SettingActivity extends BaseActivity implements View.OnClickListener{
+public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
     private RelativeLayout rl_gesture;
     private ToggleButton tb_gesturePsd, tb_fingerScanner;
     private TextView tv_version, tv_gestureSet;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
 
@@ -32,21 +32,21 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         initView();
     }
 
-    private void initData() {
+    private void initData(){
     }
 
-    private void setVersionInfo() {
+    private void setVersionInfo(){
         PackageManager pm = getPackageManager();
         String vnStr = "";
         try{
             vnStr = pm.getPackageInfo(getPackageName(), 0).versionName;
             tv_version.setText(vnStr);
-        }catch (PackageManager.NameNotFoundException e){
+        }catch(PackageManager.NameNotFoundException e){
         }
 
     }
 
-    private void initView() {
+    private void initView(){
         initTitleBar(true, getString(R.string.settings));
         tv_version = findView(R.id.tv_version);
         tb_gesturePsd = findView(R.id.tb_gesturePsd);
@@ -59,19 +59,21 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         tv_gestureSet.setText(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_SET, false) ?
                 R.string.set : R.string.unset);
         tb_gesturePsd.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_OPEN, false));
-        tb_fingerScanner.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_FINGER_SCANNER, false));
+        tb_fingerScanner.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_FINGER_SCANNER,
+                false));
         setVersionInfo();
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View v){
+        switch(v.getId()){
         }
     }
 
-    private CompoundButton.OnCheckedChangeListener gesturePasswordCheckListener = new CompoundButton.OnCheckedChangeListener() {
+    private CompoundButton.OnCheckedChangeListener gesturePasswordCheckListener = new
+            CompoundButton.OnCheckedChangeListener() {
         @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
             if(isChecked){
                 if(!SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE_SET, false)){
                     //未设置手势密码
@@ -79,15 +81,18 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     new AlertDialog.Builder(SettingActivity.this, R.style.BaseDialogTheme)
                             .setTitle(R.string.prompt)
                             .setMessage(R.string.please_setup_gesture_password_first)
-                            .setPositiveButton(R.string.settings, new DialogInterface.OnClickListener() {
+                            .setPositiveButton(R.string.settings, new DialogInterface
+                                    .OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){
                                     dialog.dismiss();
-                                    Intent i = new Intent(SettingActivity.this, GestureSetupActivity.class);
+                                    Intent i = new Intent(SettingActivity.this,
+                                            GestureSetupActivity.class);
                                     startActivity(i);
                                 }
                             })
-                            .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            .setNegativeButton(R.string.cancel, new DialogInterface
+                                    .OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which){
                                     dialog.dismiss();
@@ -101,13 +106,15 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         }
     };
 
-    private CompoundButton.OnCheckedChangeListener fingerprintCheckListener = new CompoundButton.OnCheckedChangeListener() {
+    private CompoundButton.OnCheckedChangeListener fingerprintCheckListener = new CompoundButton
+            .OnCheckedChangeListener() {
         @Override
-        public void onCheckedChanged(final CompoundButton buttonView, boolean isChecked) {
+        public void onCheckedChanged(final CompoundButton buttonView, boolean isChecked){
             if(isChecked){
                 if(!tb_gesturePsd.isChecked()){
                     //打开指纹验证要先开启手势密码
-                    Toast.makeText(SettingActivity.this, R.string.please_setup_and_open_gesture_password_first,
+                    Toast.makeText(SettingActivity.this, R.string
+                            .please_setup_and_open_gesture_password_first,
                             Toast.LENGTH_SHORT).show();
                     buttonView.setChecked(false);
                 }else{
@@ -118,7 +125,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 //关闭指纹解锁
                 showFingerScannerDialog(true, new OnAuthenticationStateListner() {
                     @Override
-                    public void onAuthenticationState(boolean succeeded) {
+                    public void onAuthenticationState(boolean succeeded){
                         if(succeeded){
                             //指纹验证成功，关闭指纹解锁功能
                             SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGER_SCANNER, false);

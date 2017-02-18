@@ -13,12 +13,12 @@ import com.hai.idmanager.R;
 
 /**
  * 
- * ÊÖÊÆÃÜÂëÍ¼°¸ÌáÊ¾
+ * æ‰‹åŠ¿å¯†ç å›¾æ¡ˆæç¤º
  *
  */
 public class LockIndicator extends View {
-	private int numRow = 3;	// ĞĞ
-	private int numColum = 3; // ÁĞ
+	private int numRow = 3;	// è¡Œ
+	private int numColum = 3; // åˆ—
 	private int patternWidth = 40;
 	private int patternHeight = 40;
 	private int f = 5;
@@ -27,7 +27,7 @@ public class LockIndicator extends View {
 	private Paint paint = null;
 	private Drawable patternNoraml = null;
 	private Drawable patternPressed = null;
-	private String lockPassStr; // ÊÖÊÆÃÜÂë
+	private String lockPassStr; // æ‰‹åŠ¿å¯†ç 
 
 	public LockIndicator(Context paramContext) {
 		super(paramContext);
@@ -56,7 +56,7 @@ public class LockIndicator extends View {
 		if ((patternPressed == null) || (patternNoraml == null)) {
 			return;
 		}
-		// »æÖÆ3*3µÄÍ¼±ê
+		// ç»˜åˆ¶3*3çš„å›¾æ ‡
 		for (int i = 0; i < numRow; i++) {
 			for (int j = 0; j < numColum; j++) {
 				paint.setColor(-16777216);
@@ -67,14 +67,14 @@ public class LockIndicator extends View {
 				String curNum = String.valueOf(numColum * i + (j + 1));
 				if (!TextUtils.isEmpty(lockPassStr)) {
 					if (lockPassStr.indexOf(curNum) == -1) {
-						// Î´Ñ¡ÖĞ
+						// æœªé€‰ä¸­
 						patternNoraml.draw(canvas);
 					} else {
-						// ±»Ñ¡ÖĞ
+						// è¢«é€‰ä¸­
 						patternPressed.draw(canvas);
 					}
 				} else {
-					// ÖØÖÃ×´Ì¬
+					// é‡ç½®çŠ¶æ€
 					patternNoraml.draw(canvas);
 				}
 				canvas.restore();
@@ -91,8 +91,8 @@ public class LockIndicator extends View {
 	}
 
 	/**
-	 * ÇëÇóÖØĞÂ»æÖÆ
-	 * @param paramString ÊÖÊÆÃÜÂë×Ö·ûĞòÁĞ
+	 * è¯·æ±‚é‡æ–°ç»˜åˆ¶
+	 * @param paramString æ‰‹åŠ¿å¯†ç å­—ç¬¦åºåˆ—
 	 */
 	public void setPath(String paramString) {
 		lockPassStr = paramString;

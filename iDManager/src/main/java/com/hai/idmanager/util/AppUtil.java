@@ -9,14 +9,14 @@ import android.view.WindowManager;
 public class AppUtil {
     
 	/**
-     * »ñÈ¡ÆÁÄ»·Ö±æÂÊ
+     * è·å–å±å¹•åˆ†è¾¨ç‡
      * @param context
      * @return
      */
     public static int[] getScreenDispaly(Context context) {
 		WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-		int width = windowManager.getDefaultDisplay().getWidth();// ÊÖ»úÆÁÄ»µÄ¿í¶È
-		int height = windowManager.getDefaultDisplay().getHeight();// ÊÖ»úÆÁÄ»µÄ¸ß¶È
+		int width = windowManager.getDefaultDisplay().getWidth();// æ‰‹æœºå±å¹•çš„å®½åº¦
+		int height = windowManager.getDefaultDisplay().getHeight();// æ‰‹æœºå±å¹•çš„é«˜åº¦
 		int result[] = { width, height };
 		return result;
 	}

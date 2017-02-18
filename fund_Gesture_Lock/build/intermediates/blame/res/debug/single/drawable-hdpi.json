@@ -28,11 +28,11 @@
         "source": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\gesture_node_pressed.png"
     },
     {
-        "merged": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
-        "source": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\lock_pattern_node_pressed.png",
         "source": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\lock_pattern_node_pressed.png"
+    },
+    {
+        "merged": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_launcher.png",
+        "source": "D:\\codeAll\\AS\\IDManager\\fund_Gesture_Lock\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
     }
 ]
