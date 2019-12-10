@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:background="@color/base_color"
     android:orientation="vertical"
-    tools:context="com.hai.idmanager.ui.SettingActivity">
+    tools:context="com.hai.idmanager.view.setting.SettingActivity">
 
     <include layout="@layout/view_title_bar" />
 
@@ -30,15 +30,15 @@
             android:layout_centerVertical="true"
             android:text="@string/gesture_password"
             android:textSize="@dimen/txt_middleLager"/>
-        <TextView
-            android:id="@+id/tv_gestureSet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/tb_gesturePsd"
-            android:text="@string/unset"
-            android:textSize="@dimen/txt_middleLager"/>
+<!--        <TextView-->
+<!--            android:id="@+id/tv_gestureSet"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_toLeftOf="@+id/tb_gesturePsd"-->
+<!--            android:text="@string/unset"-->
+<!--            android:textSize="@dimen/txt_middleLager"/>-->
         <ToggleButton
             android:id="@+id/tb_gesturePsd"
             android:layout_alignParentRight="true"

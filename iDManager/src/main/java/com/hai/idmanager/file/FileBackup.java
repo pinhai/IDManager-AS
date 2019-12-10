@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hai.idmanager.comm.respentity.IdModel;
-import com.hai.idmanager.util.DateUtil;
+import com.hai.idmanager.utils.DateUtil;
 
 public class FileBackup {
 	private static String sdCardPath;
