@@ -2,11 +2,11 @@ package com.wujay.fund.common;
 
 public class Constants {
 
-	//*/ ÊÖÊÆÃÜÂëµãµÄ×´Ì¬
-	public static final int POINT_STATE_NORMAL = 0; // Õı³£×´Ì¬
+	//*/ æ‰‹åŠ¿å¯†ç ç‚¹çš„çŠ¶æ€
+	public static final int POINT_STATE_NORMAL = 0; // æ­£å¸¸çŠ¶æ€
 
-	public static final int POINT_STATE_SELECTED = 1; // °´ÏÂ×´Ì¬
+	public static final int POINT_STATE_SELECTED = 1; // æŒ‰ä¸‹çŠ¶æ€
 
-	public static final int POINT_STATE_WRONG = 2; // ´íÎó×´Ì¬
+	public static final int POINT_STATE_WRONG = 2; // é”™è¯¯çŠ¶æ€
 	//*/
 }

@@ -21,15 +21,15 @@ import com.wujay.fund.widget.LockIndicator;
 
 /**
  * 
- * ÊÖÊÆÃÜÂëÉèÖÃ½çÃæ
+ * æ‰‹åŠ¿å¯†ç è®¾ç½®ç•Œé¢
  *
  */
 public class GestureEditActivity extends Activity implements OnClickListener {
-	/** ÊÖ»úºÅÂë*/
+	/** æ‰‹æœºå·ç */
 	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
-	/** ÒâÍ¼ */
+	/** æ„å›¾ */
 	public static final String PARAM_INTENT_CODE = "PARAM_INTENT_CODE";
-	/** Ê×´ÎÌáÊ¾»æÖÆÊÖÊÆÃÜÂë£¬¿ÉÒÔÑ¡ÔñÌø¹ı */
+	/** é¦–æ¬¡æç¤ºç»˜åˆ¶æ‰‹åŠ¿å¯†ç ï¼Œå¯ä»¥é€‰æ‹©è·³è¿‡ */
 	public static final String PARAM_IS_FIRST_ADVICE = "PARAM_IS_FIRST_ADVICE";
 	private TextView mTextTitle;
 	private TextView mTextCancel;
@@ -61,12 +61,12 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 		mLockIndicator = (LockIndicator) findViewById(R.id.lock_indicator);
 		mTextTip = (TextView) findViewById(R.id.text_tip);
 		mGestureContainer = (FrameLayout) findViewById(R.id.gesture_container);
-		// ³õÊ¼»¯Ò»¸öÏÔÊ¾¸÷¸öµãµÄviewGroup
+		// åˆå§‹åŒ–ä¸€ä¸ªæ˜¾ç¤ºå„ä¸ªç‚¹çš„viewGroup
 		mGestureContentView = new GestureContentView(this, false, "", new GestureCallBack() {
 			@Override
 			public void onGestureCodeInput(String inputCode) {
 				if (!isInputPassValidate(inputCode)) {
-					mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>×îÉÙÁ´½Ó4¸öµã, ÇëÖØĞÂÊäÈë</font>"));
+					mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>æœ€å°‘é“¾æ¥4ä¸ªç‚¹, è¯·é‡æ–°è¾“å…¥</font>"));
 					mGestureContentView.clearDrawlineState(0L);
 					return;
 				}
@@ -78,15 +78,15 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 					mTextReset.setText(getString(R.string.reset_gesture_code));
 				} else {
 					if (inputCode.equals(mFirstPassword)) {
-							Toast.makeText(GestureEditActivity.this, "ÉèÖÃ³É¹¦", Toast.LENGTH_SHORT).show();
+							Toast.makeText(GestureEditActivity.this, "è®¾ç½®æˆåŠŸ", Toast.LENGTH_SHORT).show();
 						mGestureContentView.clearDrawlineState(0L);
 						GestureEditActivity.this.finish();
 					} else {
-						mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>ÓëÉÏÒ»´Î»æÖÆ²»Ò»ÖÂ£¬ÇëÖØĞÂ»æÖÆ</font>"));
-						// ×óÓÒÒÆ¶¯¶¯»­
+						mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>ä¸ä¸Šä¸€æ¬¡ç»˜åˆ¶ä¸ä¸€è‡´ï¼Œè¯·é‡æ–°ç»˜åˆ¶</font>"));
+						// å·¦å³ç§»åŠ¨åŠ¨ç”»
 						Animation shakeAnimation = AnimationUtils.loadAnimation(GestureEditActivity.this, R.anim.shake);
 						mTextTip.startAnimation(shakeAnimation);
-						// ±£³Ö»æÖÆµÄÏß£¬1.5ÃëºóÇå³ı
+						// ä¿æŒç»˜åˆ¶çš„çº¿ï¼Œ1.5ç§’åæ¸…é™¤
 						mGestureContentView.clearDrawlineState(1300L);
 					}
 				}
@@ -103,7 +103,7 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 				
 			}
 		});
-		// ÉèÖÃÊÖÊÆ½âËøÏÔÊ¾µ½ÄÄ¸ö²¼¾ÖÀïÃæ
+		// è®¾ç½®æ‰‹åŠ¿è§£é”æ˜¾ç¤ºåˆ°å“ªä¸ªå¸ƒå±€é‡Œé¢
 		mGestureContentView.setParentView(mGestureContainer);
 		updateCodeList("");
 	}
@@ -114,7 +114,7 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 	}
 	
 	private void updateCodeList(String inputCode) {
-		// ¸üĞÂÑ¡ÔñµÄÍ¼°¸
+		// æ›´æ–°é€‰æ‹©çš„å›¾æ¡ˆ
 		mLockIndicator.setPath(inputCode);
 	}
 

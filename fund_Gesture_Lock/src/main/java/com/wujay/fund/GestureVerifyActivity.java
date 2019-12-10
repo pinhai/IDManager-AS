@@ -23,13 +23,13 @@ import android.widget.Toast;
 
 /**
  * 
- * 手势绘制/校验界面
+ * 鎵嬪娍缁樺埗/鏍￠獙鐣岄潰
  *
  */
 public class GestureVerifyActivity extends Activity implements android.view.View.OnClickListener {
-	/** 手机号码*/
+	/** 鎵嬫満鍙风爜*/
 	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
-	/** 意图 */
+	/** 鎰忓浘 */
 	public static final String PARAM_INTENT_CODE = "PARAM_INTENT_CODE";
 	private RelativeLayout mTopLayout;
 	private TextView mTextTitle;
@@ -71,7 +71,7 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 		mTextOther = (TextView) findViewById(R.id.text_other_account);
 		
 		
-		// 初始化一个显示各个点的viewGroup
+		// 鍒濆鍖栦竴涓樉绀哄悇涓偣鐨剉iewGroup
 		mGestureContentView = new GestureContentView(this, true, "1235789",
 				new GestureCallBack() {
 
@@ -83,22 +83,22 @@ public class GestureVerifyActivity extends Activity implements android.view.View
 					@Override
 					public void checkedSuccess() {
 						mGestureContentView.clearDrawlineState(0L);
-						Toast.makeText(GestureVerifyActivity.this, "密码正确", 1000).show();
+						Toast.makeText(GestureVerifyActivity.this, "瀵嗙爜姝ｇ‘", 1000).show();
 						GestureVerifyActivity.this.finish();
 					}
 
 					@Override
 					public void checkedFail() {
-						mGestureContentView.clearDrawlineState(1300L);
+						mGestureContentView.clearDrawlineState(1000L);
 						mTextTip.setVisibility(View.VISIBLE);
 						mTextTip.setText(Html
-								.fromHtml("<font color='#c70c1e'>密码错误</font>"));
-						// 左右移动动画
+								.fromHtml("<font color='#c70c1e'>瀵嗙爜閿欒</font>"));
+						// 宸﹀彸绉诲姩鍔ㄧ敾
 						Animation shakeAnimation = AnimationUtils.loadAnimation(GestureVerifyActivity.this, R.anim.shake);
 						mTextTip.startAnimation(shakeAnimation);
 					}
 				});
-		// 设置手势解锁显示到哪个布局里面
+		// 璁剧疆鎵嬪娍瑙ｉ攣鏄剧ず鍒板摢涓竷灞�閲岄潰
 		mGestureContentView.setParentView(mGestureContainer);
 	}
 	

@@ -12,7 +12,7 @@ import com.wujay.fund.entity.GesturePoint;
 import com.wujay.fund.widget.GestureDrawline.GestureCallBack;
 
 /**
- * ÊÖÊÆÃÜÂëÈİÆ÷Àà
+ * æ‰‹åŠ¿å¯†ç å®¹å™¨ç±»
  *
  */
 public class GestureContentView extends ViewGroup {
@@ -22,11 +22,11 @@ public class GestureContentView extends ViewGroup {
 	private int[] screenDispaly;
 	
 	/**
-	 * Ã¿¸öµãÇøÓòµÄ¿í¶È
+	 * æ¯ä¸ªç‚¹åŒºåŸŸçš„å®½åº¦
 	 */
 	private int blockWidth;
 	/**
-	 * ÉùÃ÷Ò»¸ö¼¯ºÏÓÃÀ´·â×°×ø±ê¼¯ºÏ
+	 * å£°æ˜ä¸€ä¸ªé›†åˆç”¨æ¥å°è£…åæ ‡é›†åˆ
 	 */
 	private List<GesturePoint> list;
 	private Context context;
@@ -34,11 +34,11 @@ public class GestureContentView extends ViewGroup {
 	private GestureDrawline gestureDrawline;
 	
 	/**
-	 * °üº¬9¸öImageViewµÄÈİÆ÷£¬³õÊ¼»¯
+	 * åŒ…å«9ä¸ªImageViewçš„å®¹å™¨ï¼Œåˆå§‹åŒ–
 	 * @param context
-	 * @param isVerify ÊÇ·ñÎªĞ£ÑéÊÖÊÆÃÜÂë
-	 * @param passWord ÓÃ»§´«ÈëÃÜÂë
-	 * @param callBack ÊÖÊÆ»æÖÆÍê±ÏµÄ»Øµ÷
+	 * @param isVerify æ˜¯å¦ä¸ºæ ¡éªŒæ‰‹åŠ¿å¯†ç 
+	 * @param passWord ç”¨æˆ·ä¼ å…¥å¯†ç 
+	 * @param callBack æ‰‹åŠ¿ç»˜åˆ¶å®Œæ¯•çš„å›è°ƒ
 	 */
 	public GestureContentView(Context context, boolean isVerify, String passWord, GestureCallBack callBack) {
 		super(context);
@@ -47,9 +47,9 @@ public class GestureContentView extends ViewGroup {
 		this.list = new ArrayList<GesturePoint>();
 		this.context = context;
 		this.isVerify = isVerify;
-		// Ìí¼Ó9¸öÍ¼±ê
+		// æ·»åŠ 9ä¸ªå›¾æ ‡
 		addChild();
-		// ³õÊ¼»¯Ò»¸ö¿ÉÒÔ»­ÏßµÄview
+		// åˆå§‹åŒ–ä¸€ä¸ªå¯ä»¥ç”»çº¿çš„view
 		gestureDrawline = new GestureDrawline(context, list, isVerify, passWord, callBack);
 	}
 	
@@ -59,11 +59,11 @@ public class GestureContentView extends ViewGroup {
 			image.setBackgroundResource(R.drawable.gesture_node_normal);
 			this.addView(image);
 			invalidate();
-			// µÚ¼¸ĞĞ
+			// ç¬¬å‡ è¡Œ
 			int row = i / 3;
-			// µÚ¼¸ÁĞ
+			// ç¬¬å‡ åˆ—
 			int col = i % 3;
-			// ¶¨ÒåµãµÄÃ¿¸öÊôĞÔ
+			// å®šä¹‰ç‚¹çš„æ¯ä¸ªå±æ€§
 			int leftX = col*blockWidth+blockWidth/baseNum;
 			int topY = row*blockWidth+blockWidth/baseNum;
 			int rightX = col*blockWidth+blockWidth-blockWidth/baseNum;
@@ -74,7 +74,7 @@ public class GestureContentView extends ViewGroup {
 	}
 	
 	public void setParentView(ViewGroup parent){
-		// µÃµ½ÆÁÄ»µÄ¿í¶È
+		// å¾—åˆ°å±å¹•çš„å®½åº¦
 		int width = screenDispaly[0];
 		LayoutParams layoutParams = new LayoutParams(width, width);
 		this.setLayoutParams(layoutParams);
@@ -86,9 +86,9 @@ public class GestureContentView extends ViewGroup {
 	@Override
 	protected void onLayout(boolean changed, int l, int t, int r, int b) {
 		for (int i = 0; i < getChildCount(); i++) {
-			//µÚ¼¸ĞĞ
+			//ç¬¬å‡ è¡Œ
 			int row = i/3;
-			//µÚ¼¸ÁĞ
+			//ç¬¬å‡ åˆ—
 			int col = i%3;
 			View v = getChildAt(i);
 			v.layout(col*blockWidth+blockWidth/baseNum, row*blockWidth+blockWidth/baseNum, 
@@ -99,7 +99,7 @@ public class GestureContentView extends ViewGroup {
 	@Override
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		// ±éÀúÉèÖÃÃ¿¸ö×ÓviewµÄ´óĞ¡
+		// éå†è®¾ç½®æ¯ä¸ªå­viewçš„å¤§å°
         for (int i = 0; i < getChildCount(); i++) {
             View v = getChildAt(i);
             v.measure(widthMeasureSpec, heightMeasureSpec);
@@ -107,7 +107,7 @@ public class GestureContentView extends ViewGroup {
 	}
 	
 	/**
-	 * ±£ÁôÂ·¾¶delayTimeÊ±¼ä³¤
+	 * ä¿ç•™è·¯å¾„delayTimeæ—¶é—´é•¿
 	 * @param delayTime
 	 */
 	public void clearDrawlineState(long delayTime) {
