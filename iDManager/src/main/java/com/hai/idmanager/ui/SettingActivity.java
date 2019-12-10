@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
@@ -123,15 +124,14 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             }else{
                 buttonView.setChecked(true);
                 //关闭指纹解锁
-                showFingerScannerDialog(true, new OnAuthenticationStateListner() {
+                showFingerScannerDialog(new FingerprintManagerCompat.AuthenticationCallback() {
                     @Override
-                    public void onAuthenticationState(boolean succeeded){
-                        if(succeeded){
-                            //指纹验证成功，关闭指纹解锁功能
-                            SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGER_SCANNER, false);
-                            buttonView.setChecked(false);
-                        }
+                    public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+                        //指纹验证成功，关闭指纹解锁功能
+                        SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGER_SCANNER, false);
+                        buttonView.setChecked(false);
                     }
+
                 });
             }
 
