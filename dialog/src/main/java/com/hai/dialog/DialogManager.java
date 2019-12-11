@@ -53,7 +53,7 @@ public class DialogManager {
             WindowManager.LayoutParams attr = window.getAttributes();
             if (attr != null) {
                 attr.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                attr.width = ScreenUtils.getScreenWidth()*3/4;
+                attr.width = ScreenUtils.getScreenWidth(context)*3/4;
                 attr.gravity = Gravity.CENTER;//设置dialog 在布局中的位置
                 window.setAttributes(attr);
             }
@@ -89,7 +89,7 @@ public class DialogManager {
     }
 
     public void showMultiCheckListDialog(Context context, List<String> data, String chooseStr, final DialogListener.OnCheckListListener listListener, String title){
-        showMultiCheckListDialog(context, data, chooseStr, listListener, ScreenUtils.getScreenHeight()/2, title);
+        showMultiCheckListDialog(context, data, chooseStr, listListener, ScreenUtils.getScreenHeight(context)/2, title);
     }
 
     /**

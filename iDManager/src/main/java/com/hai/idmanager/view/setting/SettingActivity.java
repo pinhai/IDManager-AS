@@ -92,6 +92,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 GestureEditActivity.startForResult(SettingActivity.this, GestureEditActivity.REQUEST_CODE_SET_GESTURE_PSW);
                 tb_gesturePsd.setChecked(false);
             }else {
+                tb_gesturePsd.setChecked(true);
                 //要关闭手势密码
                 DialogManager.getInstance().showMessageDialog(SettingActivity.this,
                         getString(R.string.tip), getString(R.string.close_gesture_psw_tip),

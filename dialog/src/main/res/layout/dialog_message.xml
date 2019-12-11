@@ -30,7 +30,7 @@
     <View
         android:id="@+id/line1"
         app:layout_constraintTop_toBottomOf="@id/tv_message"
-        style="@style/HorizontalLine"></View>
+        style="@style/HorizontalLine" />
 
     <TextView
         android:id="@+id/tv_left"
@@ -38,13 +38,13 @@
         android:textColor="@color/black_1e"
         android:textSize="@dimen/font_eighteen"
         app:layout_constraintTop_toBottomOf="@id/line1"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/line2"
-        android:focusable="true" android:gravity="center"
+        android:focusable="true"
+        android:gravity="center"
         android:padding="10dp"
         android:clickable="true"
-        android:background="?selectableItemBackground"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="0dp"
         android:layout_height="50dp" />
     <View
@@ -64,12 +64,12 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tv_left"
         app:layout_constraintLeft_toRightOf="@id/line2"
         app:layout_constraintRight_toRightOf="parent"
-        android:focusable="true" android:gravity="center"
+        android:focusable="true"
+        android:gravity="center"
         android:padding="10dp"
         android:clickable="true"
-        android:background="?selectableItemBackground"
+        android:background="?android:attr/selectableItemBackground"
         android:layout_width="0dp"
         android:layout_height="50dp" />
-
 
 </android.support.constraint.ConstraintLayout>
