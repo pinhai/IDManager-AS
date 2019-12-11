@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_ten">10sp</dimen>
+    <dimen name="font_eleven">11sp</dimen>
+    <dimen name="font_twelve">12sp</dimen>
+    <dimen name="font_thirteen">13sp</dimen>
+    <dimen name="font_fourteen">14sp</dimen>
+    <dimen name="font_fifteen">15sp</dimen>
+    <dimen name="font_sixteen">16sp</dimen>
+    <dimen name="font_eighteen">18sp</dimen>
+    <dimen name="font_twenty">20sp</dimen>
+    <dimen name="font_twenty_two">22sp</dimen>
+    <dimen name="font_twenty_four">24sp</dimen>
+    <dimen name="font_twenty_eight">28sp</dimen>
+    <dimen name="font_thirty_two">32sp</dimen>
+    <dimen name="font_thirty_six">36sp</dimen>
+</resources>

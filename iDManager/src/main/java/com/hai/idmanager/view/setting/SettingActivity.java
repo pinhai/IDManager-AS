@@ -1,7 +1,6 @@
 package com.hai.idmanager.view.setting;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -13,11 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.hai.dialog.DialogListener;
+import com.hai.dialog.DialogManager;
+import com.hai.gesturelock.GestureEditActivity;
 import com.hai.idmanager.R;
 import com.hai.idmanager.constant.PrefConstants;
-import com.hai.idmanager.view.GestureSetupActivity;
+import com.hai.idmanager.utils.PreferenceUtil;
 import com.hai.idmanager.view.base.BaseActivity;
-import com.hai.idmanager.utils.SharedPrefUtil;
 
 public class SettingActivity extends BaseActivity implements View.OnClickListener {
 
@@ -57,12 +58,13 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 //        tv_gestureSet = findView(R.id.tv_gestureSet);
         rl_gesture = findView(R.id.rl_gesture);
 
-//        tv_gestureSet.setText(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE, false) ?
+//        tv_gestureSet.setText(PreferenceUtil.getBoolean(PrefConstants.KEY_GESTURE, false) ?
 //                R.string.set : R.string.unset);
-        tb_gesturePsd.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE, false));
-        tb_fingerScanner.setChecked(SharedPrefUtil.getBoolean(PrefConstants.KEY_FINGERPRINT,
+        tb_gesturePsd.setChecked(com.hai.gesturelock.utils.PreferenceUtil.hasGesturePsw());
+        tb_fingerScanner.setChecked(PreferenceUtil.getBoolean(PrefConstants.KEY_FINGERPRINT,
                 false));
-        tb_gesturePsd.setOnCheckedChangeListener(gesturePasswordCheckListener);
+//        tb_gesturePsd.setOnCheckedChangeListener(gesturePasswordCheckListener);
+        tb_gesturePsd.setOnClickListener(gesturePswClickListener);
         tb_fingerScanner.setOnCheckedChangeListener(fingerprintCheckListener);
 
         setVersionInfo();
@@ -74,38 +76,39 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
-    private CompoundButton.OnCheckedChangeListener gesturePasswordCheckListener = new
-            CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-            if(isChecked){
-                if(!SharedPrefUtil.getBoolean(PrefConstants.KEY_GESTURE, false)){
-                    //未设置手势密码
-                    buttonView.setChecked(false);
-                    new AlertDialog.Builder(SettingActivity.this, R.style.BaseDialogTheme)
-                            .setTitle(R.string.prompt)
-                            .setMessage(R.string.please_setup_gesture_password_first)
-                            .setPositiveButton(R.string.settings, new DialogInterface
-                                    .OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which){
-                                    dialog.dismiss();
-                                    Intent i = new Intent(SettingActivity.this,
-                                            GestureSetupActivity.class);
-                                    startActivity(i);
-                                }
-                            })
-                            .setNegativeButton(R.string.cancel, new DialogInterface
-                                    .OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which){
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create().show();
-                }
-            }else{
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == GestureEditActivity.REQUEST_CODE_SET_GESTURE_PSW
+                && resultCode == GestureEditActivity.RESULT_CODE_SET_GESTURE_PSW){
+            tb_gesturePsd.setChecked(com.hai.gesturelock.utils.PreferenceUtil.hasGesturePsw());
+        }
+    }
 
+    private View.OnClickListener gesturePswClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(tb_gesturePsd.isChecked()){
+                //要开启手势密码
+                GestureEditActivity.startForResult(SettingActivity.this, GestureEditActivity.REQUEST_CODE_SET_GESTURE_PSW);
+                tb_gesturePsd.setChecked(false);
+            }else {
+                //要关闭手势密码
+                DialogManager.getInstance().showMessageDialog(SettingActivity.this,
+                        getString(R.string.tip), getString(R.string.close_gesture_psw_tip),
+                        getString(R.string.cancel), getString(R.string.ok), new DialogListener.OnMessageDialogListener() {
+                            @Override
+                            public void onLeft(Dialog dialog) {
+                                dialog.dismiss();
+                            }
+
+                            @Override
+                            public void onRight(Dialog dialog) {
+                                dialog.dismiss();
+                                com.hai.gesturelock.utils.PreferenceUtil.removeGesturePsw();
+                                tb_gesturePsd.setChecked(false);
+                                //todo 关闭指纹
+                            }
+                        });
             }
         }
     };
@@ -122,7 +125,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                             Toast.LENGTH_SHORT).show();
                     buttonView.setChecked(false);
                 }else{
-                    SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGERPRINT, isChecked);
+                    PreferenceUtil.putBoolean(PrefConstants.KEY_FINGERPRINT, isChecked);
                 }
             }else{
                 buttonView.setChecked(true);
@@ -131,7 +134,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     @Override
                     public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
                         //指纹验证成功，关闭指纹解锁功能
-                        SharedPrefUtil.putBoolean(PrefConstants.KEY_FINGERPRINT, false);
+                        PreferenceUtil.putBoolean(PrefConstants.KEY_FINGERPRINT, false);
                         buttonView.setChecked(false);
                     }
 

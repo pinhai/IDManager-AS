@@ -12,8 +12,8 @@ import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.hai.gesturelock.common.AppUtil;
-import com.hai.gesturelock.common.Constants;
+import com.hai.gesturelock.utils.AppUtil;
+import com.hai.gesturelock.constant.Constants;
 import com.hai.gesturelock.entity.GesturePoint;
 
 import java.util.ArrayList;
@@ -220,6 +220,20 @@ public class GestureDrawline extends View {
 			// 绘制红色提示路线
 			isDrawEnable = false;
 			drawErrorPathTip();
+		}
+		new Handler().postDelayed(new clearStateRunnable(), delayTime);
+	}
+
+	public void clearDrawlineState(long delayTime, boolean successful) {
+		if (delayTime > 0) {
+			// 绘制红色提示路线
+			isDrawEnable = false;
+			if(successful){
+				//这里暂不修改
+//                drawErrorPathTip();
+			}else {
+				drawErrorPathTip();
+			}
 		}
 		new Handler().postDelayed(new clearStateRunnable(), delayTime);
 	}

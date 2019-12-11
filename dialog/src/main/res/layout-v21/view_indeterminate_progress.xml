@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rotate_bar_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_content"
+        android:text=""
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/font_eighteen"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <ProgressBar 
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:indeterminateDuration="200"
+        android:indeterminateOnly="true"
+        android:indeterminateBehavior="repeat"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@android:color/white"
+        style="@android:style/Theme.Material.Dialog"
+        />
+    <!--android:indeterminateTintMode="src_atop"-->
+    <!--android:indeterminateTint="@color/white"-->
+    <!--style="@android:style/Theme.Material.Dialog"-->
+
+    <!--android:indeterminateDrawable="@drawable/anim_progress_indeterminate"-->
+
+</LinearLayout>

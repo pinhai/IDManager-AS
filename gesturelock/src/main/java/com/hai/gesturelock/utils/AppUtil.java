@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.hai.gesturelock.common;
+package com.hai.gesturelock.utils;
 
 import android.content.Context;
 import android.view.WindowManager;

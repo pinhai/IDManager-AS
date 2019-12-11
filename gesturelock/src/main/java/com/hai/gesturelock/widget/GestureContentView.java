@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.hai.gesturelock.R;
-import com.hai.gesturelock.common.AppUtil;
+import com.hai.gesturelock.utils.AppUtil;
 import com.hai.gesturelock.entity.GesturePoint;
 import com.hai.gesturelock.widget.GestureDrawline.GestureCallBack;
 
@@ -114,6 +114,10 @@ public class GestureContentView extends ViewGroup {
 	 */
 	public void clearDrawlineState(long delayTime) {
 		gestureDrawline.clearDrawlineState(delayTime);
+	}
+
+	public void clearDrawlineState(long delayTime, boolean successful) {
+		gestureDrawline.clearDrawlineState(delayTime, successful);
 	}
 
 }

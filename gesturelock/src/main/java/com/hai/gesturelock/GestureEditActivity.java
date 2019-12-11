@@ -1,6 +1,9 @@
 package com.hai.gesturelock;
 
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -12,6 +15,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hai.dialog.DialogListener;
+import com.hai.dialog.DialogManager;
+import com.hai.gesturelock.utils.PreferenceUtil;
 import com.hai.gesturelock.widget.GestureContentView;
 import com.hai.gesturelock.widget.GestureDrawline.GestureCallBack;
 import com.hai.gesturelock.widget.LockIndicator;
@@ -22,12 +28,10 @@ import com.hai.gesturelock.widget.LockIndicator;
  *
  */
 public class GestureEditActivity extends Activity implements OnClickListener {
-	/** 手机号码*/
-	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
-	/** 意图 */
-	public static final String PARAM_INTENT_CODE = "PARAM_INTENT_CODE";
-	/** 首次提示绘制手势密码，可以选择跳过 */
-	public static final String PARAM_IS_FIRST_ADVICE = "PARAM_IS_FIRST_ADVICE";
+
+	public static final int REQUEST_CODE_SET_GESTURE_PSW = 1001;  //设置手势密码
+	public static final int RESULT_CODE_SET_GESTURE_PSW = 2001;
+
 	private TextView mTextTitle;
 	private TextView mTextCancel;
 	private LockIndicator mLockIndicator;
@@ -35,19 +39,30 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 	private FrameLayout mGestureContainer;
 	private GestureContentView mGestureContentView;
 	private TextView mTextReset;
-	private String mParamSetUpcode = null;
-	private String mParamPhoneNumber;
 	private boolean mIsFirstInput = true;
 	private String mFirstPassword = null;
-	private String mConfirmPassword = null;
-	private int mParamIntentCode;
+
+	private boolean isFirstSet; //是否第一次设置，否的话就需要先验证之前的密码
+	private String gesturePsw;
+
+	public static void startForResult(Context context, int requestCode){
+		Intent intent = new Intent(context, GestureEditActivity.class);
+		((Activity)context).startActivityForResult(intent, requestCode);
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gesture_edit);
+
+		initData();
 		setUpViews();
 		setUpListeners();
+	}
+
+	private void initData() {
+		gesturePsw = PreferenceUtil.getGesturePsw();
+		isFirstSet = TextUtils.isEmpty(gesturePsw);
 	}
 	
 	private void setUpViews() {
@@ -62,6 +77,20 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 		mGestureContentView = new GestureContentView(this, false, "", new GestureCallBack() {
 			@Override
 			public void onGestureCodeInput(String inputCode) {
+
+				if(!isFirstSet){
+					//验证之前设置的密码
+					if(!gesturePsw.equals(inputCode)){
+						Toast.makeText(GestureEditActivity.this, "手势密码错误，请重试", Toast.LENGTH_SHORT).show();
+						mGestureContentView.clearDrawlineState(500L);
+					}else {
+						isFirstSet = true;
+						showClearPswDialog();
+						mGestureContentView.clearDrawlineState(500L, true);
+					}
+					return;
+				}
+
 				if (!isInputPassValidate(inputCode)) {
 					mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>最少链接4个点, 请重新输入</font>"));
 					mGestureContentView.clearDrawlineState(0L);
@@ -77,6 +106,8 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 					if (inputCode.equals(mFirstPassword)) {
 							Toast.makeText(GestureEditActivity.this, "设置成功", Toast.LENGTH_SHORT).show();
 						mGestureContentView.clearDrawlineState(0L);
+						saveGesturePsw();
+						setResult(RESULT_CODE_SET_GESTURE_PSW);
 						GestureEditActivity.this.finish();
 					} else {
 						mTextTip.setText(Html.fromHtml("<font color='#c70c1e'>与上一次绘制不一致，请重新绘制</font>"));
@@ -113,6 +144,36 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 	private void updateCodeList(String inputCode) {
 		// 更新选择的图案
 		mLockIndicator.setPath(inputCode);
+	}
+
+	private void saveGesturePsw(){
+		PreferenceUtil.putGesturePsw(mFirstPassword);
+	}
+
+	private void showClearPswDialog() {
+		DialogManager.getInstance().showMessageDialog(this, getString(R.string.tip),
+				getString(R.string.clear_gesture_psw_tip),
+				getString(R.string.cancel_unlock_psw), getString(R.string.set_new_psw),
+				false, false, new DialogListener.OnMessageDialogListener() {
+					@Override
+					public void onLeft(Dialog dialog) {
+						dialog.dismiss();
+						clearGesturePsw();
+						Toast.makeText(dialog.getContext(), R.string.gesture_psw_have_cancel, Toast.LENGTH_SHORT).show();
+						finish();
+					}
+
+					@Override
+					public void onRight(Dialog dialog) {
+						//设置新密码
+						dialog.dismiss();
+						mTextTip.setText(getString(R.string.please_set_new_unlock_pic));
+					}
+				});
+	}
+
+	private void clearGesturePsw(){
+		PreferenceUtil.removeGesturePsw();
 	}
 
 	@Override

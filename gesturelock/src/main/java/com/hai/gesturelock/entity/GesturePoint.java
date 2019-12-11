@@ -4,7 +4,7 @@ package com.hai.gesturelock.entity;
 import android.widget.ImageView;
 
 import com.hai.gesturelock.R;
-import com.hai.gesturelock.common.Constants;
+import com.hai.gesturelock.constant.Constants;
 
 public class GesturePoint {
 	/**
