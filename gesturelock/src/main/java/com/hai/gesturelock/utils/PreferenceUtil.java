@@ -69,4 +69,25 @@ public class PreferenceUtil {
 		return !TextUtils.isEmpty(getGesturePsw());
 	}
 
+	/**
+	 * 打开指纹解锁
+	 */
+	public static void openFingerprintLock(){
+		putBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, true);
+	}
+
+	/**
+	 * 关闭指纹解锁
+	 */
+	public static void closeFingerprintLock(){
+		putBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, false);
+	}
+
+	/**
+	 * 是否打开了指纹解锁
+	 */
+	public static boolean isFingerprintLockOpened(){
+		return getBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, false);
+	}
+
 }

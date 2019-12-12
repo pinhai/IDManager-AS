@@ -2,14 +2,12 @@ package com.hai.idmanager.view.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.hai.idmanager.R;
-import com.hai.idmanager.utils.secure.FingerprintDialogManager;
 
 public class BaseActivity extends Activity {
     private String TAG = "BaseActivity";
@@ -47,17 +45,6 @@ public class BaseActivity extends Activity {
             }
         });
         tv_title.setText(title);
-    }
-
-    /**
-     * 显示指纹验证对话框
-     */
-    protected void showFingerScannerDialog(){
-        showFingerScannerDialog(null);
-    }
-
-    protected void showFingerScannerDialog(FingerprintManagerCompat.AuthenticationCallback callback){
-        FingerprintDialogManager.getInstance().showFingerScannerDialog(this, callback);
     }
 
 }

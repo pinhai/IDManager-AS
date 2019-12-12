@@ -1,18 +1,21 @@
 package com.hai.gesturelock;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.biometrics.BiometricPrompt;
 import android.os.Bundle;
+import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.text.Html;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hai.gesturelock.utils.FingerprintDialogManager;
+import com.hai.gesturelock.utils.PreferenceUtil;
 import com.hai.gesturelock.widget.GestureContentView;
 import com.hai.gesturelock.widget.GestureDrawline.GestureCallBack;
 
@@ -22,52 +25,37 @@ import com.hai.gesturelock.widget.GestureDrawline.GestureCallBack;
  *
  */
 public class GestureVerifyActivity extends Activity implements View.OnClickListener {
-	/** 手机号码*/
-	public static final String PARAM_PHONE_NUMBER = "PARAM_PHONE_NUMBER";
-	/** 意图 */
-	public static final String PARAM_INTENT_CODE = "PARAM_INTENT_CODE";
-	private RelativeLayout mTopLayout;
-	private TextView mTextTitle;
-	private TextView mTextCancel;
-	private ImageView mImgUserLogo;
-	private TextView mTextPhoneNumber;
+
+	public static final int REQUEST_CODE_VERIFY_GESTURE_PSW = 1011;  //验证手势密码，为了取消手势密码
+	public static final int REQUEST_CODE_VERIFY_GESTURE_PSW2 = 1012;  //验证手势密码，进入APP
+	public static final int RESULT_CODE_VERIFY_GESTURE_PSW = 2011;
+
 	private TextView mTextTip;
 	private FrameLayout mGestureContainer;
 	private GestureContentView mGestureContentView;
-	private TextView mTextForget;
-	private TextView mTextOther;
-	private String mParamPhoneNumber;
-	private long mExitTime = 0;
-	private int mParamIntentCode;
+	private TextView mTextVerifyFingerprint;  //切换到指纹验证
+
+	public static void startForResult(Context context, int requestCode){
+		Intent intent = new Intent(context, GestureVerifyActivity.class);
+		intent.putExtra("requestCode", requestCode);
+		((Activity)context).startActivityForResult(intent, requestCode);
+	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_gesture_verify);
-		ObtainExtraData();
 		setUpViews();
 		setUpListeners();
 	}
 	
-	private void ObtainExtraData() {
-		mParamPhoneNumber = getIntent().getStringExtra(PARAM_PHONE_NUMBER);
-		mParamIntentCode = getIntent().getIntExtra(PARAM_INTENT_CODE, 0);
-	}
-	
 	private void setUpViews() {
-		mTopLayout = (RelativeLayout) findViewById(R.id.top_layout);
-		mTextTitle = (TextView) findViewById(R.id.text_title);
-		mTextCancel = (TextView) findViewById(R.id.text_cancel);
-		mImgUserLogo = (ImageView) findViewById(R.id.user_logo);
-		mTextPhoneNumber = (TextView) findViewById(R.id.text_phone_number);
 		mTextTip = (TextView) findViewById(R.id.text_tip);
 		mGestureContainer = (FrameLayout) findViewById(R.id.gesture_container);
-		mTextForget = (TextView) findViewById(R.id.text_forget_gesture);
-		mTextOther = (TextView) findViewById(R.id.text_other_account);
-		
+		mTextVerifyFingerprint = (TextView) findViewById(R.id.text_verify_fingerprint);
 		
 		// 初始化一个显示各个点的viewGroup
-		mGestureContentView = new GestureContentView(this, true, "1235789",
+		mGestureContentView = new GestureContentView(this, true, PreferenceUtil.getGesturePsw(),
 				new GestureCallBack() {
 
 					@Override
@@ -78,7 +66,8 @@ public class GestureVerifyActivity extends Activity implements View.OnClickListe
 					@Override
 					public void checkedSuccess() {
 						mGestureContentView.clearDrawlineState(0L);
-						Toast.makeText(GestureVerifyActivity.this, "密码正确", 1000).show();
+//						Toast.makeText(GestureVerifyActivity.this, "密码正确", Toast.LENGTH_SHORT).show();
+						setResult(RESULT_CODE_VERIFY_GESTURE_PSW);
 						GestureVerifyActivity.this.finish();
 					}
 
@@ -95,32 +84,46 @@ public class GestureVerifyActivity extends Activity implements View.OnClickListe
 				});
 		// 设置手势解锁显示到哪个布局里面
 		mGestureContentView.setParentView(mGestureContainer);
+
+		int requestCode = getIntent().getIntExtra("requestCode", 0);
+		switch (requestCode){
+			case REQUEST_CODE_VERIFY_GESTURE_PSW:
+				mTextVerifyFingerprint.setVisibility(View.INVISIBLE);
+				break;
+			case REQUEST_CODE_VERIFY_GESTURE_PSW2:
+				if(PreferenceUtil.isFingerprintLockOpened()){
+					mTextVerifyFingerprint.setVisibility(View.VISIBLE);
+					loginByFingerprint();
+				}else {
+					mTextVerifyFingerprint.setVisibility(View.INVISIBLE);
+				}
+				break;
+		}
 	}
 	
 	private void setUpListeners() {
-		mTextCancel.setOnClickListener(this);
-		mTextForget.setOnClickListener(this);
-		mTextOther.setOnClickListener(this);
+		mTextVerifyFingerprint.setOnClickListener(this);
 	}
 	
-	private String getProtectedMobile(String phoneNumber) {
-		if (TextUtils.isEmpty(phoneNumber) || phoneNumber.length() < 11) {
-			return "";
-		}
-		StringBuilder builder = new StringBuilder();
-		builder.append(phoneNumber.subSequence(0,3));
-		builder.append("****");
-		builder.append(phoneNumber.subSequence(7,11));
-		return builder.toString();
-	}
-	
-	
-
 	@Override
 	public void onClick(View v) {
-		if (v.getId() == R.id.text_cancel) {
-			this.finish();
+		if(v.getId() == R.id.text_verify_fingerprint){
+			//通过指纹登录
+			loginByFingerprint();
 		}
 	}
-	
+
+	private void loginByFingerprint() {
+		FingerprintDialogManager.getInstance().showFingerScannerDialog(this,
+				FingerprintDialogManager.TYPE_LOGIN,
+				new FingerprintManagerCompat.AuthenticationCallback(){
+			@Override
+			public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+				//指纹验证成功
+				setResult(RESULT_CODE_VERIFY_GESTURE_PSW);
+				GestureVerifyActivity.this.finish();
+			}
+		});
+	}
+
 }

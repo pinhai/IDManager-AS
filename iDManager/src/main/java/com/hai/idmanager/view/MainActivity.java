@@ -31,6 +31,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.hai.gesturelock.GestureVerifyActivity;
+import com.hai.gesturelock.utils.PreferenceUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.model.PageRequest;
 import com.hai.idmanager.model.PageRequest.DoRequest;
@@ -95,9 +97,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		showVerifyLayout();
 		setContentView(R.layout.activity_main);
 
-//		showFingerScannerDialog();
 		initData();
 		initView();
 	}
@@ -137,7 +139,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		linear_top.post(new Runnable() {
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				searchBarHeight = linear_top.getMeasuredHeight();
 			}
 		});
@@ -147,6 +148,14 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 		addIdView = new AddIdView(this, LayoutInflater.from(this).inflate(R.layout.view_addid, null), onAddIdListener);
 	}
+
+	private void showVerifyLayout() {
+		if(PreferenceUtil.hasGesturePsw()){
+			GestureVerifyActivity.startForResult(MainActivity.this,
+					GestureVerifyActivity.REQUEST_CODE_VERIFY_GESTURE_PSW2);
+		}
+	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

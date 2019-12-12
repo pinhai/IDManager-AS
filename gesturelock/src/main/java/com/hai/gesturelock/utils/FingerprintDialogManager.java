@@ -1,7 +1,8 @@
-package com.hai.idmanager.utils.secure;
+package com.hai.gesturelock.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
@@ -10,11 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.hai.idmanager.R;
+import com.hai.gesturelock.R;
 
+/**
+ * 指纹验证
+ */
 public class FingerprintDialogManager {
 
     private static final String TAG = FingerprintDialogManager.class.getSimpleName();
+
+    public static final int TYPE_LOGIN = 101;  //验证用户登录
+    public static final int TYPE_OPEN = 102;  //验证打开指纹解锁
+    public static final int TYPE_CLOSE = 103;  //验证关闭指纹解锁
 
     private FingerprintDialogManager(){}
     private static FingerprintDialogManager instance;
@@ -25,9 +33,9 @@ public class FingerprintDialogManager {
         return instance;
     }
 
-    private static AlertDialog fingerScannerDialog;
-    private static TextView tv_prompt;
-    private static FingerprintManagerCompat fingerprintManagerCompat;
+    private AlertDialog fingerScannerDialog;
+    private TextView tv_prompt, tv_loginByGesture;
+    private FingerprintManagerCompat fingerprintManagerCompat;
 
     private FingerprintManagerCompat.AuthenticationCallback callbackProxy;
 
@@ -39,10 +47,14 @@ public class FingerprintDialogManager {
     }
 
     public void showFingerScannerDialog(Context context, FingerprintManagerCompat.AuthenticationCallback callbackProxy){
+        showFingerScannerDialog(context, TYPE_LOGIN, callbackProxy);
+    }
+
+    public void showFingerScannerDialog(Context context, int type, FingerprintManagerCompat.AuthenticationCallback callbackProxy){
+        if(context == null) return;
 
         this.callbackProxy = callbackProxy;
 
-        if(context == null) return;
         if(fingerprintManagerCompat == null){
             fingerprintManagerCompat = FingerprintManagerCompat.from(context.getApplicationContext());
         }
@@ -54,12 +66,34 @@ public class FingerprintDialogManager {
         View view = LayoutInflater.from(context).inflate(R.layout.view_finger_scanner, null);
         tv_prompt = (TextView)view.findViewById(R.id.tv_prompt);
         tv_prompt.setText(R.string.please_validate_finger_scanner);
+        tv_loginByGesture = view.findViewById(R.id.tv_loginByGesture);
+        boolean cancelable;
+        if(type == TYPE_LOGIN){
+            //登录时显示“使用手势密码”用于切换登录方式
+            tv_loginByGesture.setVisibility(View.VISIBLE);
+            tv_loginByGesture.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(fingerScannerDialog != null) fingerScannerDialog.dismiss();
+                }
+            });
+            cancelable = false;
+        }else {
+            tv_loginByGesture.setVisibility(View.INVISIBLE);
+            cancelable = true;
+        }
         if(fingerScannerDialog == null){
             fingerScannerDialog = new AlertDialog.Builder(context, R.style.FullscreenWhite)
-                    .setTitle(R.string.prompt)
+                    .setTitle(R.string.tip)
                     .setView(view)
-                    .setCancelable(false)
+                    .setCancelable(cancelable)
                     .create();
+            fingerScannerDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    fingerScannerDialog = null;
+                }
+            });
         }
         fingerScannerDialog.show();
 
