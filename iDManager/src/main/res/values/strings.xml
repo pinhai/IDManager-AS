@@ -20,5 +20,6 @@
     <string name="validating_finger_scanner">正在验证指纹</string>
     <string name="prompt">提示</string>
     <string name="close_gesture_psw_tip">关闭手势密码需要验证手势密码，且指纹密码也会关闭，确定要关闭吗？</string>
+    <string name="not_detect_fingerprint_model">未检测到指纹模块</string>
 
 </resources>

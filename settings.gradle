@@ -1,2 +1,2 @@
 
-include ':iDManager', ':gesturelock', ':dialog'
+include ':iDManager', ':securitylock', ':dialog'

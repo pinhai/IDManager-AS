@@ -6,8 +6,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.view.base.BasePopupWindow;
 import com.hai.idmanager.R;
 
@@ -73,7 +73,7 @@ public class AddIdView extends BasePopupWindow implements OnClickListener{
 		String idName = String.valueOf(et_idName.getText());
 		String idInfo = String.valueOf(et_idInfo.getText());
 		if(idName == null || idName.equals("") || idInfo == null || idInfo.equals("")){
-			Toast.makeText(mContext, "输入不能为空", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(mContext, "输入不能为空");
 			return;
 		}
 		mOnAddIdListener.onAdding();

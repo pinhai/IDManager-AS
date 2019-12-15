@@ -29,10 +29,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-import com.hai.gesturelock.GestureVerifyActivity;
-import com.hai.gesturelock.utils.PreferenceUtil;
+import com.hai.securitylock.GestureVerifyActivity;
+import com.hai.securitylock.utils.PreferenceUtil;
+import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.model.PageRequest;
 import com.hai.idmanager.model.PageRequest.DoRequest;
@@ -168,9 +168,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		int id = item.getItemId();
 		if (id == R.id.item_export) {
 			if(FileBackup.exportIdInfo(dbHelper.queryIdInfoByPage(0))){
-				Toast.makeText(this, "导出成功", Toast.LENGTH_SHORT).show();
+				ToastUtil.show(this, "导出成功");
 			}else{
-				Toast.makeText(this, "导出失败，请重试", Toast.LENGTH_SHORT).show();
+				ToastUtil.show(this, "导出失败，请重试");
 			}
 		}else if(id == R.id.item_import){
 			//导入，启动文件管理器
@@ -200,7 +200,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				if(currentTimeMills-firstBackTimeMills < 3000){
 					System.exit(0);
 				}else{
-					Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+					ToastUtil.show(this, "再按一次退出程序");
 					firstBackTimeMills = currentTimeMills;
 					return true;
 				}
@@ -289,9 +289,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		if(dbHelper.delIdInfo(mIdModels.get(position).getId())){
 			mIdModels.remove(position);
 			mIdListAdapter.notifyDataSetChanged();
-			Toast.makeText(MainActivity.this, "删除账号成功", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(MainActivity.this, "删除账号成功");
 		}else{
-			Toast.makeText(MainActivity.this, "删除账号失败", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(MainActivity.this, "删除账号失败");
 		}
 	}
 
@@ -302,7 +302,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			startActivityForResult(intent, requestCode);
 		}catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText(this, "未安装文件管理器", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(this, "未安装文件管理器");
 		}
 	}
 
@@ -351,7 +351,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			dialog.dismiss();
 			if(dbHelper.addIdInfo(new IdModel(idName, idInfo))){
 				addIdView.dismiss();
-				Toast.makeText(MainActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+				ToastUtil.show(MainActivity.this, "添加成功");
 //				mIdModels.add(new IdModel(idName, idInfo));
 //				mIdListAdapter.notifyDataSetChanged();
 				mIdItemPage.init();
@@ -372,7 +372,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			IdModel idModelEdited = (IdModel) data.getBundleExtra("data").getSerializable("itemModel");
 			mIdModels.set(itemEdited-1, idModelEdited);
 			mIdListAdapter.notifyDataSetChanged();
-			Toast.makeText(this, "账号修改成功", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(this, "账号修改成功");
 		}else if(requestCode == IMPORT_ID_CODE && data != null){
 			Uri uri = data.getData();
 			FileBackup.importIdInfo(this, uri, onImportIdInfoListener);
@@ -424,7 +424,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		@Override
 		public void onErrorResponse(int error) {
 			ptrlv_idInfo.onRefreshComplete();
-			Toast.makeText(MainActivity.this, "数据获取失败", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(MainActivity.this, "数据获取失败");
 		}
 
 	};

@@ -3,6 +3,7 @@ package com.hai.idmanager.widget;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.adapter.IdListAdapter;
 import com.hai.idmanager.comm.respentity.IdModel;
@@ -32,7 +33,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 	private String TAG = "SearchIdInfoView";
@@ -118,13 +118,13 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 		if(mDbHelper.delIdInfo(idModels.get(position).getId())){
 			idModels.remove(position);
 			idListAdapter.notifyDataSetChanged();
-			Toast.makeText(mContext, "删除账号成功", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(mContext, "删除账号成功");
 			if(idModels.size() == 0){
 				lv_searchingId.setVisibility(View.GONE);
 				iv_envelop.setVisibility(View.VISIBLE);
 			}
 		}else{
-			Toast.makeText(mContext, "删除账号失败", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(mContext, "删除账号失败");
 		}
 	}
 	

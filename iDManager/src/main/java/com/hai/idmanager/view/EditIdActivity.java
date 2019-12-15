@@ -1,5 +1,6 @@
 package com.hai.idmanager.view;
 
+import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.comm.respentity.IdModel;
 import com.hai.idmanager.view.base.BaseActivity;
@@ -12,7 +13,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class EditIdActivity extends BaseActivity implements OnClickListener{
 	private Button btn_back;
@@ -71,13 +71,13 @@ public class EditIdActivity extends BaseActivity implements OnClickListener{
 			tv_title.setText("编辑");
 		}else if(v == btn_submit){
 			if(!et_idName.isEnabled() || !et_idInfo.isEnabled()){
-				Toast.makeText(this, "请点击编辑按钮", Toast.LENGTH_SHORT).show();
+				ToastUtil.show(this, "请点击编辑按钮");
 				return;
 			}
 			String idName = et_idName.getText().toString().trim();
 			String idInfo = et_idInfo.getText().toString().trim();
 			if(idName.equals("") || idName == null || idInfo.equals("") || idInfo == null){
-				Toast.makeText(this, "输入不能为空", Toast.LENGTH_SHORT).show();
+				ToastUtil.show(this, "输入不能为空");
 				return;
 			}
 			IdModel idModelModify = new IdModel();

@@ -14,10 +14,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.comm.respentity.IdModel;
 import com.hai.idmanager.utils.DateUtil;
 
@@ -101,7 +101,7 @@ public class FileBackup {
 //		uriStr = uriStr.substring(uriStr.indexOf("/sdcard/"), uriStr.length()-1);
 		File file = new File(uri.getPath());
 		if(!file.getName().contains(preFileName)){
-			Toast.makeText(context, "不支持的文件类型！", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(context, "不支持的文件类型！");
 			return false;
 		}
 		BufferedReader br = null;
@@ -111,15 +111,15 @@ public class FileBackup {
 			List<IdModel> mIdModels = gson.fromJson(br, new TypeToken<List<IdModel>>(){}.getType());
 			if(mIdModels.size() > 0){
 				if(!onImportIdInfoListener.onImport(mIdModels)){
-					Toast.makeText(context, "导入失败", Toast.LENGTH_SHORT).show();
+					ToastUtil.show(context, "导入失败");
 					return false;
 				}else{
-					Toast.makeText(context, "导入成功", Toast.LENGTH_SHORT).show();
+					ToastUtil.show(context, "导入成功");
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText(context, "文件解析错误，可能已损坏", Toast.LENGTH_SHORT).show();
+			ToastUtil.show(context, "文件解析错误，可能已损坏");
 			return false;
 		}finally{
 			try {

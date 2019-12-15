@@ -44,7 +44,11 @@ public class DialogManager {
      * 中间对话框
      */
     public Dialog getCenterDialog(Context context, View view){
-        final Dialog dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
+        return getCenterDialog(context, view, false);
+    }
+
+    public Dialog getCenterDialog(Context context, View view, boolean withTitle){
+        Dialog dialog = new Dialog(context, withTitle ? R.style.DialogStyleWithTitle : R.style.DialogStyle);
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(false);
         Window window = dialog.getWindow();
@@ -53,6 +57,7 @@ public class DialogManager {
             WindowManager.LayoutParams attr = window.getAttributes();
             if (attr != null) {
                 attr.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+//                attr.height = ScreenUtils.getScreenHeight(context)*1/4;
                 attr.width = ScreenUtils.getScreenWidth(context)*3/4;
                 attr.gravity = Gravity.CENTER;//设置dialog 在布局中的位置
                 window.setAttributes(attr);
@@ -70,7 +75,7 @@ public class DialogManager {
     }
 
     private Dialog getBottomDialog(Context context, View view, int height){
-        final Dialog dialog = new Dialog(context, R.style.ActionSheetDialogStyle);
+        final Dialog dialog = new Dialog(context, R.style.DialogStyle);
         dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(true);
         Window window = dialog.getWindow();
