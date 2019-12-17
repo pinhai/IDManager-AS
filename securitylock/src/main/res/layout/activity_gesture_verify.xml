@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dip"
+        android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
         <TextView
@@ -42,11 +43,10 @@
 
         <TextView
             android:id="@+id/text_verify_fingerprint"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
             android:padding="5dp"
-            android:gravity="center"
+            android:background="@android:drawable/list_selector_background"
             android:textSize="16sp"
             android:text="@string/use_fingerprint_login"
             android:textColor="#E7E7E6" />

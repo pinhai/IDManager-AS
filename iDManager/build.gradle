@@ -14,8 +14,24 @@ android {
         versionName "2.0"
     }
 
+    signingConfigs {
+        myConfig {
+            storeFile file("D:\\Android\\key123456")
+            storePassword "123456"
+            keyAlias "key"
+            keyPassword "123456"
+        }
+//        debug {
+//            storeFile file('debug.jks')
+//            storePassword "88888888"
+//            keyAlias "key0"
+//            keyPassword "88888888"
+//        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.myConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }

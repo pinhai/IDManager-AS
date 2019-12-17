@@ -2,7 +2,9 @@ package com.hai.securitylock;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.hardware.biometrics.BiometricPrompt;
 import android.os.Bundle;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.text.Html;
@@ -112,16 +114,44 @@ public class GestureVerifyActivity extends Activity implements View.OnClickListe
 	}
 
 	private void loginByFingerprint() {
-		FingerprintDialogManager.getInstance().showFingerScannerDialog(this,
-				FingerprintDialogManager.TYPE_LOGIN,
-				new FingerprintManagerCompat.AuthenticationCallback(){
-			@Override
-			public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
-				//指纹验证成功
-				setResult(RESULT_CODE_VERIFY_GESTURE_PSW);
-				GestureVerifyActivity.this.finish();
-			}
-		});
+//		if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+//			BiometricPrompt biometricPrompt = new BiometricPrompt.Builder(this)
+//					.setTitle(getString(R.string.tip))
+//					.setNegativeButton(getString(R.string.use_gesture_login), null, new DialogInterface.OnClickListener() {
+//						@Override
+//						public void onClick(DialogInterface dialog, int which) {
+//
+//						}
+//					})
+//					.build();
+//			biometricPrompt.authenticate(null, null, new BiometricPrompt.AuthenticationCallback() {
+//				@Override
+//				public void onAuthenticationError(int errorCode, CharSequence errString) {
+//					super.onAuthenticationError(errorCode, errString);
+//				}
+//
+//				@Override
+//				public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult result) {
+//					super.onAuthenticationSucceeded(result);
+//				}
+//
+//				@Override
+//				public void onAuthenticationFailed() {
+//					super.onAuthenticationFailed();
+//				}
+//			});
+//		}else {
+			FingerprintDialogManager.getInstance().showFingerScannerDialog(this,
+					FingerprintDialogManager.TYPE_LOGIN,
+					new FingerprintManagerCompat.AuthenticationCallback(){
+						@Override
+						public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
+							//指纹验证成功
+							setResult(RESULT_CODE_VERIFY_GESTURE_PSW);
+							GestureVerifyActivity.this.finish();
+						}
+					});
+//		}
 	}
 
 	@Override

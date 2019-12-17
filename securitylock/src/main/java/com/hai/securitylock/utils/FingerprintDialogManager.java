@@ -69,9 +69,8 @@ public class FingerprintDialogManager {
             return;
         }
 
-        View view = LayoutInflater.from(context).inflate(R.layout.view_finger_scanner2, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.view_finger_scanner, null);
         tv_prompt = (TextView)view.findViewById(R.id.tv_prompt);
-        tv_prompt.setText(R.string.please_validate_finger_scanner);
         tv_loginByGesture = view.findViewById(R.id.tv_loginByGesture);
         boolean cancelable;
         if(type == TYPE_LOGIN){
@@ -96,15 +95,18 @@ public class FingerprintDialogManager {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     fingerScannerDialog = null;
+//                    handler.removeMessages(0);
+//                    isFinishAuthenticate = true;
                 }
             });
         }
         fingerScannerDialog.show();
 
-        if(isFinishAuthenticate){
+//        if(isFinishAuthenticate){
+            tv_prompt.setText(R.string.please_validate_finger_scanner);
             fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
-            isFinishAuthenticate = false;
-        }
+//            isFinishAuthenticate = false;
+//        }
     }
 
     /**
@@ -115,16 +117,14 @@ public class FingerprintDialogManager {
         // 当出现错误的时候回调此函数，比如多次尝试都失败了的时候，errString是错误信息
 //        处于安全性的考虑，不允许开发者 在未结束验证流程的情况下 短时间内连续授权，经过粗略的测试，android允许我们在30s之后重新打开Sensor授权监听
         public void onAuthenticationError(int errMsgId, CharSequence errString){
-            isFinishAuthenticate = true;
             tv_prompt.setText(R.string.validate_failure_more);
-            handler.sendEmptyMessageDelayed(0, 1000 * 30);
+//            handler.sendEmptyMessageDelayed(0, 1000 * 30);
 
             if(callbackProxy != null) callbackProxy.onAuthenticationError(errMsgId, errString);
         }
 
         @Override
         public void onAuthenticationHelp(int helpMsgId, CharSequence helpString){
-            isFinishAuthenticate = true;
             Log.v(TAG, "onAuthenticationHelp:" + helpString);
 
             if(callbackProxy != null) callbackProxy.onAuthenticationHelp(helpMsgId, helpString);
@@ -153,8 +153,9 @@ public class FingerprintDialogManager {
         @Override
         public void handleMessage(Message msg) {
             Log.d(TAG, "handleMessage: 重启指纹模块");
-            tv_prompt.setText(R.string.please_validate_finger_scanner);
-            fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
+            isFinishAuthenticate = true;
+//            tv_prompt.setText(R.string.please_validate_finger_scanner);
+//            fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
         }
     };
 
