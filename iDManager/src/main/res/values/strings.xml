@@ -21,5 +21,6 @@
     <string name="prompt">提示</string>
     <string name="close_gesture_psw_tip">关闭手势密码需要验证手势密码，且指纹密码也会关闭，确定要关闭吗？</string>
     <string name="not_detect_fingerprint_model">未检测到指纹模块</string>
+    <string name="permission_access_failed">权限获取失败</string>
 
 </resources>

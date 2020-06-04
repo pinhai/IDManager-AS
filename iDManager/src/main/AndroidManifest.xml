@@ -18,6 +18,7 @@
         android:theme="@style/AppBaseTheme"
         tools:replace="android:theme"
         >
+
         <activity
             android:name=".view.MainActivity"
             android:launchMode="singleTop">

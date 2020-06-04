@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
+import android.support.v4.os.CancellationSignal;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +38,7 @@ public class FingerprintDialogManager {
     private Dialog fingerScannerDialog;
     private TextView tv_prompt, tv_loginByGesture;
     private FingerprintManagerCompat fingerprintManagerCompat;
-    private boolean isFinishAuthenticate = true;  //是否已经结束了验证指纹流程
+    private CancellationSignal cancellationSignal;
 
     private FingerprintManagerCompat.AuthenticationCallback callbackProxy;
 
@@ -45,6 +46,7 @@ public class FingerprintDialogManager {
         if(fingerprintManagerCompat == null){
             fingerprintManagerCompat = FingerprintManagerCompat.from(context.getApplicationContext());
         }
+        cancellationSignal = new CancellationSignal();
     }
 
     /**
@@ -95,18 +97,15 @@ public class FingerprintDialogManager {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     fingerScannerDialog = null;
-//                    handler.removeMessages(0);
-//                    isFinishAuthenticate = true;
+                    cancellationSignal.cancel();
+                    cancellationSignal = null;
                 }
             });
         }
         fingerScannerDialog.show();
 
-//        if(isFinishAuthenticate){
-            tv_prompt.setText(R.string.please_validate_finger_scanner);
-            fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
-//            isFinishAuthenticate = false;
-//        }
+        tv_prompt.setText(R.string.please_validate_finger_scanner);
+        fingerprintManagerCompat.authenticate(null, 0, cancellationSignal, authenticationCallback, null);
     }
 
     /**
@@ -118,7 +117,6 @@ public class FingerprintDialogManager {
 //        处于安全性的考虑，不允许开发者 在未结束验证流程的情况下 短时间内连续授权，经过粗略的测试，android允许我们在30s之后重新打开Sensor授权监听
         public void onAuthenticationError(int errMsgId, CharSequence errString){
             tv_prompt.setText(R.string.validate_failure_more);
-//            handler.sendEmptyMessageDelayed(0, 1000 * 30);
 
             if(callbackProxy != null) callbackProxy.onAuthenticationError(errMsgId, errString);
         }
@@ -133,7 +131,6 @@ public class FingerprintDialogManager {
         // 当验证的指纹成功时会回调此函数，然后不再监听指纹sensor
         @Override
         public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result){
-            isFinishAuthenticate = true;
             tv_prompt.setText(R.string.validate_success);
             fingerScannerDialog.dismiss();
 
@@ -146,16 +143,6 @@ public class FingerprintDialogManager {
             tv_prompt.setText(R.string.validate_failure);
 
             if(callbackProxy != null) callbackProxy.onAuthenticationFailed();
-        }
-    };
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Log.d(TAG, "handleMessage: 重启指纹模块");
-            isFinishAuthenticate = true;
-//            tv_prompt.setText(R.string.please_validate_finger_scanner);
-//            fingerprintManagerCompat.authenticate(null, 0, null, authenticationCallback, null);
         }
     };
 

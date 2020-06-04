@@ -120,11 +120,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         @Override
         public void onClick(View v) {
             if(tb_fingerScanner.isChecked()){
+                tb_fingerScanner.setChecked(false);
                 if(!tb_gesturePsd.isChecked()){
                     //打开指纹验证要先开启手势密码
                     ToastUtil.show(SettingActivity.this, R.string
                                     .please_setup_and_open_gesture_password_first);
-                    tb_fingerScanner.setChecked(false);
                 }else{
                     if(FingerprintDialogManager.getInstance().isHardwareDetected(SettingActivity.this)){
                         FingerprintDialogManager.getInstance().showFingerScannerDialog(SettingActivity.this,

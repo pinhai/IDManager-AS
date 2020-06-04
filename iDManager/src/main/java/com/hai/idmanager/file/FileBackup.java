@@ -3,6 +3,7 @@ package com.hai.idmanager.file;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -36,11 +37,11 @@ public class FileBackup {
 			sdCardPath = Environment.getExternalStorageDirectory().toString();
 			String fileName = preFileName + "." + DateUtil.getDateByFormat(System.currentTimeMillis(), "yyyyMMddHHmm");
 			File file = new File(sdCardPath+appDirectory+"/"+fileName);
-			File filePath = new File(sdCardPath+appDirectory);
+			File fileDir = new File(sdCardPath+appDirectory);
 			BufferedWriter bw = null;
 			if(!file.exists()){
-				if(!filePath.exists()){
-					filePath.mkdirs();
+				if(!fileDir.exists()){
+					fileDir.mkdirs();
 				}
 				try {
 					file.createNewFile();
@@ -55,8 +56,9 @@ public class FileBackup {
 					try {
 						bw.flush();
 						bw.close();
-					} catch (IOException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
+						return false;
 					}
 				}
 			}else{
@@ -74,8 +76,9 @@ public class FileBackup {
 					try {
 						bw.flush();
 						bw.close();
-					} catch (IOException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
+						return false;
 					}
 				}
 			}
@@ -93,20 +96,14 @@ public class FileBackup {
 	 */
 	@SuppressLint("SdCardPath")
 	@SuppressWarnings({ })
-	public static boolean importIdInfo(Context context, Uri uri, OnImportIdInfoListener onImportIdInfoListener){
-//		sdCardPath = Environment.getExternalStorageDirectory().toString();
-//		File file = new File(sdCardPath+appDirectory+exportFileName);
-//		File filePath = new File(sdCardPath+appDirectory);
-//		String uriStr = uri.toString();
-//		uriStr = uriStr.substring(uriStr.indexOf("/sdcard/"), uriStr.length()-1);
-		File file = new File(uri.getPath());
-		if(!file.getName().contains(preFileName)){
+	public static boolean importIdInfo(Context context, Uri uri, FileDescriptor fileDescriptor, OnImportIdInfoListener onImportIdInfoListener){
+		if(!uri.getPath().contains(preFileName)){
 			ToastUtil.show(context, "不支持的文件类型！");
 			return false;
 		}
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(fileDescriptor)));
 			Gson gson = new Gson();
 			List<IdModel> mIdModels = gson.fromJson(br, new TypeToken<List<IdModel>>(){}.getType());
 			if(mIdModels.size() > 0){
@@ -124,8 +121,10 @@ public class FileBackup {
 		}finally{
 			try {
 				br.close();
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
+				ToastUtil.show(context, "文件解析错误，可能已损坏");
+				return false;
 			}
 		}
 		

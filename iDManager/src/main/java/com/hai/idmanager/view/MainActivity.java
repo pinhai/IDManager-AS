@@ -1,21 +1,29 @@
 package com.hai.idmanager.view;
 
 import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.os.Vibrator;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -102,6 +110,12 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 		initData();
 		initView();
+
+		boolean sdCardWritePermission =
+				getPackageManager().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
+		if (Build.VERSION.SDK_INT >= 23 && !sdCardWritePermission) {
+			requestPermission();
+		}
 	}
 
 	private void initData() {
@@ -156,6 +170,25 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 
+	private void requestPermission() {
+		ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+				REQUEST_PERMISSION);
+	}
+
+	private static final int REQUEST_PERMISSION = 1002;
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if (requestCode == REQUEST_PERMISSION) {
+			if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+			} else {
+				ToastUtil.show(this, getString(R.string.permission_access_failed));
+				System.exit(0);
+			}
+
+		}
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -176,7 +209,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			//导入，启动文件管理器
 			openFileBrowser(IMPORT_ID_CODE);
 		}else if(id == R.id.item_upload){
-			//上传文件
+			//分享文件
 			openFileBrowser(UPLOAD_FILE);
 		}/*else if(id == R.id.item_about){
 			showAboutDialog();
@@ -190,7 +223,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
 			if(searchIdInfoView != null && searchIdInfoView.isShowing()){
@@ -297,7 +329,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private void openFileBrowser(int requestCode){
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("file/");
+		intent.setType("*/*");
 		try{
 			startActivityForResult(intent, requestCode);
 		}catch (Exception e) {
@@ -352,8 +384,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			if(dbHelper.addIdInfo(new IdModel(idName, idInfo))){
 				addIdView.dismiss();
 				ToastUtil.show(MainActivity.this, "添加成功");
-//				mIdModels.add(new IdModel(idName, idInfo));
-//				mIdListAdapter.notifyDataSetChanged();
 				mIdItemPage.init();
 			}
 		}
@@ -375,7 +405,13 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			ToastUtil.show(this, "账号修改成功");
 		}else if(requestCode == IMPORT_ID_CODE && data != null){
 			Uri uri = data.getData();
-			FileBackup.importIdInfo(this, uri, onImportIdInfoListener);
+			try {
+				FileDescriptor fileDescriptor = getContentResolver().openFileDescriptor(uri, "r").getFileDescriptor();
+				FileBackup.importIdInfo(this, uri, fileDescriptor, onImportIdInfoListener);
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+				ToastUtil.show(this, "文件解析错误，可能已损坏");
+			}
 		}else if(requestCode == UPLOAD_FILE && data != null){
 			//上传
 			Uri uri = data.getData();
@@ -386,11 +422,16 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	//分享文件
     private void shareFile(Uri uri) {
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.setType("*/*");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(uri.getPath())));
-        startActivity(Intent.createChooser(shareIntent, "分享到"));
+		try{
+			Intent shareIntent = new Intent();
+			shareIntent.setAction(Intent.ACTION_SEND);
+			shareIntent.setType("*/*");
+        	shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
+			startActivity(shareIntent);
+		}catch (Exception e){
+			e.printStackTrace();
+			ToastUtil.show(this, "必须选择IDManager目录下的文件");
+		}
     }
 
 	private DoRequest<IdModel> idItemReq = new DoRequest<IdModel>() {
@@ -444,41 +485,6 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	};
 
-	private OnItemLongClickListener mIdItemLongClick = new OnItemLongClickListener() {
-
-		@SuppressLint("NewApi")
-		@Override
-		public boolean onItemLongClick(AdapterView<?> parent, View view,
-				int position, long id) {
-			if((position-1) == mIdModels.size()){	//长按了页尾
-				return false;
-			}
-
-			Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-			vibrator.vibrate(50);
-
-			final int p = position - 1;
-			float offsetY = 0;
-			if(searchBarHeight > 0){
-				offsetY = view.getY() + searchBarHeight/2;
-			}else{
-				offsetY = view.getY() + 30;
-			}
-
-			delIdView = new DelIdView(MainActivity.this, position, new OnDelIdListener() {
-				@Override
-				public void onDelId(int position) {
-					delIdView.dismiss();
-					deleteItem(position);
-				}
-			});
-			delIdView.showAtLocation(getView(), Gravity.CENTER_HORIZONTAL|Gravity.TOP, 0, (int) offsetY);
-
-			return false;
-		}
-
-	};
-
 	private OnLastItemVisibleListener mLastItem = new OnLastItemVisibleListener() {
 
 		@Override
@@ -495,21 +501,8 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		@Override
 		public void onRefresh(PullToRefreshBase<SwipeMenuListView> refreshView) {
 			mIdItemPage.init();
-//			ptrlv_idInfo.onRefreshComplete();
 		}
 	};
-
-//	private OnRefreshListener2<ListView> onRefreshListener = new OnRefreshListener2<ListView>() {
-//
-//		@Override
-//		public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
-//			mIdItemPage.init();
-//		}
-//
-//		@Override
-//		public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
-//		}
-//	};
 
 	private OnImportIdInfoListener onImportIdInfoListener = new OnImportIdInfoListener() {
 
