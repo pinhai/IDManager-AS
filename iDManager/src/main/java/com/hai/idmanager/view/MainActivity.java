@@ -161,6 +161,8 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		linear_search.setOnClickListener(this);
 
 		addIdView = new AddIdView(this, LayoutInflater.from(this).inflate(R.layout.view_addid, null), onAddIdListener);
+
+		initSearchIdWindow();
 	}
 
 	private void showVerifyLayout() {
@@ -338,7 +340,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}
 	}
 
-	private void showSearchIdWindow() {
+	private void initSearchIdWindow(){
 		searchIdInfoView = new SearchIdInfoView(this, dbHelper, new SearchIdInfoView.OnItemListener() {
 			@Override
 			public void onClick(int id) {
@@ -348,8 +350,11 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			}
 
 		});
-		searchIdInfoView.clearEditText();
+	}
+
+	private void showSearchIdWindow() {
 		searchIdInfoView.showAtLocation(getView(), Gravity.BOTTOM, 0, 0);
+		searchIdInfoView.showInputMethod();
 	}
 
 	private void showAddIdWindow() {

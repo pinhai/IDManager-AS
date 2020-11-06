@@ -3,6 +3,7 @@ package com.hai.idmanager.widget;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hai.idmanager.utils.AppUtil;
 import com.hai.securitylock.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.adapter.IdListAdapter;
@@ -82,8 +83,7 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 		
 		et_search.addTextChangedListener(textWatcher);
 		et_search.setFocusable(true);
-		InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+		et_search.setFocusableInTouchMode(true);
 		btn_cancel.setOnClickListener(this);
 		iv_envelop.setOnClickListener(this);
 		
@@ -94,7 +94,7 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 		lv_searchingId.setAdapter(idListAdapter);
 		lv_searchingId.setMenuCreator(creator);
 		lv_searchingId.setOnMenuItemClickListener(onMenuItemClickListener);
-		
+
 	}
 	
 	@Override
@@ -102,6 +102,21 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 		if(v == btn_cancel || v == iv_envelop){
 			this.dismiss();
 		}
+	}
+
+	@Override
+	public void dismiss() {
+		hideInputMethod();
+		clearEditText();
+		super.dismiss();
+	}
+
+	public void showInputMethod(){
+		AppUtil.showSoftInput(mContext, et_search);
+	}
+
+	public void hideInputMethod(){
+		AppUtil.hideSoftInput(getContentView());
 	}
 	
 	public void clearEditText(){
