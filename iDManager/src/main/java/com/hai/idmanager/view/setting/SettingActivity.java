@@ -4,19 +4,20 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.hai.dialog.DialogListener;
-import com.hai.dialog.DialogManager;
-import com.hai.securitylock.GestureEditActivity;
-import com.hai.securitylock.GestureVerifyActivity;
-import com.hai.securitylock.utils.FingerprintDialogManager;
-import com.hai.securitylock.utils.PreferenceUtil;
-import com.hai.securitylock.utils.ToastUtil;
+import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
+
+import com.hai.idmanager.widget.DialogListener;
+import com.hai.idmanager.widget.DialogManager;
+import com.hai.idmanager.view.gesture.GestureEditActivity;
+import com.hai.idmanager.view.gesture.GestureVerifyActivity;
+import com.hai.idmanager.utils.FingerprintDialogManager;
+import com.hai.idmanager.utils.PreferenceUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.view.base.BaseActivity;
 
@@ -70,18 +71,18 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
     @Override
     public void onClick(View v){
-        switch(v.getId()){
-        }
+//        switch(v.getId()){
+//        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == GestureEditActivity.REQUEST_CODE_SET_GESTURE_PSW
                 && resultCode == GestureEditActivity.RESULT_CODE_SET_GESTURE_PSW){
-            tb_gesturePsd.setChecked(com.hai.securitylock.utils.PreferenceUtil.hasGesturePsw());
+            tb_gesturePsd.setChecked(PreferenceUtil.hasGesturePsw());
         }else if(requestCode == GestureVerifyActivity.REQUEST_CODE_VERIFY_GESTURE_PSW
                 && resultCode == GestureVerifyActivity.RESULT_CODE_VERIFY_GESTURE_PSW){
-            com.hai.securitylock.utils.PreferenceUtil.removeGesturePsw();
+            PreferenceUtil.removeGesturePsw();
             tb_gesturePsd.setChecked(false);
             //关闭指纹
             closeFingerprint();

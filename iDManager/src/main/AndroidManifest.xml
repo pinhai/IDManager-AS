@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.hai.idmanager"
     android:installLocation="auto">
 
     <uses-permission android:name="android.permission.VIBRATE"/>
@@ -21,6 +20,7 @@
 
         <activity
             android:name=".view.MainActivity"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -34,6 +34,14 @@
         <activity
             android:name=".view.setting.SettingActivity"
             android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".view.gesture.GestureEditActivity"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".view.gesture.GestureVerifyActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

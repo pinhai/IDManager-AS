@@ -1,11 +1,12 @@
 package com.hai.idmanager.custom;
 
 import android.content.Context;
-import android.support.v4.util.SparseArrayCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+
+import androidx.collection.SparseArrayCompat;
 
 public class AutoSizeGridView extends GridView {
 	private SparseArrayCompat<Boolean> arrayCompat = new SparseArrayCompat<Boolean>();

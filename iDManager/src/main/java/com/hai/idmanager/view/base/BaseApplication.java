@@ -3,12 +3,11 @@ package com.hai.idmanager.view.base;
 import android.app.Application;
 import android.content.Context;
 
-import com.hai.securitylock.utils.PreferenceUtil;
+import com.hai.idmanager.utils.PreferenceUtil;
+import com.hai.idmanager.utils.ScreenUtil;
 
 public class BaseApplication extends Application {
 	
-	public static final boolean debug = true;
-
 	private static BaseApplication instance;
 
 	public static Context getInstance() {
@@ -21,6 +20,6 @@ public class BaseApplication extends Application {
 		instance = this;
 
 		PreferenceUtil.init(instance);
-		com.hai.idmanager.utils.PreferenceUtil.init(instance);
+		ScreenUtil.INSTANCE.init(instance);
 	}
 }

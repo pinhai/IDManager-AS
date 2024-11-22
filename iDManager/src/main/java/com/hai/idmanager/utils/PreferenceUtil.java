@@ -3,17 +3,15 @@ package com.hai.idmanager.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 
-import com.hai.idmanager.view.base.BaseApplication;
-import com.hai.idmanager.constant.PrefConstants;
+import com.hai.idmanager.constant.Constants;
 
-/**
- * android SharedPreference 轻量级缓存
- * 
- */
 public class PreferenceUtil {
 
-	private static SharedPreferences.Editor editor;
+	private static final String PREFERENCES_NAME = "name_preferences_gesture_lock";
+
+	private static Editor editor;
 	private static SharedPreferences sharedPreferences;
 
 	private PreferenceUtil(){
@@ -21,7 +19,7 @@ public class PreferenceUtil {
 
 	public static void init(Context context){
 		//获取sharedPreferences对象
-		sharedPreferences = context.getSharedPreferences(PrefConstants.NAME, Context.MODE_PRIVATE);
+		sharedPreferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
 		//获取editor对象
 		editor = sharedPreferences.edit();//获取编辑器
 	}
@@ -47,6 +45,49 @@ public class PreferenceUtil {
 	public static void remove(String info) {
 		editor.remove(info);
 		editor.commit();
+	}
+
+	/**
+	 * 保存手势密码
+	 * @param psw
+	 */
+	public static void putGesturePsw(String psw){
+		editor.putString(Constants.SHARED_GESTURE_LOCK_PSW_KEY, psw);
+		editor.commit();//提交修改
+	}
+
+	public static String getGesturePsw(){
+		return sharedPreferences.getString(Constants.SHARED_GESTURE_LOCK_PSW_KEY, "");
+	}
+
+	public static void removeGesturePsw(){
+		editor.remove(Constants.SHARED_GESTURE_LOCK_PSW_KEY);
+		editor.commit();//提交修改
+	}
+
+	public static boolean hasGesturePsw(){
+		return !TextUtils.isEmpty(getGesturePsw());
+	}
+
+	/**
+	 * 打开指纹解锁
+	 */
+	public static void openFingerprintLock(){
+		putBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, true);
+	}
+
+	/**
+	 * 关闭指纹解锁
+	 */
+	public static void closeFingerprintLock(){
+		putBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, false);
+	}
+
+	/**
+	 * 是否打开了指纹解锁
+	 */
+	public static boolean isFingerprintLockOpened(){
+		return getBoolean(Constants.SHARED_FINGERPRINT_LOCK_KEY, false);
 	}
 
 }

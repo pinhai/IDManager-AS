@@ -3,6 +3,7 @@
     android:id="@+id/linear_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+	android:paddingBottom="10dp"
     android:orientation="vertical" >
     
 	<TextView 
@@ -11,13 +12,13 @@
 	    android:padding="8dp"
 	    android:background="@color/bg_gray"
 	    android:textSize="@dimen/txt_middleLager"
-	    android:text="添加ID"/>
+	    android:text="@string/add_id"/>
 	
 	<EditText 
 	    android:id="@+id/et_idName"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:hint="输入ID名"
+	    android:hint="@string/input_id"
 	    android:layout_marginLeft="15dp"
 	    android:layout_marginRight="15dp"
 	    android:layout_marginTop="15dp"
@@ -30,11 +31,12 @@
 	    android:id="@+id/et_idInfo"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:hint="输入ID信息"
+        android:autofillHints="emailAddress"
+        android:hint="@string/input_id_info"
 	    android:layout_margin="15dp"
 	    android:padding="5dp"
-	    android:lines="3"
-	    android:maxLines="3"
+	    android:lines="5"
+	    android:maxLines="8"
 	    android:gravity="top"
 	    android:background="@drawable/box_white"
 	    android:textSize="@dimen/txt_middle"/>
@@ -53,19 +55,19 @@
 	        android:layout_weight="4"
 	        android:background="@drawable/btn_bg_selector"
 	        android:padding="@dimen/btn_padding_top_bottom"
-	        android:text="确 定"/>
+	        android:text="@string/o_k"/>
 	    <View 
 	        android:layout_width="0dp"
 	        android:layout_height="match_parent"
 	        android:layout_weight="1"/>
 	    <Button 
-	        android:id="@+id/btn_cancle"
+	        android:id="@+id/btn_cancel"
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="4"
 	        android:background="@drawable/btn_bg_selector"
 	        android:padding="@dimen/btn_padding_top_bottom"
-	        android:text="取 消"/>
+	        android:text="@string/can_cel"/>
 	</LinearLayout>
     
 </LinearLayout>

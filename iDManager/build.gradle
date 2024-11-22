@@ -1,18 +1,24 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    //编译时注解处理器
+//    id 'kotlin-kapt'
+}
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    namespace "com.hai.idmanager"
+    compileSdk "$target_sdk_version".toInteger()
+//    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hai.idmanager"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion "$min_sdk_version".toInteger()
+        targetSdkVersion "$target_sdk_version".toInteger()
 
-        versionCode 20201106
-        versionName "2.1.1"
+        versionCode 20241122
+        versionName "2.2"
 
-        vectorDrawables.useSupportLibrary = true
+//        vectorDrawables.useSupportLibrary = true
     }
 
     signingConfigs {
@@ -32,19 +38,28 @@ android {
         }
     }
 
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
+//    lintOptions {
+//        checkReleaseBuilds false
+//        // Or, if you prefer, you can continue to check for errors in release builds,
+//        // but continue the build even when errors are found:
+//        abortOnError false
+//    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:support-v4:${rootProject.ext.supportLibVersion}"
-    implementation "com.android.support:support-vector-drawable:${rootProject.ext.supportLibVersion}"
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation project(path: ':securitylock')
-    implementation project(path: ':dialog')
+//    implementation project(path: ':securitylock')
+//    implementation project(path: ':dialog')
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+    //androidx
+    implementation 'androidx.core:core-ktx:1.15.0'
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    //kotlin标准库
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
 }

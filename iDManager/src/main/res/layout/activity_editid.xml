@@ -33,8 +33,8 @@
         android:textSize="@dimen/txt_middleLager"
         android:background="@drawable/box_white"
         android:gravity="top|left"
-        android:lines="2"
-        android:maxLines="4"
+        android:lines="5"
+        android:maxLines="8"
         />
     
     <LinearLayout 

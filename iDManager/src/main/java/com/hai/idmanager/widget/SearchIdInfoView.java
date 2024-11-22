@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hai.idmanager.utils.AppUtil;
-import com.hai.securitylock.utils.ToastUtil;
+import com.hai.idmanager.utils.ScreenUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.adapter.IdListAdapter;
 import com.hai.idmanager.comm.respentity.IdModel;
-import com.hai.idmanager.utils.DimensionUtil;
-import com.hai.sqlite.DbHelper;
+import com.hai.idmanager.sqlite.DbHelper;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenu;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuCreator;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuItem;
@@ -27,7 +27,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -36,7 +35,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 
 public class SearchIdInfoView extends PopupWindow implements OnClickListener{
-	private String TAG = "SearchIdInfoView";
+	private final String TAG = "SearchIdInfoView";
 	
 	private Context mContext;
 	private OnItemListener mOnItemListener;
@@ -124,9 +123,9 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 	}
 	
 	private int getViewHeight(){
-		int viewHeight = DimensionUtil.getScreenHeight(mContext) - DimensionUtil.getStatusHeight((Activity) mContext);
-		
-		return viewHeight;
+//		int viewHeight = DimensionUtil.getScreenHeight(mContext) - DimensionUtil.getStatusHeight((Activity) mContext);
+
+        return ScreenUtil.INSTANCE.getScreenHeight() - ScreenUtil.INSTANCE.getStatusBarHeight();
 	}
 	
 	private void deleteItem(int position){
@@ -184,7 +183,7 @@ public class SearchIdInfoView extends PopupWindow implements OnClickListener{
 			// set item background
 			deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
 			// set item width
-			deleteItem.setWidth(DimensionUtil.dp2px(mContext, 90));
+			deleteItem.setWidth(ScreenUtil.INSTANCE.dp2px(90));
 			// set a icon
 			deleteItem.setIcon(R.drawable.ic_delete);
 			// add to menu

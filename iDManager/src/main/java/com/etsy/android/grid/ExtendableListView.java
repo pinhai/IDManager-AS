@@ -23,9 +23,6 @@ import android.database.DataSetObserver;
 import android.graphics.Rect;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.util.SparseArrayCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.*;
@@ -33,6 +30,11 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
+
+import androidx.collection.SparseArrayCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.ViewCompat;
+
 import java.util.ArrayList;
 
 /**

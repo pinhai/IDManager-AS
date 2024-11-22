@@ -1,29 +1,18 @@
 package com.hai.idmanager.view;
 
-import java.io.File;
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.os.Vibrator;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -34,13 +23,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.hai.securitylock.GestureVerifyActivity;
-import com.hai.securitylock.utils.PreferenceUtil;
-import com.hai.securitylock.utils.ToastUtil;
+import androidx.core.app.ActivityCompat;
+
+import com.hai.idmanager.utils.ScreenUtil;
+import com.hai.idmanager.view.gesture.GestureVerifyActivity;
+import com.hai.idmanager.utils.PreferenceUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.model.PageRequest;
 import com.hai.idmanager.model.PageRequest.DoRequest;
@@ -57,10 +48,8 @@ import com.hai.idmanager.view.setting.SettingActivity;
 import com.hai.idmanager.widget.AddIdView;
 import com.hai.idmanager.widget.AddIdView.OnAddIdListener;
 import com.hai.idmanager.widget.DelIdView;
-import com.hai.idmanager.widget.DelIdView.OnDelIdListener;
 import com.hai.idmanager.widget.SearchIdInfoView;
-import com.hai.idmanager.utils.DimensionUtil;
-import com.hai.sqlite.DbHelper;
+import com.hai.idmanager.sqlite.DbHelper;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
@@ -101,6 +90,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private static final int IMPORT_ID_CODE = 112;
 	private static final int UPLOAD_FILE = 113;	//上传文件
+	private static final int CREATE_FILE = 114; //创建要导出的文件
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,11 +101,11 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		initData();
 		initView();
 
-		boolean sdCardWritePermission =
-				getPackageManager().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
-		if (Build.VERSION.SDK_INT >= 23 && !sdCardWritePermission) {
-			requestPermission();
-		}
+//		boolean sdCardWritePermission =
+//				getPackageManager().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
+//		if (Build.VERSION.SDK_INT >= 23 && !sdCardWritePermission) {
+//			requestPermission();
+//		}
 	}
 
 	private void initData() {
@@ -202,22 +192,22 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.item_export) {
-			if(FileBackup.exportIdInfo(dbHelper.queryIdInfoByPage(0))){
-				ToastUtil.show(this, "导出成功");
-			}else{
-				ToastUtil.show(this, "导出失败，请重试");
-			}
+			FileBackup.createIdInfoFile(MainActivity.this, CREATE_FILE);
+			return true;
 		}else if(id == R.id.item_import){
 			//导入，启动文件管理器
 			openFileBrowser(IMPORT_ID_CODE);
+			return true;
 		}else if(id == R.id.item_upload){
 			//分享文件
 			openFileBrowser(UPLOAD_FILE);
+			return true;
 		}/*else if(id == R.id.item_about){
 			showAboutDialog();
 		}*/else if(id == R.id.item_setup){
 			Intent i = new Intent(MainActivity.this, SettingActivity.class);
 			startActivity(i);
+			return true;
 		}
 
 		return super.onOptionsItemSelected(item);
@@ -249,18 +239,14 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btn_addId:
+		int id = v.getId();
+		if(id == R.id.btn_addId){
 			showAddIdWindow();
-			break;
-		case R.id.linear_search:
+		}else if (id == R.id.linear_search) {
 			showSearchIdWindow();
-			break;
-		case R.id.btn_menu:
+		}else if (id == R.id.btn_menu) {
+			invalidateOptionsMenu();
 			openOptionsMenu();
-			break;
-		default:
-			break;
 		}
 	}
 
@@ -272,7 +258,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			// set item background
 			deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
 			// set item width
-			deleteItem.setWidth(DimensionUtil.dp2px(MainActivity.this, 90));
+			deleteItem.setWidth(ScreenUtil.INSTANCE.dp2px(90));
 			// set a icon
 			deleteItem.setIcon(R.drawable.ic_delete);
 			// add to menu
@@ -410,18 +396,19 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			ToastUtil.show(this, "账号修改成功");
 		}else if(requestCode == IMPORT_ID_CODE && data != null){
 			Uri uri = data.getData();
-			try {
-				FileDescriptor fileDescriptor = getContentResolver().openFileDescriptor(uri, "r").getFileDescriptor();
-				FileBackup.importIdInfo(this, uri, fileDescriptor, onImportIdInfoListener);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-				ToastUtil.show(this, "文件解析错误，可能已损坏");
-			}
-		}else if(requestCode == UPLOAD_FILE && data != null){
+            FileBackup.importIdInfo(this, uri, onImportIdInfoListener);
+        }else if(requestCode == UPLOAD_FILE && data != null){
 			//上传
 			Uri uri = data.getData();
 			Log.v(TAG, "分享uri：" + uri.toString());
 			shareFile(uri);
+		}else if(requestCode == CREATE_FILE && resultCode == RESULT_OK && data != null){
+			Uri uri = data.getData();
+			if(FileBackup.exportIdInfo(MainActivity.this, uri, dbHelper.queryIdInfoByPage(0))){
+				ToastUtil.show(this, "导出成功");
+			}else{
+				ToastUtil.show(this, "导出失败，请重试");
+			}
 		}
 	}
 

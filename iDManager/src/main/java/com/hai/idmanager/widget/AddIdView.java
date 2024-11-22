@@ -7,7 +7,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.hai.securitylock.utils.ToastUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.view.base.BasePopupWindow;
 import com.hai.idmanager.R;
 
@@ -35,7 +35,7 @@ public class AddIdView extends BasePopupWindow implements OnClickListener{
 		et_idName = (EditText) mView.findViewById(R.id.et_idName);
 		et_idInfo = (EditText) mView.findViewById(R.id.et_idInfo);
 		btn_confirm = (Button) mView.findViewById(R.id.btn_confirm);
-		btn_cancle = (Button) mView.findViewById(R.id.btn_cancle);
+		btn_cancle = (Button) mView.findViewById(R.id.btn_cancel);
 		
 		btn_confirm.setOnClickListener(this);
 		btn_cancle.setOnClickListener(this);
@@ -52,15 +52,11 @@ public class AddIdView extends BasePopupWindow implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btn_confirm:
+		int id = v.getId();
+		if(id == R.id.btn_confirm){
 			AddId();
-			break;
-		case R.id.btn_cancle:
+		}else if(id == R.id.btn_cancel){
 			this.dismiss();
-			break;
-		default:
-			break;
 		}
 	}
 	

@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.hai.idmanager.comm.respentity.IdModel;
 import com.hai.idmanager.comm.respentity.PageModel;
-import com.hai.sqlite.DbHelper;
+import com.hai.idmanager.sqlite.DbHelper;
 
 public class HomePageApi {
 	private static final int countPerPage = 10;	//每页显示条数

@@ -1,10 +1,10 @@
 package com.hai.idmanager.view;
 
-import com.hai.securitylock.utils.ToastUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.comm.respentity.IdModel;
 import com.hai.idmanager.view.base.BaseActivity;
-import com.hai.sqlite.DbHelper;
+import com.hai.idmanager.sqlite.DbHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,10 +12,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class EditIdActivity extends BaseActivity implements OnClickListener{
-	private Button btn_back;
+	private ImageButton ib_back;
 	private TextView tv_title;
 	
 	private EditText et_idName;
@@ -44,7 +45,7 @@ public class EditIdActivity extends BaseActivity implements OnClickListener{
 	}
 	
 	private void initView() {
-		btn_back = findView(R.id.btn_back);
+		ib_back = findView(R.id.ib_back);
 		tv_title = findView(R.id.tv_title);
 		et_idName = findView(R.id.et_idName);
 		et_idInfo = findView(R.id.et_idInfo);
@@ -52,7 +53,7 @@ public class EditIdActivity extends BaseActivity implements OnClickListener{
 		btn_submit = findView(R.id.btn_submit);
 		btn_edit.setOnClickListener(this);
 		btn_submit.setOnClickListener(this);
-		btn_back.setOnClickListener(this);
+		ib_back.setOnClickListener(this);
 		
 		tv_title.setText("查看账号信息");
 		et_idName.setText(idModel.getIdName());
@@ -63,7 +64,7 @@ public class EditIdActivity extends BaseActivity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
-		if(v == btn_back){
+		if(v == ib_back){
 			this.finish();
 		}else if(v == btn_edit){
 			et_idName.setEnabled(true);
