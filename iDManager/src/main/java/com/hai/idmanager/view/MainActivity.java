@@ -27,7 +27,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.hai.idmanager.utils.ScreenUtil;
 import com.hai.idmanager.view.gesture.GestureVerifyActivity;
 import com.hai.idmanager.utils.PreferenceUtil;
@@ -98,6 +100,10 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		showVerifyLayout();
 		setContentView(R.layout.activity_main);
 
+//		ImmersionBar.with(this)
+//				.titleBar(R.id.linear_top)
+//				.navigationBarColor(R.color.bg_gray)
+//				.init();
 		initData();
 		initView();
 
@@ -222,7 +228,8 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			}else{
 				long currentTimeMills = System.currentTimeMillis();
 				if(currentTimeMills-firstBackTimeMills < 3000){
-					System.exit(0);
+//					System.exit(0);
+					MainActivity.this.finish();
 				}else{
 					ToastUtil.show(this, "再按一次退出程序");
 					firstBackTimeMills = currentTimeMills;

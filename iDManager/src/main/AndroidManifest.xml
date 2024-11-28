@@ -36,12 +36,10 @@
             android:launchMode="singleTop"/>
 
         <activity
-            android:name=".view.gesture.GestureEditActivity"
-            android:theme="@style/AppTheme"/>
+            android:name=".view.gesture.GestureEditActivity" />
 
         <activity
-            android:name=".view.gesture.GestureVerifyActivity"
-            android:theme="@style/AppTheme"/>
+            android:name=".view.gesture.GestureVerifyActivity" />
     </application>
 
 </manifest>
