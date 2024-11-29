@@ -3,6 +3,7 @@ package com.hai.idmanager.view.setting;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -11,6 +12,7 @@ import android.widget.ToggleButton;
 
 import androidx.core.hardware.fingerprint.FingerprintManagerCompat;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.hai.idmanager.widget.DialogListener;
 import com.hai.idmanager.widget.DialogManager;
 import com.hai.idmanager.view.gesture.GestureEditActivity;
@@ -34,6 +36,17 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         initData();
         initView();
+        initSystemBar();
+    }
+
+    private void initSystemBar() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            ImmersionBar.with(this)
+                    .titleBar(R.id.title_bar_blue)
+                    .statusBarDarkFont(false)
+                    .init();
+            setBottomPadding(findView(R.id.activity_setting));
+        }
     }
 
     private void initData(){

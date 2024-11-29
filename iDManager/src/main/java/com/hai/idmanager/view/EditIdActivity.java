@@ -1,5 +1,6 @@
 package com.hai.idmanager.view;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
 import com.hai.idmanager.comm.respentity.IdModel;
@@ -7,6 +8,7 @@ import com.hai.idmanager.view.base.BaseActivity;
 import com.hai.idmanager.sqlite.DbHelper;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +37,17 @@ public class EditIdActivity extends BaseActivity implements OnClickListener{
 		
 		initData();
 		initView();
+		initSystemBar();
+	}
+
+	private void initSystemBar() {
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+			ImmersionBar.with(this)
+					.titleBar(R.id.title_bar)
+					.statusBarDarkFont(true)
+					.init();
+			setBottomPadding(findView(R.id.ll_top));
+		}
 	}
 
 	private void initData() {

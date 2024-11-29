@@ -1,8 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hai.idmanager.view.MainActivity" >
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	tools:context="com.hai.idmanager.view.MainActivity">
     
 	<LinearLayout 
 	    android:id="@+id/linear_top"
@@ -49,19 +50,21 @@
 	    android:dividerHeight="5dp"
         />
 	
-	<RelativeLayout 
-	    android:id="@+id/linear_bottom"
+	<androidx.constraintlayout.widget.ConstraintLayout
+	    android:id="@+id/cl_bottom"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
 	    android:background="@color/bg_gray"
 	    android:gravity="center_vertical"
-	    android:padding="2dp"
+		android:padding="2dp"
 	     >
-	    <Button 
+	    <Button
 	        android:id="@+id/btn_menu"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
 	        android:padding="@dimen/btn_padding_top_bottom"
 	        android:background="@drawable/addid_selector"
 	        android:textSize="@dimen/txt_middle"
@@ -71,12 +74,13 @@
 	        android:id="@+id/btn_addId"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_centerInParent="true"
-	        android:padding="@dimen/btn_padding_top_bottom"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
 	        android:background="@drawable/addid_selector"
 	        android:textSize="@dimen/txt_middle"
 	        android:text="添  加"/>
-	</RelativeLayout>
+	</androidx.constraintlayout.widget.ConstraintLayout>
     
 </RelativeLayout>
 

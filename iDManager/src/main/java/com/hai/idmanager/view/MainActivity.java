@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -25,9 +26,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.gyf.immersionbar.ImmersionBar;
 import com.hai.idmanager.utils.ScreenUtil;
@@ -100,18 +105,25 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		showVerifyLayout();
 		setContentView(R.layout.activity_main);
 
-//		ImmersionBar.with(this)
-//				.titleBar(R.id.linear_top)
-//				.navigationBarColor(R.color.bg_gray)
-//				.init();
 		initData();
 		initView();
+		initSystemBar();
 
 //		boolean sdCardWritePermission =
 //				getPackageManager().checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, getPackageName()) == PackageManager.PERMISSION_GRANTED;
 //		if (Build.VERSION.SDK_INT >= 23 && !sdCardWritePermission) {
 //			requestPermission();
 //		}
+	}
+
+	private void initSystemBar() {
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+			ImmersionBar.with(this)
+					.titleBar(R.id.linear_top)
+					.statusBarDarkFont(true)
+					.init();
+			setBottomPadding(findView(R.id.cl_bottom));
+		}
 	}
 
 	private void initData() {

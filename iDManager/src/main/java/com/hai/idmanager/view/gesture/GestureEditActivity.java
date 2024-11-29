@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
@@ -14,9 +15,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.hai.idmanager.R;
 import com.hai.idmanager.utils.PreferenceUtil;
 import com.hai.idmanager.utils.ToastUtil;
+import com.hai.idmanager.view.base.BaseActivity;
 import com.hai.idmanager.widget.gesture.GestureContentView;
 import com.hai.idmanager.widget.gesture.LockIndicator;
 import com.hai.idmanager.widget.gesture.GestureDrawline.GestureCallBack;
@@ -28,7 +31,7 @@ import com.hai.idmanager.widget.DialogManager;
  * 手势密码设置界面
  *
  */
-public class GestureEditActivity extends Activity implements OnClickListener {
+public class GestureEditActivity extends BaseActivity implements OnClickListener {
 
 	public static final int REQUEST_CODE_SET_GESTURE_PSW = 1001;  //设置手势密码
 	public static final int RESULT_CODE_SET_GESTURE_PSW = 2001;
@@ -59,6 +62,17 @@ public class GestureEditActivity extends Activity implements OnClickListener {
 		initData();
 		setUpViews();
 		setUpListeners();
+		initSystemBar();
+	}
+
+	private void initSystemBar() {
+		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+			ImmersionBar.with(this)
+					.titleBar(R.id.top_layout)
+					.statusBarDarkFont(false)
+					.init();
+			setBottomPadding(findView(R.id.rl_gesture_edit));
+		}
 	}
 
 	private void initData() {

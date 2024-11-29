@@ -15,8 +15,8 @@ android {
         minSdkVersion "$min_sdk_version".toInteger()
         targetSdkVersion "$target_sdk_version".toInteger()
 
-        versionCode 20241128
-        versionName "2.2.1"
+        versionCode 20241129
+        versionName "2.3"
 
 //        vectorDrawables.useSupportLibrary = true
     }
@@ -59,8 +59,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.15.0'
     implementation "androidx.appcompat:appcompat:1.7.0"
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'androidx.activity:activity-ktx:1.9.3'
     //kotlin标准库
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //沉浸式
     implementation 'com.geyifeng.immersionbar:immersionbar:3.2.2'
 

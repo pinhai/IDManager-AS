@@ -1,15 +1,20 @@
 package com.hai.idmanager.view.base;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.activity.ComponentActivity;
+import androidx.activity.EdgeToEdge;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import com.hai.idmanager.R;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends ComponentActivity {
     private String TAG = "BaseActivity";
 	@SuppressWarnings("unchecked")
 	protected <T> T findView(int id){
@@ -45,6 +50,15 @@ public class BaseActivity extends Activity {
             }
         });
         tv_title.setText(title);
+    }
+
+    protected void setBottomPadding(View bottomView){
+        ViewCompat.setOnApplyWindowInsetsListener(bottomView, (v, windowInsets) -> {
+            Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemGestures());
+            v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(), insets.bottom);
+
+            return WindowInsetsCompat.CONSUMED;
+        });
     }
 
 }
