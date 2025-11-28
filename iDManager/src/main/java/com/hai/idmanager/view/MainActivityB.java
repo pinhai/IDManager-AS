@@ -1,8 +1,5 @@
 package com.hai.idmanager.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -25,24 +22,12 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.hai.idmanager.utils.ScreenUtil;
-import com.hai.idmanager.view.gesture.GestureVerifyActivity;
-import com.hai.idmanager.utils.PreferenceUtil;
-import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.R;
-import com.hai.idmanager.model.PageRequest;
-import com.hai.idmanager.model.PageRequest.DoRequest;
 import com.hai.idmanager.adapter.IdListAdapter;
 import com.hai.idmanager.comm.FormResponse;
 import com.hai.idmanager.comm.HomePageApi;
@@ -51,27 +36,36 @@ import com.hai.idmanager.comm.respentity.PageModel;
 import com.hai.idmanager.custom.LoadMoreView;
 import com.hai.idmanager.file.FileBackup;
 import com.hai.idmanager.file.FileBackup.OnImportIdInfoListener;
+import com.hai.idmanager.model.PageRequest;
+import com.hai.idmanager.model.PageRequest.DoRequest;
+import com.hai.idmanager.sqlite.DbHelper;
+import com.hai.idmanager.utils.PreferenceUtil;
+import com.hai.idmanager.utils.ScreenUtil;
+import com.hai.idmanager.utils.ToastUtil;
 import com.hai.idmanager.view.base.BaseActivity;
+import com.hai.idmanager.view.gesture.GestureVerifyActivity;
 import com.hai.idmanager.view.setting.SettingActivity;
 import com.hai.idmanager.widget.AddIdView;
 import com.hai.idmanager.widget.AddIdView.OnAddIdListener;
 import com.hai.idmanager.widget.DelIdView;
 import com.hai.idmanager.widget.SearchIdInfoView;
-import com.hai.idmanager.sqlite.DbHelper;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnLastItemVisibleListener;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+import com.handmark.pulltorefresh.library.PullToRefreshSwipeMenuListView;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenu;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuCreator;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuItem;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuListView;
 import com.handmark.pulltorefresh.library.swipemenu.SwipeMenuListView.OnMenuItemClickListener;
-import com.handmark.pulltorefresh.library.PullToRefreshSwipeMenuListView;
 
-public class MainActivity extends BaseActivity implements OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivityB extends BaseActivity implements OnClickListener{
 	private static final String TAG = "MainActivity";
 
-	private ImageButton btn_addId, btn_menu;
+	private Button btn_addId, btn_menu;
 	private PullToRefreshSwipeMenuListView ptrlv_idInfo;
 	private SwipeMenuListView smlv_idInfo;
 	private LoadMoreView loadMoreView ;
@@ -123,12 +117,12 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 					.titleBar(R.id.linear_top)
 					.statusBarDarkFont(true)
 					.init();
-			setBottomPadding(findView(R.id.ptrlv_idInfo));
+			setBottomPadding(findView(R.id.cl_bottom));
 		}
 	}
 
 	private void initData() {
-		dbHelper = new DbHelper(MainActivity.this);
+		dbHelper = new DbHelper(MainActivityB.this);
 		mIdItemPage = new PageRequest<IdModel>(idItemReq, idItemResp);
 		loadMoreView = new LoadMoreView(this);
 
@@ -176,7 +170,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 
 	private void showVerifyLayout() {
 		if(PreferenceUtil.hasGesturePsw()){
-			GestureVerifyActivity.startForResult(MainActivity.this,
+			GestureVerifyActivity.startForResult(MainActivityB.this,
 					GestureVerifyActivity.REQUEST_CODE_VERIFY_GESTURE_PSW2);
 		}
 	}
@@ -211,7 +205,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.item_export) {
-			FileBackup.createIdInfoFile(MainActivity.this, CREATE_FILE);
+			FileBackup.createIdInfoFile(MainActivityB.this, CREATE_FILE);
 			return true;
 		}else if(id == R.id.item_import){
 			//导入，启动文件管理器
@@ -224,7 +218,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		}/*else if(id == R.id.item_about){
 			showAboutDialog();
 		}*/else if(id == R.id.item_setup){
-			Intent i = new Intent(MainActivity.this, SettingActivity.class);
+			Intent i = new Intent(MainActivityB.this, SettingActivity.class);
 			startActivity(i);
 			return true;
 		}
@@ -242,7 +236,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 				long currentTimeMills = System.currentTimeMillis();
 				if(currentTimeMills-firstBackTimeMills < 3000){
 //					System.exit(0);
-					MainActivity.this.finish();
+					MainActivityB.this.finish();
 				}else{
 					ToastUtil.show(this, "再按一次退出程序");
 					firstBackTimeMills = currentTimeMills;
@@ -329,9 +323,9 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		if(dbHelper.delIdInfo(mIdModels.get(position).getId())){
 			mIdModels.remove(position);
 			mIdListAdapter.notifyDataSetChanged();
-			ToastUtil.show(MainActivity.this, "删除账号成功");
+			ToastUtil.show(MainActivityB.this, "删除账号成功");
 		}else{
-			ToastUtil.show(MainActivity.this, "删除账号失败");
+			ToastUtil.show(MainActivityB.this, "删除账号失败");
 		}
 	}
 
@@ -380,7 +374,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 	}
 
 	private void startEditIdActivityForResult(IdModel itemModel) {
-		Intent intent = new Intent(MainActivity.this, EditIdActivity.class);
+		Intent intent = new Intent(MainActivityB.this, EditIdActivity.class);
 		Bundle bundle = new Bundle();
 		bundle.putSerializable("itemModel", itemModel);
 		intent.putExtra("data", bundle);
@@ -394,7 +388,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			dialog.dismiss();
 			if(dbHelper.addIdInfo(new IdModel(idName, idInfo))){
 				addIdView.dismiss();
-				ToastUtil.show(MainActivity.this, "添加成功");
+				ToastUtil.show(MainActivityB.this, "添加成功");
 				mIdItemPage.init();
 			}
 		}
@@ -424,7 +418,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 			shareFile(uri);
 		}else if(requestCode == CREATE_FILE && resultCode == RESULT_OK && data != null){
 			Uri uri = data.getData();
-			if(FileBackup.exportIdInfo(MainActivity.this, uri, dbHelper.queryIdInfoByPage(0))){
+			if(FileBackup.exportIdInfo(MainActivityB.this, uri, dbHelper.queryIdInfoByPage(0))){
 				ToastUtil.show(this, "导出成功");
 			}else{
 				ToastUtil.show(this, "导出失败，请重试");
@@ -450,7 +444,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		@Override
 		public void doRequest(int page,
 				FormResponse<PageModel<IdModel>> response) {
-			HomePageApi homePageApi = new HomePageApi(MainActivity.this);
+			HomePageApi homePageApi = new HomePageApi(MainActivityB.this);
 			homePageApi.getIdList(page, response);
 		}
 	};
@@ -477,7 +471,7 @@ public class MainActivity extends BaseActivity implements OnClickListener{
 		@Override
 		public void onErrorResponse(int error) {
 			ptrlv_idInfo.onRefreshComplete();
-			ToastUtil.show(MainActivity.this, "数据获取失败");
+			ToastUtil.show(MainActivityB.this, "数据获取失败");
 		}
 
 	};

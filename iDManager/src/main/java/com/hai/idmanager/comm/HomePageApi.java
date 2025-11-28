@@ -10,7 +10,7 @@ import com.hai.idmanager.comm.respentity.PageModel;
 import com.hai.idmanager.sqlite.DbHelper;
 
 public class HomePageApi {
-	private static final int countPerPage = 10;	//每页显示条数
+	private static final int countPerPage = 20;	//每页显示条数
 	private DbHelper dbHelper;
 	
 	public HomePageApi(Context context){
@@ -36,7 +36,7 @@ public class HomePageApi {
 			pageModel.setTotalPage(pageTatol);
 			pageModel.setIndex(page);
 			List<IdModel> data = new ArrayList<>();
-			for(int i=countPerPage*page-10; i<countPerPage*page && i<idListModel.size(); i++){
+			for(int i=countPerPage*(page-1); i<countPerPage*page && i<idListModel.size(); i++){
 				data.add(idListModel.get(i));
 			}
 			pageModel.setDatas(data);
