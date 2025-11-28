@@ -13,18 +13,6 @@
 <!--        <item name="android:fitsSystemWindows">true</item>-->
 <!--        <item name="android:windowTranslucentStatus">true</item>-->
 <!--        <item name="android:windowTranslucentNavigation">true</item>-->
-        <!-- 关联自定义 PopupMenu 样式 -->
-        <item name="popupMenuStyle">@style/CustomPopupMenuStyle</item>
-        <!-- 兼容 AppCompat 库 -->
-        <item name="android:popupMenuStyle" tools:ignore="NewApi">@style/CustomPopupMenuStyle</item>
-    </style>
-
-    <!-- 定义 PopupMenu 样式 -->
-    <style name="CustomPopupMenuStyle" parent="Widget.AppCompat.PopupMenu">
-        <!-- 设置背景颜色/图片 -->
-        <item name="android:popupBackground">@android:color/holo_blue_dark</item>
-        <!-- 或使用 drawable 作为背景 -->
-        <!-- <item name="android:popupBackground">@drawable/menu_bg</item> -->
     </style>
 
     <!-- Application theme. -->
